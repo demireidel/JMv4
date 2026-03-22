@@ -36,7 +36,7 @@
   /* ── Text Hierarchy ──────────────────────────────────────── */
   --text-1: oklch(1 0 0 / 0.92);
   --text-2: oklch(1 0 0 / 0.56);
-  --text-3: oklch(1 0 0 / 0.32);
+  --text-3: oklch(1 0 0 / 0.45);
 
   /* ── Typography Scale (fluid clamp) ──────────────────────── */
   --text-xs:   clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);

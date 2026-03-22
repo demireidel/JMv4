@@ -23,10 +23,10 @@ export function Hero() {
         style={{
           background: `
             linear-gradient(to bottom,
-              oklch(0.10 0.01 270 / 0.3) 0%,
-              oklch(0.10 0.01 270 / 0.5) 40%,
-              oklch(0.10 0.01 270 / 0.85) 80%,
-              oklch(0.10 0.01 270 / 1) 100%
+              oklch(0.10 0.01 270 / 0.15) 0%,
+              oklch(0.10 0.01 270 / 0.35) 40%,
+              oklch(0.10 0.01 270 / 0.7) 80%,
+              oklch(0.10 0.01 270 / 0.9) 100%
             )
           `,
         }}
@@ -39,7 +39,7 @@ export function Hero() {
       />
 
       {/* Content */}
-      <div className="relative z-10 h-full flex flex-col items-center justify-end pb-24 px-4">
+      <div className="relative z-10 h-full flex flex-col items-center justify-end pb-12 px-4">
         <p
           className="text-center mb-4 tracking-widest uppercase"
           style={{

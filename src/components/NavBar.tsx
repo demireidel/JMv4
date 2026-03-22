@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { navLinks } from "@/data/nav";
@@ -9,6 +9,7 @@ export function NavBar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
+  const hamburgerRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -22,9 +23,22 @@ export function NavBar() {
     setMenuOpen(false);
   }, [pathname]);
 
-  // Lock body scroll when menu is open
+  // Lock body scroll when menu is open + escape key
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
+    if (menuOpen) {
+      const onKeyDown = (e: KeyboardEvent) => {
+        if (e.key === "Escape") {
+          setMenuOpen(false);
+          hamburgerRef.current?.focus();
+        }
+      };
+      window.addEventListener("keydown", onKeyDown);
+      return () => {
+        document.body.style.overflow = "";
+        window.removeEventListener("keydown", onKeyDown);
+      };
+    }
     return () => {
       document.body.style.overflow = "";
     };
@@ -119,6 +133,7 @@ export function NavBar() {
 
           {/* Mobile hamburger */}
           <button
+            ref={hamburgerRef}
             onClick={toggleMenu}
             className="md:hidden flex flex-col justify-center items-center w-12 h-12 gap-1.5 bg-transparent border-none cursor-pointer"
             aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
