@@ -198,6 +198,7 @@ export function VisionChapters({ photos }: { photos: Photo[] }) {
           <p className="m-0"><strong>Las funciones del Estado deben limitarse a la defensa del derecho a la vida, a la libertad y a la propiedad.</strong> Nada más. Todo lo demás es coacción disfrazada de política pública. El gasto público no es gratuito: cada peso que gasta el Estado es un peso que se le quita a un ciudadano que lo habría gastado mejor. No es un debate de gestión — es un debate moral.</p>
         </Prose>
         <Pullquote cite="Davos, enero 2024">&laquo;El Estado no es la solución. El Estado es el problema mismo. No cedan al avance del Estado.&raquo;</Pullquote>
+        <ChapterPhoto photo={photos[4]} />
       </article>
 
       <Divider />
@@ -249,7 +250,7 @@ export function VisionChapters({ photos }: { photos: Photo[] }) {
           <br />del mundo
         </p>
         <p className="mt-4 font-accent text-[length:var(--text-sm)] tracking-widest text-text-tertiary">
-          Viva la libertad, carajo!
+          ¡Viva la libertad, carajo!
         </p>
       </div>
     </SidebarLayout>
