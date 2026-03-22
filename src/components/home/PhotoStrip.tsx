@@ -108,6 +108,8 @@ export function PhotoStrip({ photos, direction }: PhotoStripProps) {
   return (
     <div
       ref={wrapperRef}
+      role="region"
+      aria-label="Galería de fotos"
       className={`select-none overflow-hidden bg-dark py-[var(--spacing-xs)] ${
         isDragging ? "cursor-grabbing" : "cursor-grab"
       }`}
@@ -122,14 +124,13 @@ export function PhotoStrip({ photos, direction }: PhotoStripProps) {
       <div ref={stripRef} className="flex w-max gap-3">
         {doubled.map((p, i) => (
           <Image
-            key={i}
+            key={`${p.src}-${i}`}
             src={p.src}
             alt={p.alt}
             width={448}
             height={280}
             draggable={false}
             className="h-[clamp(8rem,6rem+8vw,14rem)] w-auto rounded-md object-cover"
-            style={{ aspectRatio: "16/10" }}
             sizes="(max-width: 768px) 200px, 300px"
           />
         ))}

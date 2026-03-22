@@ -129,7 +129,7 @@ export function ScrollReveal({
   const style: React.CSSProperties = {
     ...(visible ? config.visible : config.hidden),
     transition: transitionValue,
-    willChange: visible ? undefined : config.transition,
+    willChange: visible ? undefined : config.transition.split(",").join(" "),
   };
 
   return (

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useCallback } from "react";
+import { useState, useRef, useCallback, useId } from "react";
 
 interface ExpandableSectionProps {
   label?: string;
@@ -10,7 +10,7 @@ interface ExpandableSectionProps {
 }
 
 export function ExpandableSection({
-  label = "Ver mas",
+  label = "Ver más",
   labelExpanded = "Ver menos",
   children,
   id,
@@ -18,11 +18,11 @@ export function ExpandableSection({
   const [expanded, setExpanded] = useState(false);
   const [height, setHeight] = useState(0);
   const contentRef = useRef<HTMLDivElement>(null);
-  const contentId = id ?? "expandable";
+  const generatedId = useId();
+  const contentId = id ?? generatedId;
 
   const toggle = useCallback(() => {
     if (!expanded && contentRef.current) {
-      // Measure before toggling
       setHeight(contentRef.current.scrollHeight);
     }
     setExpanded((v) => !v);

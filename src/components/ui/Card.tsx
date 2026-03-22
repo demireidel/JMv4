@@ -17,7 +17,7 @@ export function Card({
   className = "",
 }: CardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
-  const { relX, relY, x, y, hovering } = useMousePosition(cardRef);
+  const { relX, relY, hovering } = useMousePosition(cardRef);
 
   if (!hover) {
     return (
@@ -35,13 +35,11 @@ export function Card({
 
   return (
     <div className="relative" ref={cardRef}>
-      {/* Glowing border pseudo-element */}
+      {/* Glow ring — gradient reads --mx/--my via CSS, no re-render per mousemove frame */}
       {hovering && (
         <div
-          className="pointer-events-none absolute -inset-px rounded-[var(--radius-xl)]"
-          style={{
-            background: `radial-gradient(circle 200px at ${x}px ${y}px, oklch(0.80 0.17 85 / 0.15), transparent 70%)`,
-          }}
+          aria-hidden="true"
+          className="card-glow pointer-events-none absolute -inset-px rounded-[var(--radius-xl)]"
         />
       )}
       <div

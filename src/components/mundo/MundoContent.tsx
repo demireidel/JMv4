@@ -58,7 +58,7 @@ function ForumCard({ forum }: { forum: ForumAppearance }) {
           sizes="(max-width: 640px) 100vw, 50vw"
         />
         {forum.highlight && (
-          <span className="absolute top-3 right-3 rounded-full bg-[oklch(0.80_0.17_85/0.9)] px-2.5 py-0.5 text-[length:var(--text-xs)] font-bold text-white">
+          <span className="absolute top-3 right-3 rounded-full bg-[color-mix(in_oklch,var(--color-gold-light),transparent_10%)] px-2.5 py-0.5 text-[length:var(--text-xs)] font-bold text-white">
             DESTACADO
           </span>
         )}
@@ -66,11 +66,11 @@ function ForumCard({ forum }: { forum: ForumAppearance }) {
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(to top, oklch(0.10 0.01 270 / 0.8) 0%, transparent 50%)",
+              "linear-gradient(to top, color-mix(in oklch, var(--color-overlay-dark), transparent 20%) 0%, transparent 50%)",
           }}
         />
         <div className="absolute bottom-3 left-4 right-4">
-          <span className="font-accent text-[length:var(--text-xs)] uppercase tracking-[0.1em] text-[oklch(0.80_0.17_85)]">
+          <span className="font-accent text-[length:var(--text-xs)] uppercase tracking-[0.1em] text-[var(--color-gold-light)]">
             {forum.date}
           </span>
           <span className="ml-2 text-[length:var(--text-xs)] text-white/50">

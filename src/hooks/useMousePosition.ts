@@ -3,10 +3,6 @@
 import { useEffect, useRef, useState, type RefObject } from "react";
 
 interface MousePosition {
-  /** Absolute x within element */
-  x: number;
-  /** Absolute y within element */
-  y: number;
   /** Normalized -1..1 from center (horizontal) */
   relX: number;
   /** Normalized -1..1 from center (vertical) */
@@ -15,13 +11,15 @@ interface MousePosition {
   hovering: boolean;
 }
 
-const ZERO: MousePosition = { x: 0, y: 0, relX: 0, relY: 0, hovering: false };
+const ZERO: MousePosition = { relX: 0, relY: 0, hovering: false };
 
 /**
  * Tracks mouse position relative to an element.
- * Returns normalized -1..1 coordinates from center.
- * Disabled on touch devices (hover: none) to avoid performance cost.
- * Uses RAF throttle for 60fps.
+ * - relX/relY: normalized -1..1 from center, stored as React state (used for 3D tilt).
+ * - Absolute x/y: written directly to CSS custom props --mx/--my on the element ref —
+ *   zero React re-renders per mousemove frame; gradient computed entirely by CSS.
+ * - Disabled on touch devices (hover: none) to avoid performance cost.
+ * - Uses RAF throttle for 60fps.
  */
 export function useMousePosition(ref: RefObject<HTMLElement | null>): MousePosition {
   const [pos, setPos] = useState<MousePosition>(ZERO);
@@ -43,14 +41,20 @@ export function useMousePosition(ref: RefObject<HTMLElement | null>): MousePosit
         const rect = el.getBoundingClientRect();
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
-        const relX = ((x / rect.width) * 2 - 1);
-        const relY = ((y / rect.height) * 2 - 1);
-        setPos({ x, y, relX, relY, hovering: true });
+        // Direct DOM mutation — no React re-render per mousemove frame
+        el.style.setProperty("--mx", `${x}px`);
+        el.style.setProperty("--my", `${y}px`);
+        // Normalized values stay as state (used for 3D tilt)
+        const relX = (x / rect.width) * 2 - 1;
+        const relY = (y / rect.height) * 2 - 1;
+        setPos({ relX, relY, hovering: true });
       });
     };
 
     const onLeave = () => {
       cancelAnimationFrame(rafId);
+      el.style.removeProperty("--mx");
+      el.style.removeProperty("--my");
       setPos(ZERO);
     };
 

@@ -1,11 +1,15 @@
 "use client";
 
 export default function GlobalError({
+  error,
   reset,
 }: {
   error: Error & { digest?: string };
   reset: () => void;
 }) {
+  // error.digest is useful for server-side error tracking
+  void error;
+
   return (
     <html lang="es">
       <body
@@ -22,15 +26,15 @@ export default function GlobalError({
       >
         <div>
           <h1 style={{ fontSize: "2rem", marginBottom: "1rem" }}>
-            Error critico
+            Error crítico
           </h1>
           <p style={{ opacity: 0.6, marginBottom: "2rem" }}>
-            Ocurrio un error grave. Intenta recargar la pagina.
+            Ocurrió un error grave. Intentá recargar la página.
           </p>
           <button
             onClick={reset}
             style={{
-              background: "#F6B40E",
+              background: "#b8860b",   /* --color-gold-hex */
               color: "#0a0a0f",
               border: "none",
               padding: "0.75rem 2rem",

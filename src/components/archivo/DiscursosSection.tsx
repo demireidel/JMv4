@@ -16,7 +16,7 @@ export function DiscursosSection({ discursos }: { discursos: Discurso[] }) {
                 {d.date}
               </span>
               {d.keynote && (
-                <span className="rounded-full bg-[oklch(0.80_0.17_85/0.15)] px-2 py-0.5 text-[length:var(--text-xs)] text-gold">
+                <span className="rounded-full bg-[color-mix(in_oklch,var(--color-gold-light),transparent_85%)] px-2 py-0.5 text-[length:var(--text-xs)] text-gold">
                   Keynote
                 </span>
               )}

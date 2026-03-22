@@ -36,7 +36,7 @@ export function EntrevistasSection({ entrevistas }: { entrevistas: Entrevista[] 
               {e.desc}
             </p>
             {e.impact && (
-              <p className="m-0 mt-2 inline-block rounded-md bg-[oklch(0.80_0.17_85/0.1)] px-3 py-1.5 text-[length:var(--text-xs)] text-gold">
+              <p className="m-0 mt-2 inline-block rounded-md bg-[color-mix(in_oklch,var(--color-gold-light),transparent_90%)] px-3 py-1.5 text-[length:var(--text-xs)] text-gold">
                 {e.impact}
               </p>
             )}

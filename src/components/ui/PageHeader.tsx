@@ -62,7 +62,7 @@ export function PageHeader({
             className="object-cover"
             style={{
               opacity: 0.2,
-              transform: `translateY(${parallaxY}px) scale(1.05)`,
+              transform: `translateY(${parallaxY}px)`,
               willChange: scrollProgress > 0 ? "transform" : undefined,
             }}
             priority
@@ -71,7 +71,7 @@ export function PageHeader({
             className="absolute inset-0"
             style={{
               background:
-                "linear-gradient(to bottom, oklch(0.10 0.01 270 / 0.55) 0%, oklch(0.10 0.01 270 / 0.95) 100%)",
+                "linear-gradient(to bottom, color-mix(in oklch, var(--color-overlay-dark), transparent 45%) 0%, color-mix(in oklch, var(--color-overlay-dark), transparent 5%) 100%)",
             }}
           />
         </>

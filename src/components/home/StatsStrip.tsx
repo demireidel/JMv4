@@ -18,12 +18,14 @@ const stats: StatItem[] = [
 ];
 
 function AnimatedStat({ stat, delay }: { stat: StatItem; delay: number }) {
-  const { ref, display, progress } = useAnimatedNumber({
+  const { ref, display, value } = useAnimatedNumber({
     target: stat.target,
     duration: 1800,
     decimals: stat.decimals,
   });
 
+  // Derive progress locally: 0 → 1 as value approaches target
+  const progress = stat.target > 0 ? Math.min(value / stat.target, 1) : 1;
   // Scale pop during animation: starts at 0.85, springs to 1.0
   const scale = progress < 1 ? 0.85 + 0.15 * progress : 1;
 
@@ -35,7 +37,7 @@ function AnimatedStat({ stat, delay }: { stat: StatItem; delay: number }) {
           aria-live="polite"
           style={{
             transform: `scale(${scale})`,
-            textShadow: "0 0 40px oklch(0.80 0.17 85 / 0.2)",
+            textShadow: "0 0 40px color-mix(in oklch, var(--color-gold-light), transparent 80%)",
           }}
         >
           {display}

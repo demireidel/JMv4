@@ -1,26 +1,16 @@
 "use client";
 
-import { useEffect, useRef, useState, useCallback } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { heroImage } from "@/data/photos";
-import { useScrollProgress } from "@/hooks/useScrollProgress";
 
 export function Hero() {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const [showFallback, setShowFallback] = useState(false);
   const [step, setStep] = useState(0);
-  const [reducedMotion, setReducedMotion] = useState(false);
-
-  const scrollProgress = useScrollProgress(sectionRef);
 
   useEffect(() => {
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
     if (mq.matches) {
-      videoRef.current?.pause();
-      setShowFallback(true);
-      setReducedMotion(true);
-      setStep(99); // show everything instantly
+      setStep(99);
       return;
     }
 
@@ -30,7 +20,8 @@ export function Hero() {
       }
     ).connection;
     if (conn?.saveData || conn?.effectiveType === "2g") {
-      setShowFallback(true);
+      setStep(99);
+      return;
     }
 
     // Choreographed entrance sequence
@@ -47,92 +38,43 @@ export function Hero() {
     return () => timers.forEach(clearTimeout);
   }, []);
 
-  // Scroll-driven parallax exit (0..0.5 of scroll range)
-  const exitProgress = Math.min(scrollProgress * 2, 1);
-  const contentTranslateY = reducedMotion ? 0 : exitProgress * -80;
-  const mediaScale = reducedMotion ? 1 : 1 + exitProgress * 0.05;
-  const contentOpacity = reducedMotion ? 1 : 1 - exitProgress;
+  const shown = step >= 99;
 
   return (
-    <section ref={sectionRef} className="relative h-dvh w-full overflow-hidden">
-      {/* Background video */}
-      {!showFallback && (
-        <video
-          ref={videoRef}
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
-          src="/videos/hero.mp4"
-          poster={heroImage.src}
-          onError={() => setShowFallback(true)}
-          className="absolute inset-0 h-full w-full object-cover object-[center_20%]"
-          style={{
-            transform: `scale(${mediaScale})`,
-            willChange: "transform",
-          }}
+    <section className="relative h-dvh w-full overflow-hidden">
+      {/* Background image (video disabled until clean cut available) */}
+      <div className="absolute inset-0">
+        <Image
+          src={heroImage.src}
+          alt={heroImage.alt}
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-[center_20%]"
         />
-      )}
-
-      {/* Fallback static image */}
-      {showFallback && (
-        <div
-          className="absolute inset-0"
-          style={{
-            transform: `scale(${mediaScale})`,
-            willChange: "transform",
-          }}
-        >
-          <Image
-            src={heroImage.src}
-            alt={heroImage.alt}
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover object-[center_20%]"
-          />
-        </div>
-      )}
+      </div>
 
       {/* Gradient overlay */}
-      <div
-        className="absolute inset-0"
-        style={{
-          background: `linear-gradient(to bottom,
-            color-mix(in oklch, var(--color-overlay-dark), transparent 85%) 0%,
-            color-mix(in oklch, var(--color-overlay-dark), transparent 65%) 40%,
-            color-mix(in oklch, var(--color-overlay-dark), transparent 30%) 80%,
-            color-mix(in oklch, var(--color-overlay-dark), transparent 10%) 100%
-          )`,
-        }}
-      />
+      <div className="hero-overlay absolute inset-0" />
 
-      {/* Gold accent line at top — animates scaleX from center */}
+      {/* Gold accent line at top */}
       <div
         className="absolute inset-x-0 top-0 h-0.5 bg-gold"
         style={{
-          transform: step >= 1 ? "scaleX(1)" : "scaleX(0)",
+          transform: shown || step >= 1 ? "scaleX(1)" : "scaleX(0)",
           transformOrigin: "center",
           transition: "transform 800ms var(--ease-out-expo)",
         }}
       />
 
-      {/* Content */}
-      <div
-        className="relative z-10 flex h-full flex-col items-center justify-end px-4 pb-12"
-        style={{
-          transform: `translateY(${contentTranslateY}px)`,
-          opacity: contentOpacity,
-          willChange: scrollProgress > 0 ? "transform, opacity" : undefined,
-        }}
-      >
+      {/* Content — no scroll-driven transform */}
+      <div className="relative z-10 flex h-full flex-col items-center justify-end px-4 pb-12">
         {/* Eyebrow */}
         <p
           className="mb-6 text-center font-accent text-[length:var(--text-xs)] uppercase tracking-[0.35em] text-white/50"
           style={{
-            opacity: step >= 2 ? 1 : 0,
-            transform: step >= 2 ? "translateY(0)" : "translateY(12px)",
+            opacity: shown || step >= 2 ? 1 : 0,
+            transform: shown || step >= 2 ? "translateY(0)" : "translateY(12px)",
             transition: "opacity 600ms var(--ease-out-expo), transform 600ms var(--ease-out-expo)",
           }}
         >
@@ -152,7 +94,7 @@ export function Hero() {
             style={{
               fontSize: "clamp(2.5rem, 9vw, 5.5rem)",
               letterSpacing: "0.18em",
-              clipPath: step >= 3 ? "inset(0)" : "inset(100% 0 0 0)",
+              clipPath: shown || step >= 3 ? "inset(0)" : "inset(100% 0 0 0)",
               transition: "clip-path 800ms var(--ease-out-expo)",
             }}
           >
@@ -160,13 +102,13 @@ export function Hero() {
           </span>
           {/* "Milei" — larger, gold shimmer, clip-path reveal */}
           <span
-            className={`block font-accent font-bold uppercase ${step >= 4 ? "gold-shimmer" : ""}`}
+            className={`block font-accent font-bold uppercase ${shown || step >= 4 ? "gold-shimmer" : ""}`}
             style={{
               fontSize: "clamp(4rem, 16vw, 9.5rem)",
               letterSpacing: "0.08em",
-              clipPath: step >= 4 ? "inset(0)" : "inset(100% 0 0 0)",
+              clipPath: shown || step >= 4 ? "inset(0)" : "inset(100% 0 0 0)",
               transition: "clip-path 900ms var(--ease-out-expo)",
-              ...(!step || step < 4 ? { color: "var(--color-gold)" } : {}),
+              ...(!(shown || step >= 4) ? { color: "var(--color-gold)" } : {}),
             }}
           >
             Milei
@@ -177,18 +119,18 @@ export function Hero() {
         <div
           className="mx-auto mb-5 mt-7 h-px w-20 bg-gold"
           style={{
-            transform: step >= 5 ? "scaleX(1)" : "scaleX(0)",
+            transform: shown || step >= 5 ? "scaleX(1)" : "scaleX(0)",
             transformOrigin: "center",
             transition: "transform 700ms var(--ease-out-expo)",
           }}
         />
 
-        {/* Subtitle */}
+        {/* Subtitle — max-w-lg so the phrase fits on 1–2 lines */}
         <p
-          className="max-w-sm text-center font-display text-[length:var(--text-lg)] italic leading-snug text-white/65"
+          className="max-w-lg text-center font-display text-[length:var(--text-lg)] italic leading-snug text-white/65"
           style={{
-            opacity: step >= 6 ? 1 : 0,
-            transform: step >= 6 ? "translateY(0)" : "translateY(10px)",
+            opacity: shown || step >= 6 ? 1 : 0,
+            transform: shown || step >= 6 ? "translateY(0)" : "translateY(10px)",
             transition: "opacity 700ms var(--ease-out-expo), transform 700ms var(--ease-out-expo)",
           }}
         >
@@ -200,7 +142,7 @@ export function Hero() {
           className="absolute bottom-8 left-1/2 flex -translate-x-1/2 flex-col items-center gap-2"
           aria-hidden="true"
           style={{
-            opacity: step >= 7 ? 1 : 0,
+            opacity: shown || step >= 7 ? 1 : 0,
             transition: "opacity 400ms var(--ease-standard)",
           }}
         >

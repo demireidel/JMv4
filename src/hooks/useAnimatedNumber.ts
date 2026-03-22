@@ -10,9 +10,9 @@ interface UseAnimatedNumberOptions {
 }
 
 /**
- * Animates a number from 0 to target when the element scrolls into view.
+ * Animates a number from 0 → target when the element enters the viewport.
  * Exponential ease-out for a premium feel.
- * Returns progress (0..1) for coordinating scale/glow effects.
+ * RAF id stored in ref so in-flight animation can be cancelled on unmount.
  */
 export function useAnimatedNumber({
   target,
@@ -22,8 +22,8 @@ export function useAnimatedNumber({
 }: UseAnimatedNumberOptions) {
   const ref = useRef<HTMLDivElement>(null);
   const [value, setValue] = useState(0);
-  const [progress, setProgress] = useState(0);
   const hasAnimated = useRef(false);
+  const rafId = useRef(0);
 
   useEffect(() => {
     const el = ref.current;
@@ -40,25 +40,27 @@ export function useAnimatedNumber({
           const animate = (now: number) => {
             const p = Math.min((now - start) / duration, 1);
             const eased = 1 - Math.pow(2, -10 * p);
-            const current = Math.round(scaledTarget * eased) / scale;
-            setValue(current);
-            setProgress(p);
-            if (p < 1) requestAnimationFrame(animate);
+            setValue(Math.round(scaledTarget * eased) / scale);
+            if (p < 1) {
+              rafId.current = requestAnimationFrame(animate);
+            }
           };
 
-          requestAnimationFrame(animate);
+          rafId.current = requestAnimationFrame(animate);
         }
       },
       { threshold }
     );
 
     observer.observe(el);
-    return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+      cancelAnimationFrame(rafId.current);
+    };
   }, [target, duration, threshold, decimals]);
 
-  const display = decimals > 0
-    ? value.toFixed(decimals)
-    : value.toLocaleString("es-AR");
+  const display =
+    decimals > 0 ? value.toFixed(decimals) : value.toLocaleString("es-AR");
 
-  return { ref, value, display, progress };
+  return { ref, value, display };
 }
