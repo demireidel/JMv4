@@ -11,7 +11,7 @@ export function PhotoGallery({ photos }: PhotoGalleryProps) {
     <div className="mt-10">
       <h4 className="badge-text mb-5 !text-gold">Galería — La gira en imágenes</h4>
       <ContentGrid cols={3}>
-        {photos.map((photo, i) => (
+        {photos.slice(0, 9).map((photo, i) => (
           <figure key={i} className="group relative m-0 overflow-hidden rounded-lg">
             <Image
               src={photo.src}
