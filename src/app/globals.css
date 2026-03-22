@@ -16,17 +16,17 @@
   --font-body: var(--font-inter), system-ui, sans-serif;
 
   /* ── Core Colors (oklch) ───────────────────────────────── */
-  --color-gold: oklch(0.80 0.17 85);
-  --color-celeste: oklch(0.72 0.11 240);
-  --color-dark: oklch(0.10 0.01 270);
-  --color-navy: oklch(0.16 0.04 255);
-  --color-cream: #f5f0e8;
+  --color-gold: oklch(0.55 0.17 75);
+  --color-celeste: oklch(0.55 0.11 240);
+  --color-dark: oklch(0.97 0.005 80);
+  --color-navy: oklch(0.94 0.01 80);
+  --color-cream: #1a1a2e;
 
   /* Hex fallbacks (OG images, scrollbar, etc.) */
-  --color-gold-hex: #F6B40E;
-  --color-celeste-hex: #74ACDF;
-  --color-dark-hex: #0a0a0f;
-  --color-navy-hex: #0c1a2e;
+  --color-gold-hex: #b8860b;
+  --color-celeste-hex: #3a7abf;
+  --color-dark-hex: #f5f2ed;
+  --color-navy-hex: #efeae3;
 
   /* ── Party Colors (La Libertad Avanza) ─────────────────── */
   --color-lla-violet: #743BBC;
@@ -37,28 +37,28 @@
   --color-success: #51cf66;
   --color-danger: #ff6b6b;
 
-  /* ── Surface System (glassmorphic layers) ───────────────── */
-  --color-surface-1: oklch(0.20 0.02 270 / 0.4);
-  --color-surface-2: oklch(0.20 0.02 270 / 0.6);
-  --color-surface-3: oklch(0.20 0.02 270 / 0.8);
-  --color-border: oklch(1 0 0 / 0.06);
-  --color-border-hover: oklch(1 0 0 / 0.12);
+  /* ── Surface System (light layers) ──────────────────────── */
+  --color-surface-1: oklch(0 0 0 / 0.03);
+  --color-surface-2: oklch(0 0 0 / 0.05);
+  --color-surface-3: oklch(0 0 0 / 0.08);
+  --color-border: oklch(0 0 0 / 0.08);
+  --color-border-hover: oklch(0 0 0 / 0.15);
 
   /* ── Text Hierarchy ────────────────────────────────────── */
-  --color-text-primary: oklch(1 0 0 / 0.92);
-  --color-text-secondary: oklch(1 0 0 / 0.56);
-  --color-text-tertiary: oklch(1 0 0 / 0.40);
+  --color-text-primary: oklch(0.15 0.02 270);
+  --color-text-secondary: oklch(0.35 0.02 270);
+  --color-text-tertiary: oklch(0.50 0.02 270);
 
   /* ── Before / After Tints ──────────────────────────────── */
-  --color-tint-before: oklch(0.30 0.05 25 / 0.3);
-  --color-tint-after: oklch(0.30 0.05 145 / 0.3);
-  --color-border-before: oklch(0.50 0.15 25 / 0.3);
-  --color-border-after: oklch(0.50 0.15 145 / 0.3);
+  --color-tint-before: oklch(0.95 0.03 25);
+  --color-tint-after: oklch(0.95 0.03 145);
+  --color-border-before: oklch(0.70 0.10 25 / 0.4);
+  --color-border-after: oklch(0.70 0.10 145 / 0.4);
 
   /* ── Hero / Nav Overlay ────────────────────────────────── */
   --color-overlay-dark: oklch(0.10 0.01 270);
-  --color-nav-bg: oklch(0.10 0.01 270 / 0.85);
-  --color-nav-bg-mobile: oklch(0.10 0.01 270 / 0.97);
+  --color-nav-bg: oklch(0.97 0.005 80 / 0.85);
+  --color-nav-bg-mobile: oklch(0.97 0.005 80 / 0.97);
 
   /* ── Typography Scale (fluid clamp) ────────────────────── */
   --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
@@ -87,11 +87,11 @@
   --radius-xl: 1.5rem;
 
   /* ── Shadows ───────────────────────────────────────────── */
-  --shadow-sm: 0 1px 3px oklch(0 0 0 / 0.3);
-  --shadow-md: 0 4px 12px oklch(0 0 0 / 0.4);
-  --shadow-lg: 0 8px 32px oklch(0 0 0 / 0.5);
-  --shadow-glow-gold: 0 0 24px oklch(0.80 0.17 85 / 0.15);
-  --shadow-glow-celeste: 0 0 24px oklch(0.72 0.11 240 / 0.15);
+  --shadow-sm: 0 1px 3px oklch(0 0 0 / 0.08);
+  --shadow-md: 0 4px 12px oklch(0 0 0 / 0.1);
+  --shadow-lg: 0 8px 32px oklch(0 0 0 / 0.15);
+  --shadow-glow-gold: 0 0 24px oklch(0.55 0.17 75 / 0.2);
+  --shadow-glow-celeste: 0 0 24px oklch(0.55 0.11 240 / 0.15);
 
   /* ── Motion ────────────────────────────────────────────── */
   --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
@@ -294,7 +294,7 @@
    Base Styles
    ══════════════════════════════════════════════════════════════ */
 html {
-  color-scheme: dark;
+  color-scheme: light;
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -325,8 +325,8 @@ h5, h6 {
 
 /* ── Selection ────────────────────────────────────────────── */
 ::selection {
-  background: oklch(0.80 0.17 85 / 0.3);
-  color: white;
+  background: oklch(0.55 0.17 75 / 0.2);
+  color: var(--color-text-primary);
 }
 
 /* ── Focus Indicators (WCAG 2.2) ──────────────────────────── */
@@ -367,18 +367,18 @@ h5, h6 {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: oklch(1 0 0 / 0.15);
+  background: oklch(0 0 0 / 0.12);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: oklch(1 0 0 / 0.25);
+  background: oklch(0 0 0 / 0.25);
 }
 
 /* Firefox */
 html {
   scrollbar-width: thin;
-  scrollbar-color: oklch(1 0 0 / 0.15) var(--color-dark-hex, #0a0a0f);
+  scrollbar-color: oklch(0 0 0 / 0.12) var(--color-dark-hex, #f5f2ed);
 }
 
 /* ── Reduced Motion ───────────────────────────────────────── */
@@ -452,7 +452,6 @@ html {
 }
 
 .card-hover:hover {
-  transform: translateY(-2px);
   border-color: var(--color-border-hover);
   box-shadow: var(--shadow-glow-gold);
 }
@@ -618,7 +617,7 @@ body::after {
   pointer-events: none;
   opacity: 0.025;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  mix-blend-mode: overlay;
+  mix-blend-mode: multiply;
 }
 
 /* ── Vignette Effect ─────────────────────────────────────── */
@@ -631,7 +630,7 @@ body::after {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: radial-gradient(ellipse at center, transparent 50%, oklch(0.10 0.01 270 / 0.6) 100%);
+  background: radial-gradient(ellipse at center, transparent 50%, oklch(0.97 0.005 80 / 0.4) 100%);
   z-index: 1;
 }
 

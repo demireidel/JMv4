@@ -80,6 +80,7 @@ export default function RootLayout({
       className={`${fraunces.variable} ${oswald.variable} ${inter.variable}`}
     >
       <head>
+        <link rel="preload" as="video" href="/videos/hero.webm" type="video/webm" />
         <script
           type="application/ld+json"
           suppressHydrationWarning

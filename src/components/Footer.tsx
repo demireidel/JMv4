@@ -7,7 +7,7 @@ import { ScrollReveal } from "@/components/ui/ScrollReveal";
 
 export function Footer() {
   return (
-    <footer className="border-t border-border bg-[oklch(0.12_0.01_270)]">
+    <footer className="border-t border-border bg-navy">
       <div className="mx-auto max-w-[var(--width-content)] px-4 pb-[var(--spacing-xl)] pt-[var(--spacing-3xl)] sm:px-6 lg:px-8">
         {/* Top row: wordmark + nav */}
         <ScrollReveal variant="fade-up">

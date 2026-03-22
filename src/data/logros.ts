@@ -32,6 +32,8 @@ export interface PobrezaData {
   pills: PobrezaPill[];
   quote: string;
   quoteAttr: string;
+  img: string;
+  imgAlt: string;
 }
 
 export const pobrezaData: PobrezaData = {
@@ -70,6 +72,8 @@ export const pobrezaData: PobrezaData = {
   ],
   quote: "«Robar está mal, pero robarle el pan de la boca a los más vulnerables, haciéndolos esclavos para amasar poder, excede a cualquier adjetivo que se pueda encontrar en el diccionario.»",
   quoteAttr: "— Milei, Congreso 2026",
+  img: "/images/banco/hero-balcon.jpg",
+  imgAlt: "Milei ante la multitud en el balcón de Casa Rosada — asunción presidencial, diciembre 2023",
 };
 
 export interface BeforeAfter {
