@@ -2,11 +2,29 @@ import type { Entrevista } from "@/data/archivo";
 import { ChapterHeader } from "@/components/ui/ChapterHeader";
 import { Card } from "@/components/ui/Card";
 
+function YouTubeEmbed({ videoId, title }: { videoId: string; title: string }) {
+  return (
+    <div
+      className="relative mt-4 overflow-hidden rounded-lg"
+      style={{ aspectRatio: "16/9" }}
+    >
+      <iframe
+        src={`https://www.youtube-nocookie.com/embed/${videoId}`}
+        title={title}
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowFullScreen
+        className="absolute inset-0 h-full w-full border-0"
+        loading="lazy"
+      />
+    </div>
+  );
+}
+
 export function EntrevistasSection({ entrevistas }: { entrevistas: Entrevista[] }) {
   return (
     <article id="entrevistas" className="mb-16">
       <ChapterHeader numeral="III" title="Entrevistas" />
-      <div className="space-y-4">
+      <div className="space-y-6">
         {entrevistas.map((e, i) => (
           <Card key={i} accent={e.highlight} className="p-5">
             <div className="mb-2 flex items-center gap-3">
@@ -27,7 +45,10 @@ export function EntrevistasSection({ entrevistas }: { entrevistas: Entrevista[] 
                 Con {e.journalist}
               </p>
             )}
-            <p className="m-0 text-[length:var(--text-xs)] leading-[1.6] text-text-secondary">
+            {e.videoId && (
+              <YouTubeEmbed videoId={e.videoId} title={e.outlet} />
+            )}
+            <p className="m-0 mt-3 text-[length:var(--text-xs)] leading-[1.6] text-text-secondary">
               {e.desc}
             </p>
             {e.impact && (
