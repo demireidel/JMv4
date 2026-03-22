@@ -35,7 +35,7 @@ export interface PobrezaData {
 }
 
 export const pobrezaData: PobrezaData = {
-  badge: "01 — POBREZA",
+  badge: "I — POBREZA",
   topbarNum: "EL LOGRO MÁS IMPORTANTE",
   kicker: "De la peor crisis social desde 2001 al mayor descenso de pobreza en la historia argentina",
   headline: "Más de ",
@@ -97,7 +97,7 @@ export interface Logro {
 export const logros: Logro[] = [
   {
     num: "02",
-    badge: "02 — ESTABILIZACIÓN",
+    badge: "II — ESTABILIZACIÓN",
     title: "Se evitó la hiperinflación: se desactivó la bomba más grande de la historia",
     paragraphs: [
       "En agosto de 2023, Sergio Massa quedó tercero en las PASO y lanzó el «Plan Platita»: inyectó 1,3 % del PBI en bonos, devolución de IVA y beneficios impositivos — todo financiado con emisión pura del Banco Central. En un solo año emitió trece bases monetarias. Para diciembre de 2023, la inflación mayorista viajaba al 17.000 % anualizado. El déficit consolidado llegaba al 15 % del PBI. Las reservas netas eran negativas en USD 13.000 M. La brecha cambiaria superaba el 200 %.",
@@ -115,7 +115,7 @@ export const logros: Logro[] = [
   },
   {
     num: "03",
-    badge: "03 — ORDEN",
+    badge: "III — ORDEN",
     title: "No más piquetes: la calle es de todos los argentinos",
     paragraphs: [
       "En 2023, la Argentina registró más de 9.000 piquetes — un promedio de 25 cortes de calle por día. Organizaciones sociales como la UTEP, el Polo Obrero y Barrios de Pie recibían financiamiento estatal y cortaban rutas con total impunidad. Millones de argentinos no podían ir a trabajar, llevar a sus hijos al colegio ni llegar a un hospital. Los piquetes se financiaban con plata de la ayuda social — dinero que debía llegar a los más necesitados terminaba pagando el aparato de presión callejera de dirigentes como Juan Grabois y Eduardo Belliboni.",
@@ -133,7 +133,7 @@ export const logros: Logro[] = [
   },
   {
     num: "04",
-    badge: "04 — DESINFLACIÓN",
+    badge: "IV — DESINFLACIÓN",
     title: "La inflación se pulverizó: del 17.000 % anualizado a menos de 30 %",
     paragraphs: [
       "En la primera semana de diciembre de 2023, la inflación corría al 1 % diario — un ritmo que destruía el poder adquisitivo en tiempo real. La inflación mayorista de noviembre fue del 54 % mensual, equivalente a 17.000 % anualizado. La minorista marcó 25,5 % en diciembre. Los argentinos cobraban el sueldo y corrían a comprar antes de que los precios volvieran a subir. Los supermercados remarcaban dos y tres veces por semana.",
@@ -150,7 +150,7 @@ export const logros: Logro[] = [
   },
   {
     num: "05",
-    badge: "05 — FISCAL",
+    badge: "V — FISCAL",
     title: "Déficit cero: primer presupuesto equilibrado en más de un siglo",
     paragraphs: [
       "La Argentina llevaba más de 100 años sin presentar un presupuesto equilibrado y libre de default. El gobierno de Alberto Fernández dejó un déficit fiscal consolidado de 15 puntos del PBI: cinco del Tesoro Nacional y diez escondidos debajo de la alfombra del Banco Central en forma de Leliqs y pases. Había 22 ministerios, 106 secretarías y un aparato burocrático diseñado para alimentar a la política, no para servir al ciudadano.",
@@ -168,7 +168,7 @@ export const logros: Logro[] = [
   },
   {
     num: "06",
-    badge: "06 — CREDIBILIDAD",
+    badge: "VI — CREDIBILIDAD",
     title: "El riesgo país se desplomó: Argentina volvió al mapa financiero mundial",
     paragraphs: [
       "En diciembre de 2023, el riesgo país superaba los 2.000 puntos básicos. La Argentina estaba en default técnico, sin acceso a los mercados internacionales de crédito. Ningún inversor serio consideraba poner un dólar en el país. Los bonos argentinos cotizaban a precio de remate — a niveles de países en guerra.",
@@ -185,7 +185,7 @@ export const logros: Logro[] = [
   },
   {
     num: "07",
-    badge: "07 — SEGURIDAD",
+    badge: "VII — SEGURIDAD",
     title: "Tasa de homicidios más baja en 25 años — y la más baja de toda Sudamérica",
     paragraphs: [
       "Rosario se había convertido en una de las ciudades más violentas de América Latina. En 2022 registró 261 homicidios — más que muchas capitales centroamericanas. Las bandas narco del clan de «Los Monos» y otros grupos operaban con impunidad, extorsionando comercios, controlando barrios enteros y ejecutando a plena luz del día. A nivel nacional, la tasa de homicidios era de 4,4 por cada 100.000 habitantes.",
@@ -203,7 +203,7 @@ export const logros: Logro[] = [
   },
   {
     num: "08",
-    badge: "08 — DESREGULACIÓN",
+    badge: "VIII — DESREGULACIÓN",
     title: "14.500 desregulaciones: la motosierra de Sturzenegger liberó la economía",
     paragraphs: [
       "La Argentina tenía más de 67.000 regulaciones vigentes — un laberinto burocrático diseñado para proteger privilegios, no para servir al ciudadano. Detrás de cada regulación había un curro, un intermediario o un monopolio protegido. Aerolíneas Argentinas había costado USD 8.000 M al Estado desde su re-estatización en 2008 bajo Cristina Kirchner. La ley de alquileres de 2020 había destruido el mercado: la oferta cayó 50 % y los precios se dispararon. Abrir un negocio requería hasta 14 trámites y 45 días.",
@@ -220,7 +220,7 @@ export const logros: Logro[] = [
   },
   {
     num: "09",
-    badge: "09 — CRECIMIENTO",
+    badge: "IX — CRECIMIENTO",
     title: "La economía creció 4,4 % y alcanzó el máximo histórico de PBI",
     paragraphs: [
       "En 2023, la economía argentina caía 1,6 %. En 2024 volvió a retroceder 1 %. Dos años consecutivos de contracción, con una industria paralizada por las distorsiones cambiarias, una inversión desplomada y un consumo destruido por la inflación. El aparato productivo estaba frenado: empresas que no invertían, importaciones trabadas por el cepo y una fuga de capitales que vaciaba al país.",
