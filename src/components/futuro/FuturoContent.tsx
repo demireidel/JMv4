@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import type {
   SiliconValleyData,
   StargateData,
@@ -8,7 +7,6 @@ import type {
   VacaMuertaData,
   ClosingData,
   FuturoStat,
-  FuturoPhotoCard,
   GalleryPhoto,
 } from "@/data/futuro";
 import { SidebarLayout } from "@/components/ui/SidebarLayout";
@@ -18,7 +16,8 @@ import { Pullquote } from "@/components/ui/Pullquote";
 import { SectionArticle } from "@/components/ui/SectionArticle";
 import { SectionKicker } from "@/components/ui/SectionKicker";
 import { Prose } from "@/components/ui/Prose";
-import { ContentGrid } from "@/components/ui/ContentGrid";
+import { FeaturePhoto } from "@/components/futuro/FeaturePhoto";
+import { PhotoGallery } from "@/components/futuro/PhotoGallery";
 
 const sidebarItems = [
   { id: "silicon-valley", num: "I", title: "Silicon Valley" },
@@ -36,61 +35,6 @@ function StatRow({ stats }: { stats: FuturoStat[] }) {
           <span className="stat-label mt-1 block">{s.label}</span>
         </div>
       ))}
-    </div>
-  );
-}
-
-function FeaturePhoto({ photo }: { photo: FuturoPhotoCard }) {
-  return (
-    <figure className="m-0 mb-8">
-      <Image
-        src={photo.src}
-        alt={photo.alt}
-        width={832}
-        height={468}
-        className="aspect-video w-full rounded-xl object-cover"
-        style={{ objectPosition: photo.objectPosition }}
-        loading="lazy"
-      />
-      <figcaption className="mt-3 text-[length:var(--text-xs)] text-text-tertiary">
-        <strong className="text-text-secondary">{photo.captionStrong}</strong>
-        {" — "}
-        {photo.captionSpan}
-      </figcaption>
-    </figure>
-  );
-}
-
-function PhotoGallery({ photos }: { photos: GalleryPhoto[] }) {
-  return (
-    <div className="mt-10">
-      <h4 className="badge-text mb-5 !text-gold">Galería — La gira en imágenes</h4>
-      <ContentGrid cols={3}>
-        {photos.map((photo, i) => (
-          <figure key={i} className="group relative m-0 overflow-hidden rounded-lg">
-            <Image
-              src={photo.src}
-              alt={photo.who}
-              width={400}
-              height={300}
-              className="aspect-[4/3] w-full object-cover transition-transform duration-300 group-hover:scale-105"
-              style={{ objectPosition: photo.pos }}
-              loading="lazy"
-            />
-            <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black/80 via-black/20 to-transparent p-3 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-              <span className="font-accent text-[length:var(--text-xs)] font-bold uppercase tracking-wider text-gold">
-                {photo.tag}
-              </span>
-              <span className="text-[length:var(--text-sm)] font-medium leading-tight text-white">
-                {photo.who}
-              </span>
-              <span className="text-[length:var(--text-xs)] leading-tight text-white/70">
-                {photo.where}
-              </span>
-            </div>
-          </figure>
-        ))}
-      </ContentGrid>
     </div>
   );
 }
