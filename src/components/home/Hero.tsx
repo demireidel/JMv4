@@ -129,7 +129,7 @@ export function Hero() {
       >
         {/* Eyebrow */}
         <p
-          className="mb-4 text-center font-accent text-[length:var(--text-sm)] uppercase tracking-[0.25em] text-text-secondary"
+          className="mb-4 text-center font-accent text-[length:var(--text-sm)] uppercase tracking-[0.25em] text-white/60"
           style={{
             opacity: step >= 2 ? 1 : 0,
             transform: step >= 2 ? "translateY(0)" : "translateY(12px)",
@@ -183,7 +183,7 @@ export function Hero() {
 
         {/* Subtitle */}
         <p
-          className="text-center font-display text-[length:var(--text-lg)] italic text-text-secondary"
+          className="text-center font-display text-[length:var(--text-lg)] italic text-white/70"
           style={{
             opacity: step >= 6 ? 1 : 0,
             transform: step >= 6 ? "translateY(0)" : "translateY(8px)",

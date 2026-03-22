@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import type { PobrezaData } from "@/data/logros";
 import { AnimatedCounter } from "@/components/logros/AnimatedCounter";
 import { BeforeAfterPanel } from "@/components/ui/BeforeAfterPanel";
@@ -8,6 +9,18 @@ import { Pullquote } from "@/components/ui/Pullquote";
 export function PobrezaBlock({ data }: { data: PobrezaData }) {
   return (
     <article id="logro-pobreza" className="mb-16">
+      {/* Banner image */}
+      {data.img && (
+        <Image
+          src={data.img}
+          alt={data.imgAlt}
+          width={1200}
+          height={480}
+          className="mb-8 aspect-[5/2] w-full rounded-xl object-cover"
+          loading="lazy"
+        />
+      )}
+
       {/* Badge */}
       <p className="badge-text mb-2">{data.badge}</p>
 

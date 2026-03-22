@@ -77,6 +77,8 @@ export function PageHeader({
         </>
       )}
       <Container className={backgroundImage ? "relative z-10" : ""}>
+      {/* Force light-on-dark text for pages with background images */}
+      <div style={backgroundImage ? { "--color-text-primary": "oklch(1 0 0 / 0.92)", "--color-text-secondary": "oklch(1 0 0 / 0.56)", "--color-text-tertiary": "oklch(1 0 0 / 0.40)", "--color-gold": "oklch(0.80 0.17 85)" } as React.CSSProperties : undefined}>
         {/* Eyebrow — slide in from right */}
         <p
           className="page-eyebrow"
@@ -159,6 +161,7 @@ export function PageHeader({
           </p>
         )}
         {children}
+      </div>
       </Container>
     </section>
   );
