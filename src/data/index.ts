@@ -8,3 +8,4 @@ export * from "./mundo";
 export * from "./archivo";
 export * from "./nav";
 export * from "./home";
+export * from "./vision";
