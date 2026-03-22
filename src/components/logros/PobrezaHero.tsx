@@ -69,8 +69,8 @@ export function PobrezaHero({ data }: { data: PobrezaData }) {
           <div
             className="rounded-xl p-6"
             style={{
-              background: "oklch(0.30 0.05 25 / 0.25)",
-              border: "1px solid oklch(0.50 0.15 25 / 0.3)",
+              background: "var(--tint-before)",
+              border: "1px solid var(--border-before)",
             }}
           >
             <span
@@ -113,8 +113,8 @@ export function PobrezaHero({ data }: { data: PobrezaData }) {
           <div
             className="rounded-xl p-6"
             style={{
-              background: "oklch(0.30 0.05 145 / 0.2)",
-              border: "1px solid oklch(0.50 0.15 145 / 0.3)",
+              background: "var(--tint-after)",
+              border: "1px solid var(--border-after)",
             }}
           >
             <span

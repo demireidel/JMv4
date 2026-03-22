@@ -99,8 +99,6 @@ const thinkers = [
   { era: "Valores", title: "Tradición judeocristiana", desc: "La sacralidad de la persona, la libertad de conciencia y la igualdad ante Dios y ante la ley." },
 ];
 
-const prose = "font-size: var(--text-sm); color: var(--text-2); line-height: 1.8;";
-
 export function VisionChapters({ photos }: { photos: Photo[] }) {
   const [activeChapter, setActiveChapter] = useState("ch1");
 

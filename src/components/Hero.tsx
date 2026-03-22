@@ -23,10 +23,10 @@ export function Hero() {
         style={{
           background: `
             linear-gradient(to bottom,
-              oklch(0.10 0.01 270 / 0.15) 0%,
-              oklch(0.10 0.01 270 / 0.35) 40%,
-              oklch(0.10 0.01 270 / 0.7) 80%,
-              oklch(0.10 0.01 270 / 0.9) 100%
+              color-mix(in oklch, var(--overlay-dark), transparent 85%) 0%,
+              color-mix(in oklch, var(--overlay-dark), transparent 65%) 40%,
+              color-mix(in oklch, var(--overlay-dark), transparent 30%) 80%,
+              color-mix(in oklch, var(--overlay-dark), transparent 10%) 100%
             )
           `,
         }}

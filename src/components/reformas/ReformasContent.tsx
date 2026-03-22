@@ -51,7 +51,7 @@ function ReformCard({ reforma }: { reforma: Reforma }) {
         {/* Antes */}
         <div
           className="rounded-lg p-4"
-          style={{ background: "oklch(0.30 0.05 25 / 0.2)" }}
+          style={{ background: "var(--tint-before)" }}
         >
           <span
             className="block mb-1"
@@ -79,7 +79,7 @@ function ReformCard({ reforma }: { reforma: Reforma }) {
         {/* Ahora */}
         <div
           className="rounded-lg p-4"
-          style={{ background: "oklch(0.30 0.05 145 / 0.15)" }}
+          style={{ background: "var(--tint-after)" }}
         >
           <span
             className="block mb-1"
@@ -173,7 +173,7 @@ function ReformCard({ reforma }: { reforma: Reforma }) {
       <div
         className="overflow-hidden transition-all"
         style={{
-          maxHeight: expanded ? "30rem" : "0",
+          maxHeight: expanded ? "200rem" : "0",
           transitionDuration: "var(--duration-slow)",
           transitionTimingFunction: "var(--ease-standard)",
         }}
@@ -238,10 +238,10 @@ export function ReformasContent({
             <button
               key={b.title}
               onClick={() => setActiveBlock(i)}
-              className="px-4 py-2 rounded-full border-none cursor-pointer transition-all"
+              className="px-5 py-2.5 rounded-full border-none cursor-pointer transition-all"
               style={{
                 fontFamily: "var(--font-accent)",
-                fontSize: "var(--text-xs)",
+                fontSize: "var(--text-sm)",
                 textTransform: "uppercase",
                 letterSpacing: "0.05em",
                 background: i === activeBlock ? "var(--gold)" : "var(--surface-2)",

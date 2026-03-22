@@ -15,7 +15,7 @@ export default function LogrosPage() {
     <>
       {/* Section header */}
       <section
-        className="pt-28 pb-8"
+        className="pt-28 pb-12"
         style={{ background: "var(--dark)" }}
       >
         <Container>
@@ -33,9 +33,11 @@ export default function LogrosPage() {
           <h1
             className="mb-6"
             style={{
-              fontFamily: "var(--font-display)",
+              fontFamily: "var(--font-accent)",
               fontSize: "var(--text-3xl)",
               color: "var(--text-1)",
+              textTransform: "uppercase",
+              letterSpacing: "0.05em",
             }}
           >
             Resultados Concretos

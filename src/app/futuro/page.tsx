@@ -107,14 +107,29 @@ export default function FuturoPage() {
           >
             {futuroHeader.sectionTitle}
           </p>
+          <h1
+            className="mb-6"
+            style={{
+              fontFamily: "var(--font-accent)",
+              fontSize: "var(--text-3xl)",
+              color: "var(--text-1)",
+              textTransform: "uppercase",
+              letterSpacing: "0.05em",
+              lineHeight: 1.1,
+            }}
+          >
+            El Futuro de Argentina
+          </h1>
           <blockquote
             className="m-0 mb-6"
             style={{
               fontFamily: "var(--font-display)",
               fontStyle: "italic",
-              fontSize: "var(--text-xl)",
-              color: "var(--text-1)",
+              fontSize: "var(--text-lg)",
+              color: "var(--text-2)",
               maxWidth: "44rem",
+              borderLeft: "3px solid var(--gold)",
+              paddingLeft: "1.25rem",
             }}
           >
             {futuroHeader.introQuote}

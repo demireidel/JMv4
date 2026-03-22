@@ -55,7 +55,7 @@ export function BeforeAfterCard({ logro }: { logro: Logro }) {
         {/* Before */}
         <div
           className="p-4"
-          style={{ background: "oklch(0.30 0.05 25 / 0.3)" }}
+          style={{ background: "var(--tint-before)" }}
         >
           <span
             className="block mb-1"
@@ -96,7 +96,7 @@ export function BeforeAfterCard({ logro }: { logro: Logro }) {
         {/* After */}
         <div
           className="p-4"
-          style={{ background: "oklch(0.30 0.05 145 / 0.3)" }}
+          style={{ background: "var(--tint-after)" }}
         >
           <span
             className="block mb-1"

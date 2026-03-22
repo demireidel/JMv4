@@ -14,7 +14,7 @@ export default function MundoPage() {
     <>
       {/* Hero */}
       <section
-        className="relative pt-28 pb-16 overflow-hidden"
+        className="relative pt-28 pb-12 overflow-hidden"
         style={{ background: "var(--dark)" }}
       >
         <Container>

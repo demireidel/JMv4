@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 export default function ArchivoPage() {
   return (
     <>
-      <section className="pt-28 pb-8" style={{ background: "var(--dark)" }}>
+      <section className="pt-28 pb-12" style={{ background: "var(--dark)" }}>
         <Container>
           <p
             className="uppercase tracking-widest mb-4"
@@ -36,9 +36,11 @@ export default function ArchivoPage() {
           <h1
             className="mb-6"
             style={{
-              fontFamily: "var(--font-display)",
+              fontFamily: "var(--font-accent)",
               fontSize: "var(--text-3xl)",
               color: "var(--text-1)",
+              textTransform: "uppercase",
+              letterSpacing: "0.05em",
             }}
           >
             Obra Intelectual

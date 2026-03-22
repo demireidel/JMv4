@@ -36,7 +36,18 @@
   /* ── Text Hierarchy ──────────────────────────────────────── */
   --text-1: oklch(1 0 0 / 0.92);
   --text-2: oklch(1 0 0 / 0.56);
-  --text-3: oklch(1 0 0 / 0.45);
+  --text-3: oklch(1 0 0 / 0.55);
+
+  /* ── Before / After Tints ──────────────────────────────── */
+  --tint-before: oklch(0.30 0.05 25 / 0.3);
+  --tint-after: oklch(0.30 0.05 145 / 0.3);
+  --border-before: oklch(0.50 0.15 25 / 0.3);
+  --border-after: oklch(0.50 0.15 145 / 0.3);
+
+  /* ── Hero / Nav Overlay ────────────────────────────────── */
+  --overlay-dark: oklch(0.10 0.01 270);
+  --nav-bg: oklch(0.10 0.01 270 / 0.85);
+  --nav-bg-mobile: oklch(0.10 0.01 270 / 0.97);
 
   /* ── Typography Scale (fluid clamp) ──────────────────────── */
   --text-xs:   clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);

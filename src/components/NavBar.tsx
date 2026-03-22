@@ -58,14 +58,14 @@ export function NavBar() {
         style={{
           height: "var(--nav-height)",
           background: scrolled
-            ? "oklch(0.10 0.01 270 / 0.85)"
+            ? "var(--nav-bg)"
             : "transparent",
           backdropFilter: scrolled ? "blur(12px) saturate(1.2)" : "none",
           WebkitBackdropFilter: scrolled
             ? "blur(12px) saturate(1.2)"
             : "none",
           borderBottom: scrolled
-            ? "1px solid oklch(1 0 0 / 0.06)"
+            ? "1px solid var(--border)"
             : "1px solid transparent",
           transitionDuration: "var(--duration-normal)",
           transitionTimingFunction: "var(--ease-standard)",
@@ -172,7 +172,7 @@ export function NavBar() {
       <div
         className="fixed inset-0 z-40 md:hidden flex flex-col items-center justify-center transition-all"
         style={{
-          background: "oklch(0.10 0.01 270 / 0.97)",
+          background: "var(--nav-bg-mobile)",
           backdropFilter: "blur(24px)",
           WebkitBackdropFilter: "blur(24px)",
           opacity: menuOpen ? 1 : 0,

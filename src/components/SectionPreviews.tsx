@@ -92,8 +92,8 @@ export function SectionPreviews() {
               href={s.href}
               className="group block rounded-xl p-6 no-underline card-hover"
               style={{
-                background: "oklch(0.16 0.02 270 / 0.7)",
-                border: "1px solid oklch(1 0 0 / 0.1)",
+                background: "var(--surface-1)",
+                border: "1px solid var(--border)",
                 borderLeft: "3px solid var(--gold)",
               }}
             >

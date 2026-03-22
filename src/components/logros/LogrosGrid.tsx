@@ -69,7 +69,7 @@ export function LogrosGrid({ logros }: { logros: Logro[] }) {
             style={{
               fontSize: "var(--text-sm)",
               color: "var(--text-2)",
-              maxWidth: "40rem",
+              maxWidth: "44rem",
               margin: "0 auto",
               lineHeight: 1.6,
             }}
