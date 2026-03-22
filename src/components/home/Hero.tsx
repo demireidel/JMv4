@@ -64,6 +64,7 @@ export function Hero() {
           loop
           playsInline
           preload="auto"
+          src="/videos/hero.mp4"
           poster={heroImage.src}
           onError={() => setShowFallback(true)}
           className="absolute inset-0 h-full w-full object-cover object-[center_20%]"
@@ -71,10 +72,7 @@ export function Hero() {
             transform: `scale(${mediaScale})`,
             willChange: "transform",
           }}
-        >
-          <source src="/videos/hero.webm" type="video/webm" />
-          <source src="/videos/hero.mp4" type="video/mp4" />
-        </video>
+        />
       )}
 
       {/* Fallback static image */}
