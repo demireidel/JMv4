@@ -139,10 +139,16 @@ export function Hero() {
           Presidente de la Nacion Argentina
         </p>
 
-        <h1 className="text-center leading-none">
+        <h1
+          className="text-center"
+          style={{
+            lineHeight: 0.9,
+            textShadow: "0 2px 40px oklch(0 0 0 / 0.5)",
+          }}
+        >
           {/* "Javier" — clip-path reveal from bottom */}
           <span
-            className="block font-accent text-[length:var(--text-hero)] font-normal uppercase tracking-[0.08em] text-white"
+            className="block font-accent text-[length:var(--text-hero)] font-bold uppercase tracking-[0.12em] text-white"
             style={{
               clipPath: step >= 3 ? "inset(0)" : "inset(100% 0 0 0)",
               transition: "clip-path 800ms var(--ease-out-expo)",
@@ -152,11 +158,10 @@ export function Hero() {
           </span>
           {/* "Milei" — clip-path reveal, then shimmer starts */}
           <span
-            className={`block font-accent text-[length:var(--text-hero)] font-normal uppercase tracking-[0.08em] ${step >= 4 ? "gold-shimmer" : ""}`}
+            className={`block font-accent text-[length:var(--text-hero)] font-bold uppercase tracking-[0.12em] ${step >= 4 ? "gold-shimmer" : ""}`}
             style={{
               clipPath: step >= 4 ? "inset(0)" : "inset(100% 0 0 0)",
               transition: "clip-path 800ms var(--ease-out-expo)",
-              // Before shimmer class is applied, show gold color
               ...(!step || step < 4
                 ? { color: "var(--color-gold)" }
                 : {}),

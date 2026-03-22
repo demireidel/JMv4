@@ -50,7 +50,7 @@ export function PageHeader({
   return (
     <section
       ref={sectionRef}
-      className={`pb-12 pt-28${backgroundImage ? " relative overflow-hidden" : ""}`}
+      className={`pb-12 pt-36 md:pt-40${backgroundImage ? " relative overflow-hidden" : ""}`}
     >
       {backgroundImage && (
         <>

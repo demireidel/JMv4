@@ -160,22 +160,22 @@ export function NavBar() {
           <button
             ref={hamburgerRef}
             onClick={toggleMenu}
-            className="flex h-12 w-12 cursor-pointer flex-col items-center justify-center gap-1.5 border-none bg-transparent md:hidden"
+            className="flex h-11 w-11 cursor-pointer flex-col items-center justify-center gap-1.5 rounded-full border border-white/15 bg-white/10 backdrop-blur-sm transition-colors duration-[var(--duration-fast)] hover:bg-white/15 md:hidden"
             aria-label={menuOpen ? "Cerrar menu" : "Abrir menu"}
             aria-expanded={menuOpen}
           >
             <span
-              className={`block h-0.5 w-6 bg-white transition-all duration-[var(--duration-fast)] ${
+              className={`block h-0.5 w-5 bg-white transition-all duration-[var(--duration-fast)] ${
                 menuOpen ? "translate-y-[4px] rotate-45" : ""
               }`}
             />
             <span
-              className={`block h-0.5 w-6 bg-white transition-all duration-[var(--duration-fast)] ${
+              className={`block h-0.5 w-5 bg-white transition-all duration-[var(--duration-fast)] ${
                 menuOpen ? "opacity-0" : "opacity-100"
               }`}
             />
             <span
-              className={`block h-0.5 w-6 bg-white transition-all duration-[var(--duration-fast)] ${
+              className={`block h-0.5 w-5 bg-white transition-all duration-[var(--duration-fast)] ${
                 menuOpen ? "-translate-y-[4px] -rotate-45" : ""
               }`}
             />
