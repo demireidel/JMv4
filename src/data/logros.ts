@@ -239,7 +239,7 @@ export const logros: Logro[] = [
   },
   {
     num: "10",
-    badge: "10 — CEPO",
+    badge: "X — CEPO",
     title: "Se levantó el cepo: Argentina volvió a tener un mercado cambiario libre",
     paragraphs: [
       "Desde septiembre de 2019, la Argentina vivía con cepo cambiario — un sistema de controles que impedía a los ciudadanos comprar más de USD 200 por mes, prohibía a las empresas girar dividendos al exterior y generaba una brecha cambiaria que llegó a superar el 200 %. El cepo distorsionaba todos los precios de la economía, ahuyentaba la inversión extranjera y condenaba a los argentinos a vivir con un tipo de cambio artificial. Era una cárcel financiera que convertía al peso en una moneda inconvertible.",
@@ -257,7 +257,7 @@ export const logros: Logro[] = [
   },
   {
     num: "11",
-    badge: "11 — EXPORTACIONES",
+    badge: "XI — EXPORTACIONES",
     title: "Récord de exportaciones: USD 87.000 millones y superávit comercial histórico",
     paragraphs: [
       "Durante años, la Argentina fue un país que se cerraba al mundo. Las retenciones asfixiaban al campo, el cepo frenaba las importaciones de insumos y las regulaciones ahogaban la competitividad industrial. El resultado era un comercio exterior raquítico, una balanza energética deficitaria y empresas que no podían competir en los mercados globales. Argentina importaba energía en lugar de exportarla — un absurdo para un país con Vaca Muerta y los recursos naturales más abundantes del hemisferio sur.",
@@ -276,7 +276,7 @@ export const logros: Logro[] = [
   },
   {
     num: "12",
-    badge: "12 — CRÉDITO",
+    badge: "XII — CRÉDITO",
     title: "Volvió el crédito hipotecario: boom inmobiliario después de años de parálisis",
     paragraphs: [
       "El crédito hipotecario había desaparecido de la Argentina. Con una inflación de tres dígitos y tasas de interés impagables, ningún banco otorgaba préstamos para vivienda. Los argentinos que soñaban con la casa propia estaban condenados a alquilar o a juntar dólares durante décadas. El mercado inmobiliario estaba paralizado: las escrituras en la Ciudad de Buenos Aires habían caído a mínimos históricos y los precios se desplomaban.",
@@ -294,7 +294,7 @@ export const logros: Logro[] = [
   },
   {
     num: "13",
-    badge: "13 — SALARIOS",
+    badge: "XIII — SALARIOS",
     title: "Los salarios le ganaron a la inflación: recuperación real del poder adquisitivo",
     paragraphs: [
       "La inflación de tres dígitos heredada en diciembre de 2023 había pulverizado los salarios. Los trabajadores cobraban y la plata no alcanzaba: los precios subían más rápido que cualquier paritaria. El poder adquisitivo del salario promedio había caído al nivel más bajo en décadas. Los empleados públicos, los informales y los jubilados eran los más golpeados. El sueldo se licuaba antes de llegar a fin de mes.",
@@ -313,7 +313,7 @@ export const logros: Logro[] = [
   },
   {
     num: "14",
-    badge: "14 — AVIACIÓN Y CONSUMO",
+    badge: "XIV — AVIACIÓN Y CONSUMO",
     title: "Récord absoluto de pasajeros aéreos y boom de ventas de autos",
     paragraphs: [
       "En 2025, más de 50,6 millones de personas volaron por los aeropuertos argentinos — el mayor registro en la historia de la aviación del país, superando todos los récords previos con un crecimiento del 12 % respecto a 2024. Argentina lideró el crecimiento del tráfico aéreo en toda América Latina con un alza interanual del 13,2 %. Los vuelos internacionales alcanzaron 15,9 millones de pasajeros — un 18,2 % más que el año anterior y por encima del récord de 2018. Los cielos abiertos, la desregulación de Sturzenegger y la entrada de nuevas aerolíneas low-cost transformaron un sector que estaba estancado.",
@@ -331,7 +331,7 @@ export const logros: Logro[] = [
   },
   {
     num: "15",
-    badge: "15 — MINERÍA",
+    badge: "XV — MINERÍA",
     title: "Exportaciones mineras récord: litio, oro y cobre explotan",
     paragraphs: [
       "La minería argentina era un gigante dormido. Con las mayores reservas de litio del triángulo sudamericano, yacimientos de cobre de clase mundial y depósitos de oro sin explotar, el potencial era enorme — pero las regulaciones, la inseguridad jurídica y la Ley de Glaciares ahuyentaban toda inversión seria. Las exportaciones mineras llevaban años estancadas mientras Chile y Australia capturaban las inversiones que Argentina rechazaba.",
@@ -350,7 +350,7 @@ export const logros: Logro[] = [
   },
   {
     num: "16",
-    badge: "16 — IMPUESTOS",
+    badge: "XVI — IMPUESTOS",
     title: "La presión tributaria más baja en 19 años: menos impuestos, más libertad",
     paragraphs: [
       "La Argentina era un infierno fiscal. Más de 160 impuestos nacionales, provinciales y municipales asfixiaban a empresas y trabajadores. El impuesto PAÍS gravaba cada dólar que un argentino compraba. Las retenciones al campo castigaban al sector más productivo de la economía. Bienes Personales expulsaba el ahorro. Y encima de todo, el mayor impuesto de todos era invisible: la inflación — un impuesto de 2,6 puntos del PBI que licuaba los ingresos de los más pobres.",
@@ -368,7 +368,7 @@ export const logros: Logro[] = [
   },
   {
     num: "17",
-    badge: "17 — BLANQUEO",
+    badge: "XVII — BLANQUEO",
     title: "El blanqueo más exitoso de la historia: USD 32.000 millones regularizados",
     paragraphs: [
       "Argentina tenía USD 250.000 millones fuera del sistema financiero — el segundo stock más grande del mundo detrás de Rusia. Décadas de confiscaciones, corralitos, pesificaciones y cepos habían destruido la confianza del argentino en el sistema bancario. Los dólares se escondían en cajas de seguridad, colchones y cuentas en el exterior. Era dinero muerto que no financiaba inversión, no generaba crédito y no producía crecimiento.",
@@ -387,7 +387,7 @@ export const logros: Logro[] = [
   },
   {
     num: "18",
-    badge: "18 — CAMPO",
+    badge: "XVIII — CAMPO",
     title: "Cosecha récord: 160 millones de toneladas y el campo vuelve a ser motor",
     paragraphs: [
       "El campo argentino — el sector más productivo y competitivo de la economía — llevaba años asfixiado por retenciones confiscatorias, intervención estatal en los mercados de granos, cupos de exportación y cepo cambiario. En 2023, la sequía más severa en 60 años destruyó la cosecha: la producción se desplomó a 80 millones de toneladas, la peor en una década. El ingreso de divisas del agro se evaporó, agravando la crisis de reservas.",
@@ -405,7 +405,7 @@ export const logros: Logro[] = [
   },
   {
     num: "19",
-    badge: "19 — CONFIANZA",
+    badge: "XIX — CONFIANZA",
     title: "Argentina volvió a los mercados: bonos, acciones y confianza inversora",
     paragraphs: [
       "Cuando Milei asumió, los bonos argentinos cotizaban a precio de default — entre 20 y 30 centavos por dólar. El riesgo país superaba los 2.000 puntos. Ningún inversor institucional serio consideraba a la Argentina como destino de capital. El país estaba excluido de los mercados internacionales de crédito desde 2019. Las acciones argentinas cotizaban a valuaciones de país en guerra.",

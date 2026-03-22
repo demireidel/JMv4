@@ -23,7 +23,7 @@ function factColor(color: "gold" | "blue" | "green") {
   return "text-success";
 }
 
-function AgreementCard({ ta }: { ta: { tag: string; title: string; description: string; keyFacts: { text: string; color: "gold" | "blue" | "green" }[] } }) {
+function AgreementCard({ ta }: { ta: Pick<TradeAgreement, "tag" | "title" | "description" | "keyFacts"> }) {
   return (
     <Card className="overflow-hidden">
       <div className="p-6">
