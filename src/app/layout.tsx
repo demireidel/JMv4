@@ -45,6 +45,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "es_AR",
+    url: "https://javiermilei.com",
     siteName: "Javier Milei — Presidente",
     title: "Javier Milei — Presidente de la Nación Argentina",
     description:
@@ -62,12 +63,39 @@ export const metadata: Metadata = {
   },
 };
 
+// Page background is cream (#f5f2ed) — colorScheme must match globals.css
+// which sets `html { color-scheme: light; }`
 export const viewport: Viewport = {
-  themeColor: "#0a0a0f",
-  colorScheme: "dark",
+  themeColor: "#f5f2ed", // --color-dark-hex (actual page background)
+  colorScheme: "light",
   width: "device-width",
   initialScale: 1,
 };
+
+const schemaOrg = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Javier Milei",
+  url: "https://javiermilei.com",
+  jobTitle: "Presidente de la Nación Argentina",
+  nationality: "Argentine",
+  affiliation: {
+    "@type": "Organization",
+    name: "La Libertad Avanza",
+    url: "https://lalibertadavanza.com.ar",
+  },
+  worksFor: {
+    "@type": "GovernmentOrganization",
+    name: "Presidencia de la Nación Argentina",
+    url: "https://www.argentina.gob.ar",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "Balcarce 50",
+      addressLocality: "Buenos Aires",
+      addressCountry: "AR",
+    },
+  },
+} as const;
 
 export default function RootLayout({
   children,
@@ -80,33 +108,9 @@ export default function RootLayout({
       className={`${fraunces.variable} ${oswald.variable} ${inter.variable}`}
     >
       <head>
-        <link rel="preload" as="video" href="/videos/hero.webm" type="video/webm" />
         <script
           type="application/ld+json"
-          suppressHydrationWarning
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Person",
-              name: "Javier Milei",
-              jobTitle: "Presidente de la Nación Argentina",
-              nationality: "Argentine",
-              affiliation: {
-                "@type": "Organization",
-                name: "La Libertad Avanza",
-              },
-              worksFor: {
-                "@type": "GovernmentOrganization",
-                name: "Presidencia de la Nación Argentina",
-                address: {
-                  "@type": "PostalAddress",
-                  streetAddress: "Balcarce 50",
-                  addressLocality: "Buenos Aires",
-                  addressCountry: "AR",
-                },
-              },
-            }),
-          }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaOrg) }}
         />
       </head>
       <body>
