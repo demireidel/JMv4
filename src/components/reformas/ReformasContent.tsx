@@ -254,19 +254,28 @@ export function ReformasContent({
           ))}
         </div>
 
-        {/* Block header */}
-        <h2
-          className="mb-2"
-          style={{
-            fontFamily: "var(--font-accent)",
-            fontSize: "var(--text-xl)",
-            color: "var(--text-1)",
-            textTransform: "uppercase",
-            letterSpacing: "0.05em",
-          }}
-        >
-          {block.title}
-        </h2>
+        {/* Block header — Vision chapter style */}
+        <div className="flex items-baseline gap-4 mb-2">
+          <span
+            style={{
+              fontFamily: "var(--font-accent)",
+              fontSize: "var(--text-2xl)",
+              color: "var(--gold)",
+            }}
+          >
+            {["I", "II", "III", "IV"][activeBlock]}
+          </span>
+          <h2
+            className="m-0"
+            style={{
+              fontFamily: "var(--font-display)",
+              fontSize: "var(--text-xl)",
+              color: "var(--text-1)",
+            }}
+          >
+            {block.title.replace(/^BLOQUE\s+[IVX]+\s*—\s*/i, "")}
+          </h2>
+        </div>
         <p
           className="mb-8"
           style={{
