@@ -127,7 +127,7 @@ export function Hero() {
 
         {/* Subtitle — max-w-lg so the phrase fits on 1–2 lines */}
         <p
-          className="max-w-lg text-center font-display text-[length:var(--text-lg)] italic leading-snug text-white/65"
+          className="max-w-[36rem] text-center font-display text-[length:var(--text-lg)] italic leading-snug text-white/65"
           style={{
             opacity: shown || step >= 6 ? 1 : 0,
             transform: shown || step >= 6 ? "translateY(0)" : "translateY(10px)",
