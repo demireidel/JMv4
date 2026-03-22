@@ -1,15 +1,19 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { heroImage } from "@/data/photos";
 
 export function Hero() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [showFallback, setShowFallback] = useState(false);
   const [step, setStep] = useState(0);
 
   useEffect(() => {
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
     if (mq.matches) {
+      videoRef.current?.pause();
+      setShowFallback(true);
       setStep(99);
       return;
     }
@@ -20,6 +24,7 @@ export function Hero() {
       }
     ).connection;
     if (conn?.saveData || conn?.effectiveType === "2g") {
+      setShowFallback(true);
       setStep(99);
       return;
     }
@@ -42,17 +47,35 @@ export function Hero() {
 
   return (
     <section className="relative h-dvh w-full overflow-hidden">
-      {/* Background image (video disabled until clean cut available) */}
-      <div className="absolute inset-0">
-        <Image
-          src={heroImage.src}
-          alt={heroImage.alt}
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-[center_20%]"
+      {/* Background video */}
+      {!showFallback && (
+        <video
+          ref={videoRef}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          src="/videos/hero.mp4"
+          poster={heroImage.src}
+          onError={() => setShowFallback(true)}
+          className="absolute inset-0 h-full w-full object-cover object-[center_20%]"
         />
-      </div>
+      )}
+
+      {/* Fallback static image */}
+      {showFallback && (
+        <div className="absolute inset-0">
+          <Image
+            src={heroImage.src}
+            alt={heroImage.alt}
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-[center_20%]"
+          />
+        </div>
+      )}
 
       {/* Gradient overlay */}
       <div className="hero-overlay absolute inset-0" />
