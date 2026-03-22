@@ -10,7 +10,19 @@ import { ScrollReveal } from "@/components/ui/ScrollReveal";
 export function BeforeAfterCard({ logro }: { logro: Logro }) {
   return (
     <ScrollReveal variant="scale-in">
-      <Card>
+      <Card className="overflow-hidden">
+        {/* Banner image */}
+        {logro.img && (
+          <Image
+            src={logro.img}
+            alt={logro.imgAlt ?? logro.title}
+            width={600}
+            height={240}
+            className="aspect-[5/2] w-full object-cover"
+            loading="lazy"
+          />
+        )}
+
         {/* Header with badge */}
         <ScrollReveal variant="fade-in" delay={100}>
           <div className="flex items-center justify-between border-b border-border px-5 py-4">

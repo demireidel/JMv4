@@ -91,6 +91,8 @@ export interface Logro {
   imgAfter: string;
   altBefore: string;
   altAfter: string;
+  img?: string;
+  imgAlt?: string;
   reverse?: boolean;
 }
 
@@ -112,6 +114,8 @@ export const logros: Logro[] = [
     imgAfter: "/logros/02-despues.png",
     altBefore: "Pesos argentinos quemándose, hiperinflación",
     altAfter: "Bosques de Palermo, familias disfrutando",
+    img: "/images/banco/inauguracion-discurso-congreso.jpg",
+    imgAlt: "Milei en el discurso inaugural ante el Congreso, asumiendo el desafío de evitar la hiperinflación",
   },
   {
     num: "03",
@@ -129,6 +133,8 @@ export const logros: Logro[] = [
     imgAfter: "/logros/03-despues.png",
     altBefore: "Piqueteros cortando la 9 de Julio",
     altAfter: "Obelisco y 9 de Julio fluyendo de noche",
+    img: "/images/banco/cpac-argentina-01.jpg",
+    imgAlt: "CPAC Argentina — autoridad política restaurada, orden en las calles",
     reverse: true,
   },
   {
@@ -147,6 +153,8 @@ export const logros: Logro[] = [
     imgAfter: "/logros/04-despues.png",
     altBefore: "Supermercado con límites de compra, escasez",
     altAfter: "Familia comprando con normalidad, góndolas llenas",
+    img: "/images/banco/davos-2026-discurso.jpg",
+    imgAlt: "Milei en Davos 2026 declarando la victoria sobre la inflación ante líderes mundiales",
   },
   {
     num: "05",
@@ -164,6 +172,8 @@ export const logros: Logro[] = [
     imgAfter: "/logros/05-despues.png",
     altBefore: "Máquina imprimiendo billetes, emisión descontrolada",
     altAfter: "Plaza de Mayo y Casa Rosada, orden fiscal",
+    img: "/images/banco/presupuesto-congreso.jpg",
+    imgAlt: "Milei presenta el primer presupuesto equilibrado en más de un siglo ante el Congreso",
     reverse: true,
   },
   {
@@ -182,6 +192,8 @@ export const logros: Logro[] = [
     imgAfter: "/logros/06-despues.png",
     altBefore: "Crisis 2001, auto quemándose frente al Obelisco",
     altAfter: "Grúas de Puerto Madero, Argentina abierta al mundo",
+    img: "/images/banco/davos-2024-fmi.jpg",
+    imgAlt: "Milei en reunión con el FMI en Davos 2024 — credibilidad financiera restaurada",
   },
   {
     num: "07",
@@ -199,6 +211,8 @@ export const logros: Logro[] = [
     imgAfter: "/logros/07-despues.png",
     altBefore: "Operativo policial nocturno, inseguridad en Rosario",
     altAfter: "Monumento a la Bandera, Rosario en paz",
+    img: "/images/banco/cpac-argentina-02.jpg",
+    imgAlt: "CPAC Argentina — seguridad y autoridad del Estado restauradas",
     reverse: true,
   },
   {
@@ -217,6 +231,8 @@ export const logros: Logro[] = [
     imgAfter: "/logros/08-despues.png",
     altBefore: "Cola interminable de trámites, burocracia asfixiante",
     altAfter: "Aerolíneas Argentinas despegando, cielos abiertos",
+    img: "/images/banco/gabinete-motosierra.jpg",
+    imgAlt: "El gabinete de Milei con la motosierra — 14.500 desregulaciones en marcha",
   },
   {
     num: "09",
@@ -235,6 +251,8 @@ export const logros: Logro[] = [
     imgAfter: "/logros/09-despues.png",
     altBefore: "Fábricas cerradas, recesión económica",
     altAfter: "Construcción y crecimiento económico en Argentina",
+    img: "/images/banco/cordoba-25mayo-gabinete.jpg",
+    imgAlt: "Milei y el gabinete en Córdoba celebrando el 25 de Mayo — economía en máximo histórico",
     reverse: true,
   },
   {
@@ -254,6 +272,8 @@ export const logros: Logro[] = [
     imgAfter: "/logros/10-despues.png",
     altBefore: "Colas en casas de cambio, cepo cambiario",
     altAfter: "Mercado financiero libre, pantallas de cotización",
+    img: "/images/banco/congreso-apertura-2024.jpg",
+    imgAlt: "Apertura de sesiones del Congreso 2024 — liberación del mercado cambiario",
   },
   {
     num: "11",
@@ -272,6 +292,8 @@ export const logros: Logro[] = [
     imgAfter: "/logros/11-despues.png",
     altBefore: "Puerto vacío, comercio paralizado",
     altAfter: "Puerto de Buenos Aires con contenedores, exportaciones récord",
+    img: "/images/banco/mercosur-ue-firma.jpg",
+    imgAlt: "Firma del acuerdo Mercosur-UE — apertura de mercados para exportaciones récord",
     reverse: true,
   },
   {
@@ -291,6 +313,8 @@ export const logros: Logro[] = [
     imgAfter: "/logros/12-despues.png",
     altBefore: "Cartel de venta sin interesados, mercado inmobiliario paralizado",
     altAfter: "Familia mudándose a su nueva casa, crédito hipotecario",
+    img: "/images/banco/pacto-mayo-tucuman.jpg",
+    imgAlt: "Pacto de Mayo en Tucumán — acuerdos estructurales que habilitaron la estabilidad y el crédito",
   },
   {
     num: "13",
@@ -309,6 +333,8 @@ export const logros: Logro[] = [
     imgAfter: "/logros/13-despues.png",
     altBefore: "Billete de mil pesos arrugado, salarios licuados",
     altAfter: "Familia en supermercado con carrito lleno, poder adquisitivo",
+    img: "/images/banco/inauguracion-convertible-karina.jpg",
+    imgAlt: "Milei e inauguration — una nueva era de estabilidad y recuperación del poder adquisitivo",
     reverse: true,
   },
   {
@@ -328,6 +354,8 @@ export const logros: Logro[] = [
     imgAfter: "/logros/14-despues.png",
     altBefore: "Aeropuerto vacío, vuelos cancelados",
     altAfter: "Aeropuerto lleno de pasajeros, aviones despegando",
+    img: "/images/banco/g7-italia-lideres.jpg",
+    imgAlt: "Milei en el G7 Italia — Argentina de vuelta en la mesa de los países prósperos",
   },
   {
     num: "15",
@@ -346,6 +374,8 @@ export const logros: Logro[] = [
     imgAfter: "/logros/15-despues.png",
     altBefore: "Mina abandonada, inversión bloqueada",
     altAfter: "Operación minera moderna, litio en producción",
+    img: "/images/banco/vaca-muerta-recorrida.jpg",
+    imgAlt: "Milei recorre Vaca Muerta — producción de recursos naturales en máximos históricos",
     reverse: true,
   },
   {
@@ -365,6 +395,8 @@ export const logros: Logro[] = [
     imgAfter: "/logros/16-despues.png",
     altBefore: "Formularios de impuestos, burocracia fiscal",
     altAfter: "Emprendedor trabajando libre, menos carga tributaria",
+    img: "/images/banco/apertura-sesiones-2024.jpg",
+    imgAlt: "Apertura de sesiones ordinarias 2024 — aprobación de las reformas tributarias",
   },
   {
     num: "17",
@@ -383,6 +415,8 @@ export const logros: Logro[] = [
     imgAfter: "/logros/17-despues.png",
     altBefore: "Caja fuerte con dólares escondidos, economía informal",
     altAfter: "Sistema bancario moderno, depósitos creciendo",
+    img: "/images/banco/trump-casablanca-oval.jpg",
+    imgAlt: "Milei con Trump en Casa Blanca — confianza financiera internacional restaurada",
     reverse: true,
   },
   {
@@ -402,6 +436,8 @@ export const logros: Logro[] = [
     imgAfter: "/logros/18-despues.png",
     altBefore: "Campo seco por sequía, tierra agrietada",
     altAfter: "Cosecha abundante, campo verde productivo",
+    img: "/images/banco/mercosur-efta.jpg",
+    imgAlt: "Acuerdo Mercosur-EFTA — nuevos mercados para los 160 millones de toneladas de cosecha récord",
   },
   {
     num: "19",
@@ -420,6 +456,8 @@ export const logros: Logro[] = [
     imgAfter: "/logros/19-despues.png",
     altBefore: "Pantalla de mercados en rojo, crisis financiera",
     altAfter: "Bolsa en alza, inversión fluyendo a Argentina",
+    img: "/images/banco/miami-cumbre-trump-lideres.jpg",
+    imgAlt: "Cumbre de líderes en Miami — Argentina de vuelta en el mapa financiero mundial",
     reverse: true,
   },
 ];
