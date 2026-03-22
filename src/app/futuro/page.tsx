@@ -4,6 +4,7 @@ import { Pullquote } from "@/components/ui/Pullquote";
 import {
   futuroHeader,
   siliconValley,
+  galleryPhotos,
   stargate,
   nuclear,
   vacaMuerta,
@@ -30,6 +31,7 @@ export default function FuturoPage() {
 
       <FuturoContent
         siliconValley={siliconValley}
+        galleryPhotos={galleryPhotos}
         stargate={stargate}
         nuclear={nuclear}
         vacaMuerta={vacaMuerta}

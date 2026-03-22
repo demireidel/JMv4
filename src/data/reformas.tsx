@@ -23,6 +23,8 @@ export interface Reforma {
   impactStats: ImpactStat[];
   impactText: ReactNode;
   quote?: ReformaQuote;
+  img?: string;
+  imgAlt?: string;
 }
 
 export interface ReformBlock {
@@ -163,6 +165,8 @@ export const reformas: Reforma[] = [
       text: "No hay plata. Y cuando no hay plata, no se puede gastar lo que no se tiene. Es así de simple. El equilibrio fiscal no es una opción — es la ley.",
       cite: "Milei, cadena nacional, 10 de diciembre de 2023",
     },
+    img: "/images/banco/presupuesto-congreso.jpg",
+    imgAlt: "Milei presenta el presupuesto equilibrado en el Congreso",
   },
 
   // ── 02 DERROTA DE LA INFLACIÓN ────────────────────────────
@@ -236,6 +240,8 @@ export const reformas: Reforma[] = [
       text: "La inflación es el impuesto más perverso porque lo pagan los que menos tienen. La terminamos sin controles, sin congelamientos — a puro equilibrio fiscal.",
       cite: "Milei, Congreso 2026",
     },
+    img: "/images/reformas/02-inflacion.jpg",
+    imgAlt: "Desinflación argentina — precios estabilizándose",
   },
 
   // ── 03 LIBERACIÓN DEL CEPO CAMBIARIO ──────────────────────
@@ -303,6 +309,8 @@ export const reformas: Reforma[] = [
       text: "Hoy aprobamos el tercer examen. Nos deshicimos del cepo cambiario, que era una aberración que nunca debería haber existido. Los argentinos vuelven a ser libres de hacer con su dinero lo que quieran.",
       cite: "— Cadena Nacional, fin del cepo, abril 2025",
     },
+    img: "/images/reformas/03-cepo.jpg",
+    imgAlt: "Mercado cambiario libre — fin del cepo",
   },
 
   // ── 04 DNU 70/23 ─────────────────────────────────────────
@@ -376,6 +384,8 @@ export const reformas: Reforma[] = [
       text: "Firmé el DNU más grande de la historia argentina: 366 artículos que le devuelven la libertad a los argentinos. Cada artículo es una cadena que se rompe.",
       cite: "Milei, cadena nacional, 20 de diciembre de 2023",
     },
+    img: "/images/banco/gabinete-motosierra.jpg",
+    imgAlt: "El DNU 70/23 — la primera ola desregulatoria",
   },
 
   // ── 05 LEY BASES Y EL RIGI ───────────────────────────────
@@ -447,6 +457,8 @@ export const reformas: Reforma[] = [
       text: "La Ley Bases no es una ley más. Es el acta de refundación económica de la Argentina. Y el RIGI es la garantía de que el capital que venga se quede.",
       cite: "Milei, Luna Park, mayo 2024",
     },
+    img: "/images/banco/apertura-sesiones-2024.jpg",
+    imgAlt: "Congreso de la Nación — votación de la Ley Bases",
   },
 
   // ── 06 DESREGULACIÓN MASIVA ───────────────────────────────
@@ -526,6 +538,8 @@ export const reformas: Reforma[] = [
       text: "Detrás de cada regulación hay un curro. Detrás de cada trámite hay un intermediario. Federico Sturzenegger encontró 67.000 regulaciones — y las está eliminando una por una.",
       cite: "Milei, entrevista Forbes, diciembre 2024",
     },
+    img: "/images/reformas/06-desregulacion.jpg",
+    imgAlt: "Desregulación masiva — eliminación de trámites y regulaciones",
   },
 
   // ── 07 REFORMA DEL ESTADO ────────────────────────────────
@@ -596,6 +610,8 @@ export const reformas: Reforma[] = [
         <strong>84 a 51 secretarías</strong>.
       </>
     ),
+    img: "/images/banco/pacto-mayo-tucuman.jpg",
+    imgAlt: "Reforma del Estado — reducción de ministerios",
   },
 
   // ── 08 REFORMA LABORAL ───────────────────────────────────
@@ -668,6 +684,8 @@ export const reformas: Reforma[] = [
       text: "No hay nada mejor para un trabajador que una empresa, y no hay nada mejor para una empresa que un trabajador. Los que se oponen a esta reforma defienden sus privilegios, no los derechos de los trabajadores.",
       cite: "— Sobre la reforma laboral, febrero 2026",
     },
+    img: "/images/reformas/08-laboral.jpg",
+    imgAlt: "Reforma laboral — empleo formal y trabajo",
   },
 
   // ── 09 APERTURA COMERCIAL ────────────────────────────────
@@ -740,6 +758,8 @@ export const reformas: Reforma[] = [
       text: "Hace 21 años Chávez gritó «ALCA, al carajo» y el kirchnerismo festejó. Nosotros firmamos con Estados Unidos, con la Unión Europea, y vamos a seguir firmando con el mundo entero.",
       cite: "— Tras la ratificación del acuerdo Mercosur-UE, febrero 2026",
     },
+    img: "/images/banco/mercosur-ue-firma.jpg",
+    imgAlt: "Firma del acuerdo Mercosur-UE — apertura comercial",
   },
 
   // ── 10 LEY DE INOCENCIA FISCAL ───────────────────────────
@@ -813,6 +833,8 @@ export const reformas: Reforma[] = [
       text: "El Estado no puede presumir culpable al que trabaja y produce. La inocencia fiscal es un derecho constitucional — no una concesión del burócrata de turno.",
       cite: "Milei, Congreso 2025",
     },
+    img: "/images/reformas/10-fiscal.jpg",
+    imgAlt: "Reforma fiscal — inocencia tributaria y ARCA",
   },
 
   // ── 11 SEGURIDAD Y JUSTICIA ──────────────────────────────
@@ -883,6 +905,8 @@ export const reformas: Reforma[] = [
         consecutivo.
       </>
     ),
+    img: "/images/reformas/11-seguridad.jpg",
+    imgAlt: "Seguridad y justicia — fuerzas de seguridad",
   },
 
   // ── 12 REFORMA PENAL JUVENIL ─────────────────────────────
@@ -954,5 +978,7 @@ export const reformas: Reforma[] = [
       text: "Reformamos la Ley Penal Juvenil, modificando un régimen penal obsoleto que tenía ya 45 años de antigüedad. Porque, como lo dijimos antes de ser gobierno, el que las hace, las paga.",
       cite: "— Apertura de sesiones ordinarias, 1 de marzo de 2026",
     },
+    img: "/images/banco/inauguracion-discurso-congreso.jpg",
+    imgAlt: "Sesión del Congreso — reforma penal juvenil",
   },
 ];

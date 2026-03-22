@@ -87,12 +87,25 @@ export const futuroHeader = {
 // ── Gallery photos ──────────────────────────────────────────
 
 export const galleryPhotos: GalleryPhoto[] = [
+  // ── May 2024 — Silicon Valley tour ──
   { src: "/images/banco/silicon-valley-sam-altman.jpg", who: "Milei con Sam Altman", where: "CEO de OpenAI — Silicon Valley, Mayo 2024", tag: "OpenAI", pos: "center 20%" },
-  { src: "/images/banco/silicon-valley-investors.jpg", who: "La delegación argentina con inversores", where: "Silicon Valley, California", tag: "Meta", pos: "center 18%" },
+  { src: "/images/banco/silicon-valley-milei-pichai-gift.jpg", who: "Milei con Sundar Pichai", where: "Google HQ — recibe un doodle personalizado", tag: "Google", pos: "center 30%" },
+  { src: "/images/banco/silicon-valley-milei-cook-balcony.jpg", who: "Milei con Tim Cook", where: "Apple Park, Cupertino — balcón del anillo", tag: "Apple", pos: "center 25%" },
   { src: "/images/banco/silicon-valley-tim-cook.jpg", who: "Milei con Tim Cook", where: "Apple Park, Cupertino", tag: "Apple", pos: "center 40%" },
-
+  { src: "/images/banco/silicon-valley-milei-zuckerberg-phones.jpg", who: "Milei con Mark Zuckerberg", where: "Sede de Meta, Menlo Park — mirando el celular", tag: "Meta", pos: "center 25%" },
+  { src: "/images/banco/silicon-valley-milei-zuckerberg-selfie.jpg", who: "Selfie con Mark Zuckerberg", where: "Sede de Meta, Menlo Park", tag: "Meta", pos: "center 30%" },
+  { src: "/images/banco/silicon-valley-milei-zuckerberg-group.jpg", who: "Milei con Zuckerberg y la delegación", where: "Sede de Meta — foto grupal", tag: "Meta", pos: "center 30%" },
+  { src: "/images/banco/silicon-valley-meta-meeting.jpg", who: "Reunión bilateral en Meta", where: "Sede de Meta, Menlo Park", tag: "Meta", pos: "center 40%" },
+  { src: "/images/banco/silicon-valley-andreessen.jpg", who: "Con Marc Andreessen", where: "Cofundador de a16z — Silicon Valley", tag: "a16z", pos: "center 25%" },
   { src: "/images/banco/silicon-valley-sundar-pichai.jpg", who: "Milei con Sundar Pichai", where: "Google HQ, Mountain View", tag: "Google", pos: "center 12%" },
+  { src: "/images/banco/silicon-valley-investor-talk.jpg", who: "Milei ante inversores", where: "Pacific Summit, Bay Area Council", tag: "Inversores", pos: "center 35%" },
+  { src: "/images/banco/silicon-valley-investor-dinner.jpg", who: "Cena con líderes tech", where: "San Francisco — delegación argentina", tag: "Inversores", pos: "center 30%" },
+  { src: "/images/banco/silicon-valley-apple-park.jpg", who: "Apple Park", where: "Sede principal de Apple, Cupertino", tag: "Apple", pos: "center 50%" },
+  { src: "/images/banco/silicon-valley-investors.jpg", who: "La delegación argentina con inversores", where: "Silicon Valley, California", tag: "Inversores", pos: "center 18%" },
   { src: "/images/banco/silicon-valley-tech-leaders.jpg", who: "Delegación argentina en Silicon Valley", where: "California", tag: "Google", pos: "center 22%" },
+  // ── Oct 2024 — XPRIZE ──
+  { src: "/images/banco/silicon-valley-xprize-diamandis.jpg", who: "Con Peter Diamandis", where: "XPRIZE, California — Octubre 2024", tag: "XPRIZE", pos: "center 30%" },
+  { src: "/images/banco/silicon-valley-xprize-tyson.jpg", who: "Con Neil deGrasse Tyson", where: "XPRIZE, California — Octubre 2024", tag: "XPRIZE", pos: "center 20%" },
 ];
 
 // ── Dividers ────────────────────────────────────────────────

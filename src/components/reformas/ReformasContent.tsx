@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import Image from "next/image";
 import type { ReformBlock, Reforma } from "@/data/reformas";
 import { SidebarLayout } from "@/components/ui/SidebarLayout";
 import { ChapterHeader } from "@/components/ui/ChapterHeader";
@@ -23,6 +23,17 @@ function cleanTitle(title: string) {
 function ReformCard({ reforma }: { reforma: Reforma }) {
   return (
     <Card className="overflow-hidden">
+      {/* Banner image */}
+      {reforma.img && (
+        <Image
+          src={reforma.img}
+          alt={reforma.imgAlt ?? reforma.title}
+          width={600}
+          height={240}
+          className="aspect-[5/2] w-full object-cover"
+          loading="lazy"
+        />
+      )}
       {/* Header */}
       <div className="border-b border-border px-5 py-3">
         <span className="badge-text">{reforma.num} — {reforma.title}</span>
