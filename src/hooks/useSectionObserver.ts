@@ -5,6 +5,10 @@ import { useState, useEffect } from "react";
 /**
  * Tracks which section is currently in view using IntersectionObserver.
  * Returns the id of the active section.
+ *
+ * Uses ids.join(",") as the dep expression so the effect only re-runs
+ * when the actual section IDs change — not on every parent render
+ * (arrays have unstable identity even when their contents are identical).
  */
 export function useSectionObserver(
   ids: string[],
@@ -31,7 +35,10 @@ export function useSectionObserver(
     });
 
     return () => observers.forEach((o) => o.disconnect());
-  }, [ids, rootMargin]);
+  // ids array has unstable identity (new ref each render even with same values).
+  // ids.join(",") produces a stable primitive — effect only re-runs when IDs change.
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [ids.join(","), rootMargin]);
 
   return active;
 }

@@ -20,6 +20,8 @@ export function PhotoStrip({ photos, direction }: PhotoStripProps) {
   const stripRef = useRef<HTMLDivElement>(null);
   const [isDragging, setIsDragging] = useState(false);
 
+  const inView = useRef(false);
+
   const anim = useRef({
     offset: 0,
     speed: scrollRight ? 1.2 : -1,
@@ -54,7 +56,7 @@ export function PhotoStrip({ photos, direction }: PhotoStripProps) {
 
   const tick = useCallback(() => {
     const a = anim.current;
-    if (!a.dragging && !a.hovering) {
+    if (!a.dragging && !a.hovering && inView.current) {
       a.offset = wrapOffset(a.offset + a.speed);
       applyTransform(a.offset);
     }
@@ -65,6 +67,21 @@ export function PhotoStrip({ photos, direction }: PhotoStripProps) {
     anim.current.rafId = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(anim.current.rafId);
   }, [tick]);
+
+  useEffect(() => {
+    const el = wrapperRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        inView.current = entry.isIntersecting;
+      },
+      { rootMargin: "200px 0px 200px 0px" }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   const handlePointerDown = useCallback((e: React.PointerEvent) => {
     if (!wrapperRef.current) return;
