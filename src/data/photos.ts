@@ -18,6 +18,7 @@ export const stripPhotos2 = [
   { src: "/images/banco/silicon-valley-investors.jpg", alt: "Milei con inversores en Silicon Valley" },
   { src: "/images/banco/silicon-valley-sam-altman.jpg", alt: "Milei con Sam Altman de OpenAI" },
   { src: "/images/banco/silicon-valley-hoover-speech.jpg", alt: "Milei en Stanford — Hoover Institution" },
+  { src: "/images/banco/stargate-altman-milei.jpg", alt: "Milei y Sam Altman — thumbs up" },
 ];
 
 /** Photo strip images — strip 3 (between Mundo and Archivo — bilateral y global) */
@@ -52,6 +53,11 @@ export const visionPhotos: { src: string; alt: string; caption: string; objectPo
     src: "/images/banco/trump-casablanca-almuerzo.jpg",
     alt: "Milei con Trump en la Casa Blanca — Alianza occidental",
     caption: "Bilateral con Trump — Casa Blanca, octubre 2025",
+  },
+  {
+    src: "/images/banco/meloni-casarosada-pose.jpg",
+    alt: "Milei y Meloni — Alianza occidental en Casa Rosada",
+    caption: "Bilateral con Giorgia Meloni — Casa Rosada, junio 2024",
   },
 ];
 

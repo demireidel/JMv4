@@ -22,6 +22,8 @@ export default function ReformasPage() {
         eyebrow={reformasHero.eyebrow}
         title={reformasHero.title}
         subtitle={reformasHero.desc}
+        backgroundImage="/images/banco/congreso-apertura-2024.jpg"
+        backgroundAlt="Congreso de la Nación Argentina"
       >
         <div className="mt-10 grid grid-cols-2 gap-6 md:grid-cols-4">
           {heroCounters.map((c) => (

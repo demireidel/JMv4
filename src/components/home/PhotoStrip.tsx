@@ -11,9 +11,12 @@ interface Photo {
 interface PhotoStripProps {
   photos: Photo[];
   reverse?: boolean;
+  direction?: "left" | "right";
 }
 
-export function PhotoStrip({ photos, reverse = false }: PhotoStripProps) {
+export function PhotoStrip({ photos, reverse = false, direction }: PhotoStripProps) {
+  // direction prop takes precedence over reverse
+  const scrollRight = direction ? direction === "right" : reverse;
   const doubled = [...photos, ...photos];
   const wrapperRef = useRef<HTMLDivElement>(null);
   const stripRef = useRef<HTMLDivElement>(null);
@@ -21,7 +24,7 @@ export function PhotoStrip({ photos, reverse = false }: PhotoStripProps) {
 
   const anim = useRef({
     offset: 0,
-    speed: reverse ? 1.2 : -1,
+    speed: scrollRight ? 1.2 : -1,
     dragging: false,
     dragStartX: 0,
     dragStartOffset: 0,
