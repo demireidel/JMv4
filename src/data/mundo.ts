@@ -451,8 +451,8 @@ export const forumAppearances: ForumAppearance[] = [
     highlight: true,
   },
   {
-    image: "/images/banco/cpac-argentina-02.jpg",
-    imageAlt: "Milei en CPAC Argentina",
+    image: "/images/banco/miami-cumbre-trump-lideres.jpg",
+    imageAlt: "Milei con Trump y líderes conservadores en CPAC Washington",
     title: "CPAC Washington",
     location: "Washington D.C.",
     date: "FEB 2024",
