@@ -1,7 +1,20 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { Container } from "@/components/ui/Container";
+import Image from "next/image";
+import type {
+  SiliconValleyData,
+  StargateData,
+  NuclearData,
+  VacaMuertaData,
+  ClosingData,
+  FuturoStat,
+  FuturoPhotoCard,
+} from "@/data/futuro";
+import { SidebarLayout } from "@/components/ui/SidebarLayout";
+import { ChapterHeader } from "@/components/ui/ChapterHeader";
+import { Card } from "@/components/ui/Card";
+import { Pullquote } from "@/components/ui/Pullquote";
+import { Divider } from "@/components/ui/Divider";
 
 const sidebarItems = [
   { id: "silicon-valley", num: "I", title: "Silicon Valley" },
@@ -10,65 +23,152 @@ const sidebarItems = [
   { id: "vaca-muerta", num: "IV", title: "Vaca Muerta" },
 ];
 
-export function FuturoSidebar({ children }: { children: React.ReactNode }) {
-  const [activeSection, setActiveSection] = useState(sidebarItems[0].id);
-
-  useEffect(() => {
-    const observers: IntersectionObserver[] = [];
-    sidebarItems.forEach((s) => {
-      const el = document.getElementById(s.id);
-      if (!el) return;
-      const obs = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) setActiveSection(s.id);
-        },
-        { rootMargin: "-30% 0px -60% 0px" }
-      );
-      obs.observe(el);
-      observers.push(obs);
-    });
-    return () => observers.forEach((o) => o.disconnect());
-  }, []);
-
+function StatRow({ stats }: { stats: FuturoStat[] }) {
   return (
-    <section style={{ background: "var(--navy)", paddingBlock: "var(--section-py)" }}>
-      <Container wide>
-        <div className="flex gap-12">
-          {/* Sticky sidebar */}
-          <nav
-            className="hidden lg:block shrink-0 sticky self-start"
-            style={{ top: "6rem", width: "14rem" }}
-            aria-label="Proyectos"
-          >
-            <p className="mb-4" style={{ fontFamily: "var(--font-accent)", fontSize: "var(--text-xs)", color: "var(--text-3)", textTransform: "uppercase", letterSpacing: "0.1em" }}>
-              Proyectos
-            </p>
-            <ul className="list-none m-0 p-0 space-y-1">
-              {sidebarItems.map((s) => (
-                <li key={s.id}>
-                  <a
-                    href={`#${s.id}`}
-                    className="block px-3 py-2 rounded-md no-underline transition-colors"
-                    style={{
-                      fontSize: "var(--text-xs)",
-                      color: activeSection === s.id ? "var(--gold)" : "var(--text-3)",
-                      background: activeSection === s.id ? "var(--surface-1)" : "transparent",
-                      transitionDuration: "var(--duration-fast)",
-                    }}
-                  >
-                    <span style={{ fontFamily: "var(--font-accent)" }}>{s.num}</span> {s.title}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </nav>
-
-          {/* Main content */}
-          <div className="flex-1 min-w-0" style={{ maxWidth: "52rem" }}>
-            {children}
-          </div>
+    <div className="mb-8 flex flex-wrap gap-6">
+      {stats.map((s) => (
+        <div key={s.label}>
+          <span className="stat-number">{s.val}</span>
+          <span className="stat-label mt-1 block">{s.label}</span>
         </div>
-      </Container>
-    </section>
+      ))}
+    </div>
+  );
+}
+
+function FeaturePhoto({ photo }: { photo: FuturoPhotoCard }) {
+  return (
+    <figure className="m-0 mb-8">
+      <Image
+        src={photo.src}
+        alt={photo.alt}
+        width={832}
+        height={468}
+        className="aspect-video w-full rounded-xl object-cover"
+        style={{ objectPosition: photo.objectPosition }}
+        loading="lazy"
+      />
+      <figcaption className="mt-3 text-[length:var(--text-xs)] text-text-tertiary">
+        <strong className="text-text-secondary">{photo.captionStrong}</strong>
+        {" — "}
+        {photo.captionSpan}
+      </figcaption>
+    </figure>
+  );
+}
+
+function Kicker({ text }: { text: string }) {
+  return (
+    <p className="mb-6 font-accent text-[length:var(--text-xs)] uppercase tracking-[0.15em] text-celeste">
+      {text}
+    </p>
+  );
+}
+
+function ParagraphBlock({ paragraphs }: { paragraphs: string[] }) {
+  return (
+    <div className="space-y-4">
+      {paragraphs.map((p, i) => (
+        <p key={i} className="prose-body m-0">{p}</p>
+      ))}
+    </div>
+  );
+}
+
+interface FuturoContentProps {
+  siliconValley: SiliconValleyData;
+  stargate: StargateData;
+  nuclear: NuclearData;
+  vacaMuerta: VacaMuertaData;
+  closing: ClosingData;
+}
+
+export function FuturoContent({
+  siliconValley,
+  stargate,
+  nuclear,
+  vacaMuerta,
+  closing,
+}: FuturoContentProps) {
+  return (
+    <SidebarLayout label="Proyectos" items={sidebarItems} variant="navy">
+      {/* I — Silicon Valley */}
+      <article id="silicon-valley" className="mb-16">
+        <ChapterHeader
+          numeral="I"
+          title={`${siliconValley.titleLine1} ${siliconValley.titleLine2Em}`}
+        />
+        <Kicker text={siliconValley.kicker} />
+        <FeaturePhoto photo={siliconValley.photo} />
+        <StatRow stats={siliconValley.stats} />
+        <ParagraphBlock paragraphs={siliconValley.paragraphs} />
+      </article>
+
+      <Divider className="mb-12" />
+
+      {/* II — Stargate */}
+      <article id="stargate" className="mb-16">
+        <ChapterHeader
+          numeral="II"
+          title={`${stargate.titleLine1} ${stargate.titleLine2}`}
+        />
+        <Kicker text={stargate.kicker} />
+        <FeaturePhoto photo={stargate.photo} />
+        <StatRow stats={stargate.stats} />
+        <div className="mb-8">
+          <ParagraphBlock paragraphs={stargate.paragraphs} />
+        </div>
+        <Pullquote cite={`— ${stargate.quote.cite}`}>
+          {stargate.quote.text}
+        </Pullquote>
+      </article>
+
+      <Divider className="mb-12" />
+
+      {/* III — Nuclear */}
+      <article id="nuclear" className="mb-16">
+        <ChapterHeader
+          numeral="III"
+          title={`${nuclear.titleLine1} ${nuclear.titleLine2}`}
+        />
+        <Kicker text={nuclear.kicker} />
+        <FeaturePhoto photo={nuclear.photo} />
+        <StatRow stats={nuclear.stats} />
+        <div className="mb-8 space-y-6">
+          {nuclear.phases.map((phase, i) => (
+            <Card key={i} className="p-5">
+              <h4 className="badge-text m-0 mb-2 !text-gold">{phase.label}</h4>
+              <p className="prose-body m-0">{phase.text}</p>
+            </Card>
+          ))}
+        </div>
+        <Pullquote cite={`— ${nuclear.quote.cite}`}>
+          {nuclear.quote.text}
+        </Pullquote>
+        <p className="prose-body m-0">{nuclear.closingParagraph}</p>
+      </article>
+
+      <Divider className="mb-12" />
+
+      {/* IV — Vaca Muerta */}
+      <article id="vaca-muerta" className="mb-16">
+        <ChapterHeader
+          numeral="IV"
+          title={`${vacaMuerta.titleLine1} ${vacaMuerta.titleLine2Em}`}
+        />
+        <Kicker text={vacaMuerta.kicker} />
+        <FeaturePhoto photo={vacaMuerta.photo} />
+        <StatRow stats={vacaMuerta.stats} />
+        <ParagraphBlock paragraphs={vacaMuerta.paragraphs} />
+      </article>
+
+      {/* Closing */}
+      <div className="border-t border-border py-12 text-center">
+        <blockquote className="m-0 mx-auto max-w-[44rem] font-display text-[length:var(--text-xl)] italic text-text-primary">
+          {closing.text}
+        </blockquote>
+        <p className="badge-text mt-4">— {closing.attr}</p>
+      </div>
+    </SidebarLayout>
   );
 }

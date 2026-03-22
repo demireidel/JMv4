@@ -11,8 +11,7 @@ export function Container({
 }: ContainerProps) {
   return (
     <div
-      className={`mx-auto px-4 sm:px-6 lg:px-8 ${className}`}
-      style={{ maxWidth: wide ? "96rem" : "var(--max-width)" }}
+      className={`mx-auto max-w-[var(--width-content)] px-4 sm:px-6 lg:px-8 ${wide ? "!max-w-[96rem]" : ""} ${className}`}
     >
       {children}
     </div>

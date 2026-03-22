@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { navLinks } from "@/data/nav";
+import { Wordmark } from "@/components/ui/Wordmark";
 
 export function NavBar() {
   const [scrolled, setScrolled] = useState(false);
@@ -18,12 +19,10 @@ export function NavBar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Close menu on route change
   useEffect(() => {
     setMenuOpen(false);
   }, [pathname]);
 
-  // Lock body scroll when menu is open + escape key
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
     if (menuOpen) {
@@ -54,77 +53,41 @@ export function NavBar() {
   return (
     <>
       <header
-        className="fixed top-0 left-0 right-0 z-50 transition-all"
-        style={{
-          height: "var(--nav-height)",
-          background: scrolled
-            ? "var(--nav-bg)"
-            : "transparent",
-          backdropFilter: scrolled ? "blur(12px) saturate(1.2)" : "none",
-          WebkitBackdropFilter: scrolled
-            ? "blur(12px) saturate(1.2)"
-            : "none",
-          borderBottom: scrolled
-            ? "1px solid var(--border)"
-            : "1px solid transparent",
-          transitionDuration: "var(--duration-normal)",
-          transitionTimingFunction: "var(--ease-standard)",
-        }}
+        className={`fixed inset-x-0 top-0 z-50 h-[var(--height-nav)] transition-all duration-[var(--duration-normal)] ease-[var(--ease-standard)] ${
+          scrolled
+            ? "border-b border-border bg-nav-bg backdrop-blur-[12px] backdrop-saturate-[1.2]"
+            : "border-b border-transparent bg-transparent"
+        }`}
       >
         <nav
-          className="mx-auto flex items-center justify-between h-full px-4 sm:px-6 lg:px-8"
-          style={{ maxWidth: "var(--max-width)" }}
-          aria-label="Navegación principal"
+          className="mx-auto flex h-full max-w-[var(--width-content)] items-center justify-between px-4 sm:px-6 lg:px-8"
+          aria-label="Navegacion principal"
         >
           {/* Wordmark */}
           <Link
             href="/"
-            className="flex items-center gap-0 no-underline"
+            className="flex items-center no-underline"
             aria-label="Inicio — Javier Milei"
           >
-            <span
-              className="font-accent text-xl tracking-wider text-white"
-              style={{
-                fontFamily: "var(--font-accent)",
-                letterSpacing: "0.1em",
-              }}
-            >
-              JAVIER{" "}
-            </span>
-            <span
-              className="font-accent text-xl tracking-wider"
-              style={{
-                fontFamily: "var(--font-accent)",
-                letterSpacing: "0.1em",
-                color: "var(--gold)",
-              }}
-            >
-              MILEI
-            </span>
+            <Wordmark className="text-xl tracking-[0.1em]" />
           </Link>
 
           {/* Desktop links */}
-          <ul className="hidden md:flex items-center gap-1 list-none m-0 p-0">
+          <ul className="m-0 hidden list-none items-center gap-1 p-0 md:flex">
             {navLinks.map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className="relative px-3 py-2 text-sm no-underline transition-colors"
-                  style={{
-                    fontFamily: "var(--font-body)",
-                    fontWeight: 500,
-                    color: isActive(link.href)
-                      ? "var(--gold)"
-                      : "var(--text-2)",
-                    transitionDuration: "var(--duration-fast)",
-                  }}
+                  className={`relative px-3 py-2 font-body text-sm font-medium no-underline transition-colors duration-[var(--duration-fast)] ${
+                    isActive(link.href)
+                      ? "text-gold"
+                      : "text-text-secondary hover:text-text-primary"
+                  }`}
+                  {...(isActive(link.href) ? { "aria-current": "page" as const } : {})}
                 >
                   {link.label}
                   {isActive(link.href) && (
-                    <span
-                      className="absolute bottom-0 left-3 right-3 h-0.5"
-                      style={{ background: "var(--gold)" }}
-                    />
+                    <span className="absolute inset-x-3 bottom-0 h-0.5 bg-gold" />
                   )}
                 </Link>
               </li>
@@ -135,34 +98,24 @@ export function NavBar() {
           <button
             ref={hamburgerRef}
             onClick={toggleMenu}
-            className="md:hidden flex flex-col justify-center items-center w-12 h-12 gap-1.5 bg-transparent border-none cursor-pointer"
-            aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
+            className="flex h-12 w-12 cursor-pointer flex-col items-center justify-center gap-1.5 border-none bg-transparent md:hidden"
+            aria-label={menuOpen ? "Cerrar menu" : "Abrir menu"}
             aria-expanded={menuOpen}
           >
             <span
-              className="block w-6 h-0.5 bg-white transition-all"
-              style={{
-                transitionDuration: "var(--duration-fast)",
-                transform: menuOpen
-                  ? "rotate(45deg) translateY(4px)"
-                  : "none",
-              }}
+              className={`block h-0.5 w-6 bg-white transition-all duration-[var(--duration-fast)] ${
+                menuOpen ? "translate-y-[4px] rotate-45" : ""
+              }`}
             />
             <span
-              className="block w-6 h-0.5 bg-white transition-all"
-              style={{
-                transitionDuration: "var(--duration-fast)",
-                opacity: menuOpen ? 0 : 1,
-              }}
+              className={`block h-0.5 w-6 bg-white transition-all duration-[var(--duration-fast)] ${
+                menuOpen ? "opacity-0" : "opacity-100"
+              }`}
             />
             <span
-              className="block w-6 h-0.5 bg-white transition-all"
-              style={{
-                transitionDuration: "var(--duration-fast)",
-                transform: menuOpen
-                  ? "rotate(-45deg) translateY(-4px)"
-                  : "none",
-              }}
+              className={`block h-0.5 w-6 bg-white transition-all duration-[var(--duration-fast)] ${
+                menuOpen ? "-translate-y-[4px] -rotate-45" : ""
+              }`}
             />
           </button>
         </nav>
@@ -170,44 +123,30 @@ export function NavBar() {
 
       {/* Mobile overlay menu */}
       <div
-        className="fixed inset-0 z-40 md:hidden flex flex-col items-center justify-center transition-all"
-        style={{
-          background: "var(--nav-bg-mobile)",
-          backdropFilter: "blur(24px)",
-          WebkitBackdropFilter: "blur(24px)",
-          opacity: menuOpen ? 1 : 0,
-          pointerEvents: menuOpen ? "auto" : "none",
-          transitionDuration: "var(--duration-normal)",
-          transitionTimingFunction: "var(--ease-standard)",
-        }}
+        className={`fixed inset-0 z-40 flex flex-col items-center justify-center bg-nav-bg-mobile backdrop-blur-[24px] transition-all duration-[var(--duration-normal)] ease-[var(--ease-standard)] md:hidden ${
+          menuOpen ? "opacity-100" : "pointer-events-none opacity-0"
+        }`}
         aria-hidden={!menuOpen}
       >
-        <nav aria-label="Menú móvil">
-          <ul className="flex flex-col items-center gap-2 list-none m-0 p-0">
+        <nav aria-label="Menu movil">
+          <ul className="m-0 flex list-none flex-col items-center gap-2 p-0">
             {navLinks.map((link, i) => (
               <li
                 key={link.href}
-                style={{
-                  opacity: menuOpen ? 1 : 0,
-                  transform: menuOpen
-                    ? "translateY(0)"
-                    : "translateY(1rem)",
-                  transition: `opacity var(--duration-normal) var(--ease-decelerate) ${i * 50}ms, transform var(--duration-normal) var(--ease-decelerate) ${i * 50}ms`,
-                }}
+                className={`transition-[opacity,transform] duration-[var(--duration-normal)] ease-[var(--ease-decelerate)] ${
+                  menuOpen
+                    ? "translate-y-0 opacity-100"
+                    : "translate-y-4 opacity-0"
+                }`}
+                style={{ transitionDelay: `${i * 50}ms` }}
               >
                 <Link
                   href={link.href}
-                  className="block px-6 py-3 text-center no-underline transition-colors"
-                  style={{
-                    fontFamily: "var(--font-accent)",
-                    fontSize: "var(--text-2xl)",
-                    letterSpacing: "0.05em",
-                    textTransform: "uppercase",
-                    color: isActive(link.href)
-                      ? "var(--gold)"
-                      : "var(--text-1)",
-                    transitionDuration: "var(--duration-fast)",
-                  }}
+                  className={`block px-6 py-3 text-center font-accent text-[length:var(--text-2xl)] uppercase tracking-wider no-underline transition-colors duration-[var(--duration-fast)] ${
+                    isActive(link.href)
+                      ? "text-gold"
+                      : "text-text-primary hover:text-gold"
+                  }`}
                   tabIndex={menuOpen ? 0 : -1}
                 >
                   {link.label}

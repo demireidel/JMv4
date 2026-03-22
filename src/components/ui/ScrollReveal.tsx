@@ -8,10 +8,6 @@ interface ScrollRevealProps {
   className?: string;
 }
 
-/**
- * Entrance animation wrapper using IntersectionObserver.
- * Respects prefers-reduced-motion.
- */
 export function ScrollReveal({
   children,
   delay = 0,
@@ -24,7 +20,6 @@ export function ScrollReveal({
     const el = ref.current;
     if (!el) return;
 
-    // Respect reduced motion
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       setVisible(true);
       return;
@@ -47,12 +42,10 @@ export function ScrollReveal({
   return (
     <div
       ref={ref}
-      className={className}
-      style={{
-        opacity: visible ? 1 : 0,
-        transform: visible ? "translateY(0)" : "translateY(1.5rem)",
-        transition: `opacity var(--duration-slow) var(--ease-decelerate) ${delay}ms, transform var(--duration-slow) var(--ease-decelerate) ${delay}ms`,
-      }}
+      className={`transition-[opacity,transform] duration-[var(--duration-slow)] ease-[var(--ease-decelerate)] ${
+        visible ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"
+      } ${className}`}
+      style={{ transitionDelay: delay ? `${delay}ms` : undefined }}
     >
       {children}
     </div>
