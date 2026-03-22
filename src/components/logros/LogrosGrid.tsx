@@ -6,6 +6,7 @@ import { PobrezaBlock } from "@/components/logros/PobrezaBlock";
 import { SidebarLayout } from "@/components/ui/SidebarLayout";
 import { ChapterHeader } from "@/components/ui/ChapterHeader";
 import { Divider } from "@/components/ui/Divider";
+import { SectionArticle } from "@/components/ui/SectionArticle";
 
 const romanNumerals = ["II", "III", "IV", "V", "VI"];
 
@@ -72,7 +73,7 @@ export function LogrosGrid({ logros, pobrezaData }: LogrosGridProps) {
     >
       {/* Pobreza — the biggest achievement */}
       <PobrezaBlock data={pobrezaData} />
-      <Divider className="mb-16" />
+      <Divider animated className="my-16" />
 
       {blocks.map((block, i) => {
         const blockLogros = block.nums
@@ -82,7 +83,7 @@ export function LogrosGrid({ logros, pobrezaData }: LogrosGridProps) {
         if (blockLogros.length === 0) return null;
 
         return (
-          <article key={block.id} id={`logro-${block.id}`} className="mb-16">
+          <SectionArticle key={block.id} id={`logro-${block.id}`} last={i === blocks.length - 1}>
             <ChapterHeader
               numeral={romanNumerals[i]}
               title={block.title}
@@ -95,9 +96,7 @@ export function LogrosGrid({ logros, pobrezaData }: LogrosGridProps) {
                 <BeforeAfterCard key={logro.num} logro={logro} />
               ))}
             </div>
-
-            {i < blocks.length - 1 && <Divider className="mt-16" />}
-          </article>
+          </SectionArticle>
         );
       })}
     </SidebarLayout>

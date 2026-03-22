@@ -9,7 +9,7 @@ import type {
 import { SidebarLayout } from "@/components/ui/SidebarLayout";
 import { ChapterHeader } from "@/components/ui/ChapterHeader";
 import { Card } from "@/components/ui/Card";
-import { Divider } from "@/components/ui/Divider";
+import { SectionArticle } from "@/components/ui/SectionArticle";
 import { LibrosSection } from "./LibrosSection";
 import { DiscursosSection } from "./DiscursosSection";
 import { EntrevistasSection } from "./EntrevistasSection";
@@ -39,19 +39,15 @@ export function ArchivoContent({
   return (
     <SidebarLayout label="Secciones del archivo" items={sections} variant="navy">
       <DiscursosSection discursos={discursos} />
-      <Divider className="mb-12" />
 
       <EntrevistasSection entrevistas={entrevistas} />
-      <Divider className="mb-12" />
 
       <LibrosSection etapas={etapas} />
-      <Divider className="mb-12" />
 
       <PapersSection papers={papers} />
-      <Divider className="mb-12" />
 
       {/* V — Premios */}
-      <article id="premios">
+      <SectionArticle id="premios" last>
         <ChapterHeader numeral="V" title="Premios y reconocimientos" />
         <ul className="m-0 list-none space-y-2 p-0">
           {reconocimientos.map((r, i) => (
@@ -60,13 +56,11 @@ export function ArchivoContent({
               className="flex items-start gap-3 border-b border-border py-2"
             >
               <span className="mt-0.5 text-gold">&#9670;</span>
-              <span className="text-[length:var(--text-sm)] text-text-secondary">
-                {r}
-              </span>
+              <span className="card-body text-[length:var(--text-sm)]">{r}</span>
             </li>
           ))}
         </ul>
-      </article>
+      </SectionArticle>
     </SidebarLayout>
   );
 }

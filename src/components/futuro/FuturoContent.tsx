@@ -15,7 +15,10 @@ import { SidebarLayout } from "@/components/ui/SidebarLayout";
 import { ChapterHeader } from "@/components/ui/ChapterHeader";
 import { Card } from "@/components/ui/Card";
 import { Pullquote } from "@/components/ui/Pullquote";
-import { Divider } from "@/components/ui/Divider";
+import { SectionArticle } from "@/components/ui/SectionArticle";
+import { SectionKicker } from "@/components/ui/SectionKicker";
+import { Prose } from "@/components/ui/Prose";
+import { ContentGrid } from "@/components/ui/ContentGrid";
 
 const sidebarItems = [
   { id: "silicon-valley", num: "I", title: "Silicon Valley" },
@@ -58,29 +61,11 @@ function FeaturePhoto({ photo }: { photo: FuturoPhotoCard }) {
   );
 }
 
-function Kicker({ text }: { text: string }) {
-  return (
-    <p className="mb-6 font-accent text-[length:var(--text-xs)] uppercase tracking-[0.15em] text-celeste">
-      {text}
-    </p>
-  );
-}
-
-function ParagraphBlock({ paragraphs }: { paragraphs: string[] }) {
-  return (
-    <div className="space-y-4">
-      {paragraphs.map((p, i) => (
-        <p key={i} className="prose-body m-0">{p}</p>
-      ))}
-    </div>
-  );
-}
-
 function PhotoGallery({ photos }: { photos: GalleryPhoto[] }) {
   return (
     <div className="mt-10">
       <h4 className="badge-text mb-5 !text-gold">Galería — La gira en imágenes</h4>
-      <div className="grid grid-cols-2 gap-3 md:grid-cols-3">
+      <ContentGrid cols={3}>
         {photos.map((photo, i) => (
           <figure key={i} className="group relative m-0 overflow-hidden rounded-lg">
             <Image
@@ -105,7 +90,7 @@ function PhotoGallery({ photos }: { photos: GalleryPhoto[] }) {
             </div>
           </figure>
         ))}
-      </div>
+      </ContentGrid>
     </div>
   );
 }
@@ -130,46 +115,44 @@ export function FuturoContent({
   return (
     <SidebarLayout label="Proyectos" items={sidebarItems} variant="navy">
       {/* I — Silicon Valley */}
-      <article id="silicon-valley" className="mb-16">
+      <SectionArticle id="silicon-valley">
         <ChapterHeader
           numeral="I"
           title={`${siliconValley.titleLine1} ${siliconValley.titleLine2Em}`}
         />
-        <Kicker text={siliconValley.kicker} />
+        <SectionKicker color="celeste">{siliconValley.kicker}</SectionKicker>
         <FeaturePhoto photo={siliconValley.photo} />
         <StatRow stats={siliconValley.stats} />
-        <ParagraphBlock paragraphs={siliconValley.paragraphs} />
+        <Prose>
+          {siliconValley.paragraphs.map((p, i) => <p key={i}>{p}</p>)}
+        </Prose>
         <PhotoGallery photos={galleryPhotos} />
-      </article>
-
-      <Divider className="mb-12" />
+      </SectionArticle>
 
       {/* II — Stargate */}
-      <article id="stargate" className="mb-16">
+      <SectionArticle id="stargate">
         <ChapterHeader
           numeral="II"
           title={`${stargate.titleLine1} ${stargate.titleLine2}`}
         />
-        <Kicker text={stargate.kicker} />
+        <SectionKicker color="celeste">{stargate.kicker}</SectionKicker>
         <FeaturePhoto photo={stargate.photo} />
         <StatRow stats={stargate.stats} />
-        <div className="mb-8">
-          <ParagraphBlock paragraphs={stargate.paragraphs} />
-        </div>
+        <Prose className="mb-8">
+          {stargate.paragraphs.map((p, i) => <p key={i}>{p}</p>)}
+        </Prose>
         <Pullquote cite={`— ${stargate.quote.cite}`}>
           {stargate.quote.text}
         </Pullquote>
-      </article>
-
-      <Divider className="mb-12" />
+      </SectionArticle>
 
       {/* III — Nuclear */}
-      <article id="nuclear" className="mb-16">
+      <SectionArticle id="nuclear">
         <ChapterHeader
           numeral="III"
           title={`${nuclear.titleLine1} ${nuclear.titleLine2}`}
         />
-        <Kicker text={nuclear.kicker} />
+        <SectionKicker color="celeste">{nuclear.kicker}</SectionKicker>
         <FeaturePhoto photo={nuclear.photo} />
         <StatRow stats={nuclear.stats} />
         <div className="mb-8 space-y-6">
@@ -184,21 +167,21 @@ export function FuturoContent({
           {nuclear.quote.text}
         </Pullquote>
         <p className="prose-body m-0">{nuclear.closingParagraph}</p>
-      </article>
-
-      <Divider className="mb-12" />
+      </SectionArticle>
 
       {/* IV — Vaca Muerta */}
-      <article id="vaca-muerta" className="mb-16">
+      <SectionArticle id="vaca-muerta" last>
         <ChapterHeader
           numeral="IV"
           title={`${vacaMuerta.titleLine1} ${vacaMuerta.titleLine2Em}`}
         />
-        <Kicker text={vacaMuerta.kicker} />
+        <SectionKicker color="celeste">{vacaMuerta.kicker}</SectionKicker>
         <FeaturePhoto photo={vacaMuerta.photo} />
         <StatRow stats={vacaMuerta.stats} />
-        <ParagraphBlock paragraphs={vacaMuerta.paragraphs} />
-      </article>
+        <Prose>
+          {vacaMuerta.paragraphs.map((p, i) => <p key={i}>{p}</p>)}
+        </Prose>
+      </SectionArticle>
 
       {/* Closing */}
       <div className="border-t border-border py-12 text-center">

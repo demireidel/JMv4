@@ -2,10 +2,12 @@ import Image from "next/image";
 import type { Etapa } from "@/data/archivo";
 import { ChapterHeader } from "@/components/ui/ChapterHeader";
 import { Card } from "@/components/ui/Card";
+import { SectionArticle } from "@/components/ui/SectionArticle";
+import { ContentGrid } from "@/components/ui/ContentGrid";
 
 export function LibrosSection({ etapas }: { etapas: Etapa[] }) {
   return (
-    <article id="libros" className="mb-16">
+    <SectionArticle id="libros">
       <ChapterHeader numeral="III" title="Libros" />
       <div className="space-y-10">
         {etapas.map((etapa) => (
@@ -14,7 +16,7 @@ export function LibrosSection({ etapas }: { etapas: Etapa[] }) {
               {etapa.label}{" "}
               <span className="text-text-tertiary">({etapa.desc})</span>
             </h3>
-            <div className="grid gap-4 sm:grid-cols-2">
+            <ContentGrid cols={2}>
               {etapa.books.map((book) => (
                 <Card
                   key={book.title}
@@ -32,29 +34,29 @@ export function LibrosSection({ etapas }: { etapas: Etapa[] }) {
                     />
                   )}
                   <div>
-                    <p className="m-0 text-[length:var(--text-xs)] text-text-tertiary">
+                    <p className="card-body">
                       {book.year}
                     </p>
-                    <h4 className="m-0 mt-1 font-display text-[length:var(--text-sm)] leading-[1.3] text-text-primary">
+                    <h4 className="card-heading mt-1">
                       {book.title}
                     </h4>
                     {book.publisher && (
-                      <p className="m-0 mt-1 text-[length:var(--text-xs)] text-text-tertiary">
+                      <p className="card-body mt-1">
                         {book.publisher}
                       </p>
                     )}
                     {book.desc && (
-                      <p className="m-0 mt-1 text-[length:var(--text-xs)] leading-[1.5] text-text-secondary">
+                      <p className="card-body mt-1">
                         {book.desc}
                       </p>
                     )}
                   </div>
                 </Card>
               ))}
-            </div>
+            </ContentGrid>
           </div>
         ))}
       </div>
-    </article>
+    </SectionArticle>
   );
 }

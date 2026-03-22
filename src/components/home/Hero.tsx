@@ -129,42 +129,44 @@ export function Hero() {
       >
         {/* Eyebrow */}
         <p
-          className="mb-4 text-center font-accent text-[length:var(--text-sm)] uppercase tracking-[0.25em] text-white/60"
+          className="mb-6 text-center font-accent text-[length:var(--text-xs)] uppercase tracking-[0.35em] text-white/50"
           style={{
             opacity: step >= 2 ? 1 : 0,
             transform: step >= 2 ? "translateY(0)" : "translateY(12px)",
             transition: "opacity 600ms var(--ease-out-expo), transform 600ms var(--ease-out-expo)",
           }}
         >
-          Presidente de la Nacion Argentina
+          Presidente de la Nación Argentina
         </p>
 
         <h1
           className="text-center"
           style={{
-            lineHeight: 0.9,
-            textShadow: "0 2px 40px oklch(0 0 0 / 0.5)",
+            lineHeight: 0.88,
+            textShadow: "0 4px 48px oklch(0 0 0 / 0.6)",
           }}
         >
-          {/* "Javier" — clip-path reveal from bottom */}
+          {/* "Javier" — slightly smaller, white, clip-path reveal from bottom */}
           <span
-            className="block font-accent text-[length:var(--text-hero)] font-bold uppercase tracking-[0.12em] text-white"
+            className="block font-accent font-bold uppercase text-white"
             style={{
+              fontSize: "clamp(2.5rem, 9vw, 5.5rem)",
+              letterSpacing: "0.18em",
               clipPath: step >= 3 ? "inset(0)" : "inset(100% 0 0 0)",
               transition: "clip-path 800ms var(--ease-out-expo)",
             }}
           >
             Javier
           </span>
-          {/* "Milei" — clip-path reveal, then shimmer starts */}
+          {/* "Milei" — larger, gold shimmer, clip-path reveal */}
           <span
-            className={`block font-accent text-[length:var(--text-hero)] font-bold uppercase tracking-[0.12em] ${step >= 4 ? "gold-shimmer" : ""}`}
+            className={`block font-accent font-bold uppercase ${step >= 4 ? "gold-shimmer" : ""}`}
             style={{
+              fontSize: "clamp(4rem, 16vw, 9.5rem)",
+              letterSpacing: "0.08em",
               clipPath: step >= 4 ? "inset(0)" : "inset(100% 0 0 0)",
-              transition: "clip-path 800ms var(--ease-out-expo)",
-              ...(!step || step < 4
-                ? { color: "var(--color-gold)" }
-                : {}),
+              transition: "clip-path 900ms var(--ease-out-expo)",
+              ...(!step || step < 4 ? { color: "var(--color-gold)" } : {}),
             }}
           >
             Milei
@@ -173,24 +175,24 @@ export function Hero() {
 
         {/* Gold divider — expands from center */}
         <div
-          className="mx-auto mb-4 mt-6 h-0.5 w-12 bg-gold"
+          className="mx-auto mb-5 mt-7 h-px w-20 bg-gold"
           style={{
             transform: step >= 5 ? "scaleX(1)" : "scaleX(0)",
             transformOrigin: "center",
-            transition: "transform 600ms var(--ease-out-expo)",
+            transition: "transform 700ms var(--ease-out-expo)",
           }}
         />
 
         {/* Subtitle */}
         <p
-          className="text-center font-display text-[length:var(--text-lg)] italic text-white/70"
+          className="max-w-sm text-center font-display text-[length:var(--text-lg)] italic leading-snug text-white/65"
           style={{
             opacity: step >= 6 ? 1 : 0,
-            transform: step >= 6 ? "translateY(0)" : "translateY(8px)",
-            transition: "opacity 600ms var(--ease-out-expo), transform 600ms var(--ease-out-expo)",
+            transform: step >= 6 ? "translateY(0)" : "translateY(10px)",
+            transition: "opacity 700ms var(--ease-out-expo), transform 700ms var(--ease-out-expo)",
           }}
         >
-          Argentina sera el pais mas libre del mundo
+          Argentina será el país más libre del mundo
         </p>
 
         {/* Scroll indicator */}

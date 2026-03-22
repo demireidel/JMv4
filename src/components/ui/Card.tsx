@@ -48,8 +48,8 @@ export function Card({
         className={`${accent ? "surface-card-accent" : "surface-card"} card-hover relative ${className}`}
         style={{
           transform: hovering
-            ? `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-2px)`
-            : "perspective(800px) rotateX(0) rotateY(0) translateY(0)",
+            ? `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`
+            : "perspective(800px) rotateX(0) rotateY(0)",
           transition: hovering
             ? "transform 100ms linear"
             : "transform 400ms var(--ease-spring)",

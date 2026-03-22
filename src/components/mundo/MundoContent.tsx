@@ -6,7 +6,8 @@ import { financialSupport, cooperationGrid, cooperacionHeader, forumAppearances,
 import { SidebarLayout } from "@/components/ui/SidebarLayout";
 import { ChapterHeader } from "@/components/ui/ChapterHeader";
 import { Card } from "@/components/ui/Card";
-import { Divider } from "@/components/ui/Divider";
+import { SectionArticle } from "@/components/ui/SectionArticle";
+import { ContentGrid } from "@/components/ui/ContentGrid";
 
 const sections = [
   { id: "estadisticas", num: "I", title: "Estadísticas clave" },
@@ -78,12 +79,8 @@ function ForumCard({ forum }: { forum: ForumAppearance }) {
         </div>
       </div>
       <div className="p-5">
-        <h4 className="m-0 mb-2 font-display text-[length:var(--text-sm)] text-text-primary">
-          {forum.title}
-        </h4>
-        <p className="m-0 text-[length:var(--text-xs)] leading-[1.6] text-text-secondary">
-          {forum.desc}
-        </p>
+        <h4 className="card-heading m-0 mb-2">{forum.title}</h4>
+        <p className="card-body m-0">{forum.desc}</p>
       </div>
     </Card>
   );
@@ -103,45 +100,41 @@ export function MundoContent({
   return (
     <SidebarLayout label="Secciones" items={sections} variant="navy">
       {/* I — Stats */}
-      <article id="estadisticas" className="mb-16">
+      <SectionArticle id="estadisticas">
         <ChapterHeader numeral="I" title="Estadísticas clave" />
         <div className="grid grid-cols-2 gap-4">
           {megaStats.map((stat) => (
             <Card key={stat.label} className="p-5">
               <p className="stat-number m-0">{stat.value}</p>
-              <p className="m-0 mt-2 font-accent text-[length:var(--text-xs)] uppercase tracking-[0.05em] text-text-primary">
+              <p className="card-label !text-text-primary m-0 mt-2">
                 {stat.label}
               </p>
-              <p className="m-0 mt-1 text-[length:var(--text-xs)] text-text-tertiary">
+              <p className="card-body mt-1 m-0">
                 {stat.detail}
               </p>
             </Card>
           ))}
         </div>
-      </article>
-
-      <Divider className="mb-12" />
+      </SectionArticle>
 
       {/* II — Forums */}
-      <article id="foros" className="mb-16">
+      <SectionArticle id="foros">
         <ChapterHeader
           numeral="II"
           title="Foros internacionales"
           subtitle={forosHeader.sectionIntro}
         />
-        <div className="grid gap-5 sm:grid-cols-2">
+        <ContentGrid cols={2}>
           {forumAppearances.map((forum) => (
             <ForumCard key={forum.title} forum={forum} />
           ))}
-        </div>
-      </article>
-
-      <Divider className="mb-12" />
+        </ContentGrid>
+      </SectionArticle>
 
       {/* III — Leaders */}
-      <article id="aliados" className="mb-16">
+      <SectionArticle id="aliados">
         <ChapterHeader numeral="III" title="Aliados y socios estratégicos" />
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
+        <ContentGrid cols={3}>
           {leaders.map((l) => (
             <Card key={l.name} className="flex items-center gap-3 px-4 py-3">
               <span className="text-2xl">{l.flag}</span>
@@ -149,19 +142,17 @@ export function MundoContent({
                 <p className="m-0 text-[length:var(--text-sm)] font-semibold text-text-primary">
                   {l.name}
                 </p>
-                <p className="m-0 text-[length:var(--text-xs)] text-text-tertiary">
+                <p className="card-body m-0">
                   {l.role}
                 </p>
               </div>
             </Card>
           ))}
-        </div>
-      </article>
-
-      <Divider className="mb-12" />
+        </ContentGrid>
+      </SectionArticle>
 
       {/* IV — Timeline */}
-      <article id="cronologia" className="mb-16">
+      <SectionArticle id="cronologia">
         <ChapterHeader numeral="IV" title="Cronología diplomática" />
         <div className="space-y-4">
           {timeline.map((event, i) => (
@@ -170,22 +161,16 @@ export function MundoContent({
                 {event.date}
               </div>
               <div>
-                <h4 className="m-0 mb-1 font-display text-[length:var(--text-sm)] text-text-primary">
-                  {event.title}
-                </h4>
-                <p className="m-0 text-[length:var(--text-xs)] leading-[1.6] text-text-secondary">
-                  {event.desc}
-                </p>
+                <h4 className="card-heading m-0 mb-1">{event.title}</h4>
+                <p className="card-body m-0">{event.desc}</p>
               </div>
             </Card>
           ))}
         </div>
-      </article>
-
-      <Divider className="mb-12" />
+      </SectionArticle>
 
       {/* V — Trade Agreements */}
-      <article id="acuerdos" className="mb-16">
+      <SectionArticle id="acuerdos">
         <ChapterHeader numeral="V" title="Acuerdos comerciales" />
         <div className="space-y-6">
           {tradeAgreements.map((ta) => (
@@ -193,33 +178,29 @@ export function MundoContent({
           ))}
           <AgreementCard ta={financialSupport} />
         </div>
-      </article>
-
-      <Divider className="mb-12" />
+      </SectionArticle>
 
       {/* VI — Cooperation */}
-      <article id="cooperacion">
+      <SectionArticle id="cooperacion" last>
         <ChapterHeader
           numeral="VI"
           title="Cooperación y financiamiento"
           subtitle={cooperacionHeader.sectionIntro}
         />
-        <div className="grid gap-4 sm:grid-cols-2">
+        <ContentGrid cols={2}>
           {cooperationGrid.map((item) => (
             <Card key={item.title} className="p-5">
               <div className="mb-2 flex items-center gap-2">
                 <span className="text-xl">{item.icon}</span>
-                <h4 className="m-0 font-accent text-[length:var(--text-sm)] uppercase tracking-[0.05em] text-text-primary">
+                <h4 className="card-label !text-text-primary !mb-0 m-0">
                   {item.title}
                 </h4>
               </div>
-              <p className="m-0 text-[length:var(--text-xs)] leading-[1.6] text-text-secondary">
-                {item.desc}
-              </p>
+              <p className="card-body m-0">{item.desc}</p>
             </Card>
           ))}
-        </div>
-      </article>
+        </ContentGrid>
+      </SectionArticle>
     </SidebarLayout>
   );
 }

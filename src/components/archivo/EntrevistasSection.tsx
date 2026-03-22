@@ -2,16 +2,17 @@ import type { Entrevista } from "@/data/archivo";
 import { ChapterHeader } from "@/components/ui/ChapterHeader";
 import { Card } from "@/components/ui/Card";
 import { YouTubeEmbed } from "@/components/ui/YouTubeEmbed";
+import { SectionArticle } from "@/components/ui/SectionArticle";
 
 export function EntrevistasSection({ entrevistas }: { entrevistas: Entrevista[] }) {
   return (
-    <article id="entrevistas" className="mb-16">
+    <SectionArticle id="entrevistas">
       <ChapterHeader numeral="II" title="Entrevistas" />
       <div className="space-y-6">
         {entrevistas.map((e, i) => (
           <Card key={i} accent={e.highlight} className="p-5">
             <div className="mb-2 flex items-center gap-3">
-              <span className="font-accent text-[length:var(--text-xs)] tracking-[0.05em] text-gold">
+              <span className="card-label !mb-0 !text-gold inline">
                 {e.date}
               </span>
               {e.duration && (
@@ -24,14 +25,14 @@ export function EntrevistasSection({ entrevistas }: { entrevistas: Entrevista[] 
               {e.outlet}
             </h4>
             {e.journalist && (
-              <p className="m-0 mb-2 text-[length:var(--text-xs)] text-text-tertiary">
+              <p className="card-body mb-2">
                 Con {e.journalist}
               </p>
             )}
             {e.videoId && (
               <YouTubeEmbed videoId={e.videoId} title={e.outlet} />
             )}
-            <p className="m-0 mt-3 text-[length:var(--text-xs)] leading-[1.6] text-text-secondary">
+            <p className="card-body mt-3">
               {e.desc}
             </p>
             {e.impact && (
@@ -42,6 +43,6 @@ export function EntrevistasSection({ entrevistas }: { entrevistas: Entrevista[] 
           </Card>
         ))}
       </div>
-    </article>
+    </SectionArticle>
   );
 }

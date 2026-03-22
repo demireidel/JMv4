@@ -10,12 +10,12 @@ export function ChapterHeader({
   subtitle,
 }: ChapterHeaderProps) {
   return (
-    <div className="mb-2">
-      <div className="mb-2 flex items-baseline gap-4">
+    <div className="mb-6">
+      <div className="mb-3 flex items-baseline gap-4">
         <span className="chapter-numeral">{numeral}</span>
         <h3 className="chapter-title">{title}</h3>
       </div>
-      {subtitle && <p className="prose-body mb-8">{subtitle}</p>}
+      {subtitle && <p className="prose-body mb-10">{subtitle}</p>}
     </div>
   );
 }

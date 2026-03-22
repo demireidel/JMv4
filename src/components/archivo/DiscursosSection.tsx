@@ -2,16 +2,17 @@ import type { Discurso } from "@/data/archivo";
 import { ChapterHeader } from "@/components/ui/ChapterHeader";
 import { Card } from "@/components/ui/Card";
 import { YouTubeEmbed } from "@/components/ui/YouTubeEmbed";
+import { SectionArticle } from "@/components/ui/SectionArticle";
 
 export function DiscursosSection({ discursos }: { discursos: Discurso[] }) {
   return (
-    <article id="discursos" className="mb-16">
+    <SectionArticle id="discursos">
       <ChapterHeader numeral="I" title="Discursos" />
       <div className="space-y-6">
         {discursos.map((d, i) => (
           <Card key={i} accent={d.keynote} className="p-5">
             <div className="mb-2 flex items-center gap-3">
-              <span className="font-accent text-[length:var(--text-xs)] tracking-[0.05em] text-gold">
+              <span className="card-label !mb-0 !text-gold inline">
                 {d.date}
               </span>
               {d.keynote && (
@@ -28,13 +29,13 @@ export function DiscursosSection({ discursos }: { discursos: Discurso[] }) {
             <h4 className="m-0 mb-1 font-display text-[length:var(--text-base)] text-text-primary">
               {d.title}
             </h4>
-            <p className="m-0 mb-2 text-[length:var(--text-xs)] text-text-tertiary">
+            <p className="card-body mb-2">
               {d.location}
             </p>
             {d.videoId && (
               <YouTubeEmbed videoId={d.videoId} title={d.title} />
             )}
-            <p className="m-0 mt-3 text-[length:var(--text-xs)] leading-[1.6] text-text-secondary">
+            <p className="card-body mt-3">
               {d.desc}
             </p>
             {d.frase && (
@@ -57,6 +58,6 @@ export function DiscursosSection({ discursos }: { discursos: Discurso[] }) {
           </Card>
         ))}
       </div>
-    </article>
+    </SectionArticle>
   );
 }

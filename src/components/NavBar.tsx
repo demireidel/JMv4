@@ -11,6 +11,7 @@ export function NavBar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
   const hamburgerRef = useRef<HTMLButtonElement>(null);
+  const menuNavRef = useRef<HTMLElement>(null);
   const navListRef = useRef<HTMLUListElement>(null);
   const linkRefs = useRef<Map<string, HTMLAnchorElement>>(new Map());
   const [underline, setUnderline] = useState({ left: 0, width: 0 });
@@ -62,9 +63,14 @@ export function NavBar() {
         }
         // Focus trap: keep Tab within the mobile menu
         if (e.key === "Tab") {
-          const focusable = document.querySelectorAll<HTMLElement>(
-            '[aria-label="Menu movil"] a[tabindex="0"]'
-          );
+          const container = menuNavRef.current;
+          const focusable = container
+            ? Array.from(
+                container.querySelectorAll<HTMLElement>(
+                  'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+                )
+              )
+            : [];
           if (focusable.length === 0) return;
           const first = focusable[0];
           const last = focusable[focusable.length - 1];
@@ -193,7 +199,7 @@ export function NavBar() {
         }`}
         aria-hidden={!menuOpen}
       >
-        <nav aria-label="Menu movil">
+        <nav ref={menuNavRef} aria-label="Menu movil">
           <ul className="m-0 flex list-none flex-col items-center gap-2 p-0">
             {navLinks.map((link, i) => (
               <li

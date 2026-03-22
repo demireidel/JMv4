@@ -8,7 +8,7 @@ import { Card } from "@/components/ui/Card";
 import { BeforeAfterPanel } from "@/components/ui/BeforeAfterPanel";
 import { ExpandableSection } from "@/components/ui/ExpandableSection";
 import { Pullquote } from "@/components/ui/Pullquote";
-import { Divider } from "@/components/ui/Divider";
+import { SectionArticle } from "@/components/ui/SectionArticle";
 
 const romanNumerals = ["I", "II", "III", "IV", "V", "VI"];
 
@@ -112,7 +112,7 @@ export function ReformasContent({
         const blockReformas = reformas.slice(block.range[0], block.range[1]);
 
         return (
-          <article key={block.title} id={id} className="mb-16">
+          <SectionArticle key={block.title} id={id} last={i === blocks.length - 1}>
             <ChapterHeader
               numeral={romanNumerals[i]}
               title={cleanTitle(block.title)}
@@ -124,9 +124,7 @@ export function ReformasContent({
                 <ReformCard key={r.num} reforma={r} />
               ))}
             </div>
-
-            {i < blocks.length - 1 && <Divider className="mt-16" />}
-          </article>
+          </SectionArticle>
         );
       })}
     </SidebarLayout>
