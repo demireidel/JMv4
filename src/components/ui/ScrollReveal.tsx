@@ -23,38 +23,52 @@ interface ScrollRevealProps {
   as?: ElementType;
 }
 
-const variantMap: Record<AnimationVariant, { animation: string; initial: string }> = {
+interface VariantStyles {
+  hidden: React.CSSProperties;
+  visible: React.CSSProperties;
+  transition: string;
+}
+
+const variants: Record<AnimationVariant, VariantStyles> = {
   "fade-up": {
-    animation: "anim-fade-up",
-    initial: "opacity:0;transform:translateY(24px)",
+    hidden: { opacity: 0, transform: "translateY(24px)" },
+    visible: { opacity: 1, transform: "translateY(0)" },
+    transition: "opacity,transform",
   },
   "fade-in": {
-    animation: "anim-fade-in",
-    initial: "opacity:0",
+    hidden: { opacity: 0 },
+    visible: { opacity: 1 },
+    transition: "opacity",
   },
   "scale-in": {
-    animation: "anim-scale-in",
-    initial: "opacity:0;transform:scale(0.92)",
+    hidden: { opacity: 0, transform: "scale(0.92)" },
+    visible: { opacity: 1, transform: "scale(1)" },
+    transition: "opacity,transform",
   },
   "clip-reveal": {
-    animation: "anim-clip-reveal-up",
-    initial: "clip-path:inset(100% 0 0 0)",
+    hidden: { clipPath: "inset(100% 0 0 0)" },
+    visible: { clipPath: "inset(0)" },
+    transition: "clip-path",
   },
   "slide-left": {
-    animation: "anim-slide-left",
-    initial: "opacity:0;transform:translateX(-40px)",
+    hidden: { opacity: 0, transform: "translateX(-40px)" },
+    visible: { opacity: 1, transform: "translateX(0)" },
+    transition: "opacity,transform",
   },
   "slide-right": {
-    animation: "anim-slide-right",
-    initial: "opacity:0;transform:translateX(40px)",
+    hidden: { opacity: 0, transform: "translateX(40px)" },
+    visible: { opacity: 1, transform: "translateX(0)" },
+    transition: "opacity,transform",
   },
   "blur-in": {
-    animation: "anim-blur-in",
-    initial: "opacity:0;filter:blur(8px)",
+    hidden: { opacity: 0, filter: "blur(8px)" },
+    visible: { opacity: 1, filter: "blur(0px)" },
+    transition: "opacity,filter",
   },
   none: {
-    animation: "",
-    initial: "",
+    hidden: {},
+    visible: {},
+    transition: "",
   },
 };
 
@@ -96,27 +110,27 @@ export function ScrollReveal({
     return () => observer.disconnect();
   }, [threshold, once]);
 
-  const config = variantMap[variant];
-
-  // Build style: initial hidden state or animation
-  const style: React.CSSProperties = {};
+  const config = variants[variant];
 
   if (variant === "none") {
-    // no-op wrapper, just provides intersection trigger
-  } else if (!visible) {
-    // Parse initial styles
-    const parts = config.initial.split(";").filter(Boolean);
-    for (const part of parts) {
-      const [prop, val] = part.split(":").map((s) => s.trim());
-      if (prop === "opacity") style.opacity = 0;
-      if (prop === "transform") style.transform = val;
-      if (prop === "clip-path") style.clipPath = val;
-      if (prop === "filter") style.filter = val;
-    }
-  } else {
-    // Animate in
-    style.animation = `${config.animation} ${duration}ms var(--ease-out-expo) ${delay}ms both`;
+    return (
+      <Tag ref={ref} className={className}>
+        {children}
+      </Tag>
+    );
   }
+
+  const ease = "var(--ease-out-expo)";
+  const props = config.transition.split(",");
+  const transitionValue = props
+    .map((p) => `${p} ${duration}ms ${ease} ${delay}ms`)
+    .join(", ");
+
+  const style: React.CSSProperties = {
+    ...(visible ? config.visible : config.hidden),
+    transition: transitionValue,
+    willChange: visible ? undefined : config.transition,
+  };
 
   return (
     <Tag ref={ref} className={className} style={style}>
