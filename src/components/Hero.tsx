@@ -67,12 +67,11 @@ export function Hero() {
             Javier
           </span>
           <span
-            className="block"
+            className="block gold-shimmer"
             style={{
               fontFamily: "var(--font-accent)",
               fontSize: "var(--text-hero)",
               fontWeight: 400,
-              color: "var(--gold)",
               letterSpacing: "0.08em",
               textTransform: "uppercase",
             }}

@@ -1,5 +1,8 @@
+"use client";
+
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
 
 interface SectionPreview {
   title: string;
@@ -83,16 +86,14 @@ export function SectionPreviews() {
         </h2>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {sections.map((s) => (
+          {sections.map((s, i) => (
+            <ScrollReveal key={s.href} delay={i * 80}>
             <Link
-              key={s.href}
               href={s.href}
-              className="group block rounded-xl p-6 no-underline transition-all"
+              className="group block rounded-xl p-6 no-underline card-hover"
               style={{
                 background: "var(--surface-1)",
                 border: "1px solid var(--border)",
-                transitionDuration: "var(--duration-fast)",
-                transitionTimingFunction: "var(--ease-standard)",
               }}
             >
               {/* Stat chip */}
@@ -173,6 +174,7 @@ export function SectionPreviews() {
                 </svg>
               </div>
             </Link>
+            </ScrollReveal>
           ))}
         </div>
       </Container>
