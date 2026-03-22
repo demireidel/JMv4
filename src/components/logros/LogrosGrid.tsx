@@ -17,7 +17,7 @@ export function LogrosGrid({ logros }: { logros: Logro[] }) {
             letterSpacing: "0.2em",
           }}
         >
-          7 batallas más
+          {logros.length} batallas más
         </p>
         <h2
           className="text-center mb-12"
