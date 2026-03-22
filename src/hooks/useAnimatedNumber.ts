@@ -12,6 +12,7 @@ interface UseAnimatedNumberOptions {
 /**
  * Animates a number from 0 to target when the element scrolls into view.
  * Exponential ease-out for a premium feel.
+ * Returns progress (0..1) for coordinating scale/glow effects.
  */
 export function useAnimatedNumber({
   target,
@@ -21,6 +22,7 @@ export function useAnimatedNumber({
 }: UseAnimatedNumberOptions) {
   const ref = useRef<HTMLDivElement>(null);
   const [value, setValue] = useState(0);
+  const [progress, setProgress] = useState(0);
   const hasAnimated = useRef(false);
 
   useEffect(() => {
@@ -36,11 +38,12 @@ export function useAnimatedNumber({
           const scaledTarget = Math.round(target * scale);
 
           const animate = (now: number) => {
-            const progress = Math.min((now - start) / duration, 1);
-            const eased = 1 - Math.pow(2, -10 * progress);
+            const p = Math.min((now - start) / duration, 1);
+            const eased = 1 - Math.pow(2, -10 * p);
             const current = Math.round(scaledTarget * eased) / scale;
             setValue(current);
-            if (progress < 1) requestAnimationFrame(animate);
+            setProgress(p);
+            if (p < 1) requestAnimationFrame(animate);
           };
 
           requestAnimationFrame(animate);
@@ -57,5 +60,5 @@ export function useAnimatedNumber({
     ? value.toFixed(decimals)
     : value.toLocaleString("es-AR");
 
-  return { ref, value, display };
+  return { ref, value, display, progress };
 }

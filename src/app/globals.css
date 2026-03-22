@@ -97,6 +97,8 @@
   --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
   --ease-decelerate: cubic-bezier(0, 0, 0.2, 1);
   --ease-accelerate: cubic-bezier(0.4, 0, 1, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 
   /* ── Layout ────────────────────────────────────────────── */
   --width-content: 80rem;
@@ -395,21 +397,21 @@ html {
 }
 
 ::view-transition-old(root) {
-  animation: fade-out var(--duration-normal) var(--ease-accelerate);
+  animation: vt-exit var(--duration-normal) var(--ease-accelerate) forwards;
 }
 
 ::view-transition-new(root) {
-  animation: fade-in var(--duration-normal) var(--ease-decelerate);
+  animation: vt-enter var(--duration-normal) var(--ease-decelerate) forwards;
 }
 
-@keyframes fade-out {
-  from { opacity: 1; }
-  to { opacity: 0; }
+@keyframes vt-exit {
+  from { opacity: 1; transform: translateY(0); filter: blur(0); }
+  to { opacity: 0; transform: translateY(-8px); filter: blur(2px); }
 }
 
-@keyframes fade-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
+@keyframes vt-enter {
+  from { opacity: 0; transform: translateY(8px); filter: blur(2px); }
+  to { opacity: 1; transform: translateY(0); filter: blur(0); }
 }
 
 /* ── Gold Shimmer ─────────────────────────────────────────── */
@@ -475,4 +477,211 @@ blockquote {
 img {
   max-width: 100%;
   height: auto;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   Animation Keyframes — Ultra Premium Motion Library
+   ══════════════════════════════════════════════════════════════ */
+
+@keyframes anim-fade-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes anim-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes anim-scale-in {
+  from { opacity: 0; transform: scale(0.92); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes anim-clip-reveal-up {
+  from { clip-path: inset(100% 0 0 0); }
+  to { clip-path: inset(0); }
+}
+
+@keyframes anim-clip-reveal-right {
+  from { clip-path: inset(0 100% 0 0); }
+  to { clip-path: inset(0); }
+}
+
+@keyframes anim-slide-left {
+  from { opacity: 0; transform: translateX(-40px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes anim-slide-right {
+  from { opacity: 0; transform: translateX(40px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes anim-line-expand {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+@keyframes anim-blur-in {
+  from { opacity: 0; filter: blur(8px); }
+  to { opacity: 1; filter: blur(0); }
+}
+
+@keyframes anim-number-pop {
+  from { opacity: 0; transform: scale(0.5); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* ── Scroll Progress Bar (pure CSS) ─────────────────────── */
+.scroll-progress {
+  position: fixed;
+  top: var(--height-nav);
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--color-gold);
+  transform-origin: left;
+  transform: scaleX(0);
+  animation: scroll-scale linear;
+  animation-timeline: scroll();
+  z-index: 51;
+  pointer-events: none;
+}
+
+@keyframes scroll-scale {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+/* ── Link Slide Underline ────────────────────────────────── */
+.link-slide {
+  position: relative;
+}
+
+.link-slide::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--color-gold);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform var(--duration-normal) var(--ease-out-expo);
+}
+
+.link-slide:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* ── Gold Gradient Text (static, no shimmer) ─────────────── */
+.gold-gradient {
+  background-image: linear-gradient(105deg, #c9a227 0%, #f0d060 50%, #c9a227 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* ── Image Reveal Animation ──────────────────────────────── */
+.img-zoom-hover {
+  overflow: hidden;
+  border-radius: var(--radius-md);
+}
+
+.img-zoom-hover img {
+  transition: transform var(--duration-slow) var(--ease-standard);
+}
+
+.img-zoom-hover:hover img {
+  transform: scale(1.04);
+}
+
+/* ── Film Grain Overlay (cinematic texture) ──────────────── */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  pointer-events: none;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
+}
+
+/* ── Vignette Effect ─────────────────────────────────────── */
+.vignette {
+  position: relative;
+}
+
+.vignette::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, transparent 50%, oklch(0.10 0.01 270 / 0.6) 100%);
+  z-index: 1;
+}
+
+/* ── Glow Accent ─────────────────────────────────────────── */
+.glow-accent {
+  position: relative;
+}
+
+.glow-accent::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 60%;
+  height: 60%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, oklch(0.80 0.17 85 / 0.08) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Section Gradient Bleeds ─────────────────────────────── */
+.section-bleed-top {
+  position: relative;
+}
+
+.section-bleed-top::before {
+  content: "";
+  position: absolute;
+  top: -4rem;
+  left: 0;
+  right: 0;
+  height: 8rem;
+  background: linear-gradient(to bottom, transparent, var(--section-bg, var(--color-dark)));
+  pointer-events: none;
+  z-index: 1;
+}
+
+.section-bleed-bottom {
+  position: relative;
+}
+
+.section-bleed-bottom::after {
+  content: "";
+  position: absolute;
+  bottom: -4rem;
+  left: 0;
+  right: 0;
+  height: 8rem;
+  background: linear-gradient(to top, transparent, var(--section-bg, var(--color-dark)));
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ── Animated Divider ────────────────────────────────────── */
+.divider-animated {
+  border: none;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--color-gold), transparent);
+  transform: scaleX(0);
+  transform-origin: center;
 }

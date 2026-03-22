@@ -5,77 +5,94 @@ import type { Logro } from "@/data/logros";
 import { Card } from "@/components/ui/Card";
 import { BeforeAfterPanel } from "@/components/ui/BeforeAfterPanel";
 import { ExpandableSection } from "@/components/ui/ExpandableSection";
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
 
 export function BeforeAfterCard({ logro }: { logro: Logro }) {
   return (
-    <Card>
-      {/* Header with badge */}
-      <div className="flex items-center justify-between border-b border-border px-5 py-4">
-        <span className="badge-text">{logro.badge}</span>
-      </div>
-
-      {/* Title */}
-      <div className="px-5 pb-3 pt-4">
-        <h3 className="m-0 font-display text-[length:var(--text-lg)] leading-snug text-text-primary">
-          {logro.title}
-        </h3>
-      </div>
-
-      {/* Before / After comparison */}
-      <div className="mx-5 mb-4 grid grid-cols-2 gap-px overflow-hidden rounded-lg">
-        <BeforeAfterPanel type="before" value={logro.before.val}>
-          <span className="text-[length:var(--text-xs)] leading-snug text-text-secondary">
-            {logro.before.label}
-          </span>
-        </BeforeAfterPanel>
-        <BeforeAfterPanel type="after" value={logro.after.val}>
-          <span className="text-[length:var(--text-xs)] leading-snug text-text-secondary">
-            {logro.after.label}
-          </span>
-        </BeforeAfterPanel>
-      </div>
-
-      {/* Callout */}
-      <div className="px-5 pb-4">
-        <p className="pullquote m-0 text-[length:var(--text-sm)]">
-          {logro.callout}
-        </p>
-      </div>
-
-      {/* Expandable details */}
-      {logro.paragraphs.length > 0 && (
-        <ExpandableSection
-          label="Leer más"
-          labelExpanded="Cerrar detalle"
-          id={`logro-detail-${logro.num}`}
-        >
-          <div className="space-y-3">
-            {logro.paragraphs.map((p, i) => (
-              <p key={i} className="prose-body m-0">
-                {p}
-              </p>
-            ))}
-
-            {/* Before/After images */}
-            <div className="grid grid-cols-2 gap-3 pt-2">
-              <Image
-                src={logro.imgBefore}
-                alt={logro.altBefore}
-                width={400}
-                height={300}
-                className="aspect-[4/3] w-full rounded-md object-cover"
-              />
-              <Image
-                src={logro.imgAfter}
-                alt={logro.altAfter}
-                width={400}
-                height={300}
-                className="aspect-[4/3] w-full rounded-md object-cover"
-              />
-            </div>
+    <ScrollReveal variant="scale-in">
+      <Card>
+        {/* Header with badge */}
+        <ScrollReveal variant="fade-in" delay={100}>
+          <div className="flex items-center justify-between border-b border-border px-5 py-4">
+            <span className="badge-text">{logro.badge}</span>
           </div>
-        </ExpandableSection>
-      )}
-    </Card>
+        </ScrollReveal>
+
+        {/* Title */}
+        <ScrollReveal variant="fade-up" delay={150}>
+          <div className="px-5 pb-3 pt-4">
+            <h3 className="m-0 font-display text-[length:var(--text-lg)] leading-snug text-text-primary">
+              {logro.title}
+            </h3>
+          </div>
+        </ScrollReveal>
+
+        {/* Before / After comparison — panels slide in from opposite sides */}
+        <div className="mx-5 mb-4 grid grid-cols-2 gap-px overflow-hidden rounded-lg">
+          <ScrollReveal variant="slide-left" delay={200}>
+            <BeforeAfterPanel type="before" value={logro.before.val}>
+              <span className="text-[length:var(--text-xs)] leading-snug text-text-secondary">
+                {logro.before.label}
+              </span>
+            </BeforeAfterPanel>
+          </ScrollReveal>
+          <ScrollReveal variant="slide-right" delay={200}>
+            <BeforeAfterPanel type="after" value={logro.after.val}>
+              <span className="text-[length:var(--text-xs)] leading-snug text-text-secondary">
+                {logro.after.label}
+              </span>
+            </BeforeAfterPanel>
+          </ScrollReveal>
+        </div>
+
+        {/* Callout */}
+        <ScrollReveal variant="fade-up" delay={300}>
+          <div className="px-5 pb-4">
+            <p className="pullquote m-0 text-[length:var(--text-sm)]">
+              {logro.callout}
+            </p>
+          </div>
+        </ScrollReveal>
+
+        {/* Expandable details */}
+        {logro.paragraphs.length > 0 && (
+          <ExpandableSection
+            label="Leer más"
+            labelExpanded="Cerrar detalle"
+            id={`logro-detail-${logro.num}`}
+          >
+            <div className="space-y-3">
+              {logro.paragraphs.map((p, i) => (
+                <p key={i} className="prose-body m-0">
+                  {p}
+                </p>
+              ))}
+
+              {/* Before/After images with zoom hover */}
+              <div className="grid grid-cols-2 gap-3 pt-2">
+                <div className="img-zoom-hover">
+                  <Image
+                    src={logro.imgBefore}
+                    alt={logro.altBefore}
+                    width={400}
+                    height={300}
+                    className="aspect-[4/3] w-full rounded-md object-cover"
+                  />
+                </div>
+                <div className="img-zoom-hover">
+                  <Image
+                    src={logro.imgAfter}
+                    alt={logro.altAfter}
+                    width={400}
+                    height={300}
+                    className="aspect-[4/3] w-full rounded-md object-cover"
+                  />
+                </div>
+              </div>
+            </div>
+          </ExpandableSection>
+        )}
+      </Card>
+    </ScrollReveal>
   );
 }

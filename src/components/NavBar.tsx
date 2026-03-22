@@ -11,6 +11,10 @@ export function NavBar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
   const hamburgerRef = useRef<HTMLButtonElement>(null);
+  const navListRef = useRef<HTMLUListElement>(null);
+  const linkRefs = useRef<Map<string, HTMLAnchorElement>>(new Map());
+  const [underline, setUnderline] = useState({ left: 0, width: 0 });
+  const [navMounted, setNavMounted] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -21,6 +25,30 @@ export function NavBar() {
 
   useEffect(() => {
     setMenuOpen(false);
+  }, [pathname]);
+
+  // Measure active link for sliding underline
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      const activeLink = navLinks.find((link) =>
+        link.href === "/" ? pathname === "/" : pathname.startsWith(link.href)
+      );
+      if (activeLink && navListRef.current) {
+        const linkEl = linkRefs.current.get(activeLink.href);
+        if (linkEl) {
+          const navRect = navListRef.current.getBoundingClientRect();
+          const linkRect = linkEl.getBoundingClientRect();
+          setUnderline({
+            left: linkRect.left - navRect.left,
+            width: linkRect.width,
+          });
+          setNavMounted(true);
+        }
+      } else {
+        setUnderline({ left: 0, width: 0 });
+      }
+    }, 50);
+    return () => clearTimeout(timer);
   }, [pathname]);
 
   useEffect(() => {
@@ -73,10 +101,16 @@ export function NavBar() {
           </Link>
 
           {/* Desktop links */}
-          <ul className="m-0 hidden list-none items-center gap-1 p-0 md:flex">
+          <ul
+            ref={navListRef}
+            className="relative m-0 hidden list-none items-center gap-1 p-0 md:flex"
+          >
             {navLinks.map((link) => (
               <li key={link.href}>
                 <Link
+                  ref={(el) => {
+                    if (el) linkRefs.current.set(link.href, el);
+                  }}
                   href={link.href}
                   className={`relative px-3 py-2 font-body text-sm font-medium no-underline transition-colors duration-[var(--duration-fast)] ${
                     isActive(link.href)
@@ -86,12 +120,23 @@ export function NavBar() {
                   {...(isActive(link.href) ? { "aria-current": "page" as const } : {})}
                 >
                   {link.label}
-                  {isActive(link.href) && (
-                    <span className="absolute inset-x-3 bottom-0 h-0.5 bg-gold" />
-                  )}
                 </Link>
               </li>
             ))}
+
+            {/* Sliding underline */}
+            {underline.width > 0 && (
+              <div
+                className="pointer-events-none absolute bottom-0 h-0.5 bg-gold"
+                style={{
+                  left: `${underline.left}px`,
+                  width: `${underline.width}px`,
+                  transition: navMounted
+                    ? "left 300ms var(--ease-out-expo), width 300ms var(--ease-out-expo)"
+                    : "none",
+                }}
+              />
+            )}
           </ul>
 
           {/* Mobile hamburger */}
@@ -120,6 +165,9 @@ export function NavBar() {
           </button>
         </nav>
       </header>
+
+      {/* Scroll progress bar */}
+      <div className="scroll-progress" />
 
       {/* Mobile overlay menu */}
       <div

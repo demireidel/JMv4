@@ -62,17 +62,19 @@ export function SectionPreviews() {
   return (
     <section className="bg-dark py-[var(--spacing-section)]">
       <Container>
-        <p className="badge-text mb-3 text-center tracking-[0.2em]">
-          Explorar
-        </p>
-        <h2 className="mb-12 text-center font-display text-[length:var(--text-2xl)] text-text-primary">
-          La transformacion, seccion por seccion
-        </h2>
+        <ScrollReveal variant="blur-in">
+          <p className="badge-text mb-3 text-center tracking-[0.2em]">
+            Explorar
+          </p>
+          <h2 className="mb-12 text-center font-display text-[length:var(--text-2xl)] text-text-primary">
+            La transformacion, seccion por seccion
+          </h2>
+        </ScrollReveal>
 
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {sections.map((s, i) => (
-            <ScrollReveal key={s.href} delay={i * 80}>
-              <Link href={s.href} className="block no-underline">
+            <ScrollReveal key={s.href} variant="scale-in" delay={i * 80}>
+              <Link href={s.href} className="group block no-underline">
                 <Card accent hover className="p-6">
                   {/* Stat chip */}
                   {s.stat && (
@@ -100,7 +102,7 @@ export function SectionPreviews() {
                       viewBox="0 0 16 16"
                       fill="none"
                       aria-hidden="true"
-                      className="transition-transform duration-[var(--duration-fast)] group-hover:translate-x-0.5"
+                      className="transition-transform duration-[var(--duration-fast)] group-hover:translate-x-1"
                     >
                       <path
                         d="M6 3l5 5-5 5"
