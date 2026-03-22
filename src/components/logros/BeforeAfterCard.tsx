@@ -167,6 +167,7 @@ export function BeforeAfterCard({ logro }: { logro: Logro }) {
               letterSpacing: "0.1em",
             }}
             aria-expanded={expanded}
+            aria-controls={`logro-detail-${logro.num}`}
           >
             {expanded ? "Cerrar detalle" : "Leer más"}
             <svg
@@ -191,9 +192,10 @@ export function BeforeAfterCard({ logro }: { logro: Logro }) {
           </button>
 
           <div
+            id={`logro-detail-${logro.num}`}
             className="overflow-hidden transition-all"
             style={{
-              maxHeight: expanded ? "60rem" : "0",
+              maxHeight: expanded ? "200rem" : "0",
               transitionDuration: "var(--duration-slow)",
               transitionTimingFunction: "var(--ease-standard)",
             }}

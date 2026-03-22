@@ -187,6 +187,25 @@ export function PobrezaHero({ data }: { data: PobrezaData }) {
           ))}
         </div>
 
+        {/* Narrative */}
+        {data.narrative.length > 0 && (
+          <div className="mb-10" style={{ maxWidth: "52rem" }}>
+            {data.narrative.map((p, i) => (
+              <p
+                key={i}
+                className={i < data.narrative.length - 1 ? "mb-5" : "m-0"}
+                style={{
+                  fontSize: "var(--text-base)",
+                  color: "var(--text-2)",
+                  lineHeight: 1.8,
+                }}
+              >
+                {p}
+              </p>
+            ))}
+          </div>
+        )}
+
         {/* Quote */}
         <blockquote
           className="m-0"
