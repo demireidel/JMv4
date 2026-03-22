@@ -21,7 +21,7 @@ export function Footer() {
             </div>
 
             {/* Nav links */}
-            <nav aria-label="Navegacion del pie de pagina">
+            <nav aria-label="Navegación del pie de página">
               <ul className="m-0 grid list-none grid-cols-2 gap-x-12 gap-y-3 p-0 sm:grid-cols-3">
                 {navLinks.map((link, i) => (
                   <ScrollReveal key={link.href} variant="fade-up" delay={i * 50} as="li">
@@ -42,7 +42,7 @@ export function Footer() {
         <ScrollReveal variant="fade-up" delay={200}>
           <div className="mb-8 text-[length:var(--text-xs)] text-text-tertiary">
             <p className="m-0">
-              Presidencia de la Nacion Argentina — Casa Rosada
+              Presidencia de la Nación Argentina — Casa Rosada
             </p>
             <p className="m-0">Balcarce 50, Buenos Aires, Argentina</p>
           </div>

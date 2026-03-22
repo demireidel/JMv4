@@ -15,18 +15,18 @@ interface SectionPreview {
 
 const sections: SectionPreview[] = [
   {
-    title: "Vision",
-    desc: "La filosofia y los principios que guian cada decision de gobierno",
+    title: "Visión",
+    desc: "La filosofía y los principios que guían cada decisión de gobierno",
     href: "/vision",
     stat: "5",
-    statLabel: "capitulos",
+    statLabel: "capítulos",
   },
   {
     title: "Logros",
-    desc: "Resultados concretos con datos antes y despues — la evidencia habla",
+    desc: "Resultados concretos con datos antes y después — la evidencia habla",
     href: "/logros",
-    stat: "8",
-    statLabel: "logros clave",
+    stat: "19",
+    statLabel: "logros",
   },
   {
     title: "Reformas",
@@ -37,7 +37,7 @@ const sections: SectionPreview[] = [
   },
   {
     title: "Futuro",
-    desc: "Los proyectos estrategicos que posicionan a la Argentina como potencia",
+    desc: "Los proyectos estratégicos que posicionan a la Argentina como potencia",
     href: "/futuro",
     stat: "4",
     statLabel: "proyectos",
@@ -51,7 +51,7 @@ const sections: SectionPreview[] = [
   },
   {
     title: "Archivo",
-    desc: "Libros, articulos academicos, discursos y entrevistas — el pensamiento completo",
+    desc: "Libros, artículos académicos, discursos y entrevistas — el pensamiento completo",
     href: "/archivo",
     stat: "80+",
     statLabel: "obras",
@@ -67,7 +67,7 @@ export function SectionPreviews() {
             Explorar
           </p>
           <h2 className="mb-12 text-center font-display text-[length:var(--text-2xl)] text-text-primary">
-            La transformacion, seccion por seccion
+            La transformación, sección por sección
           </h2>
         </ScrollReveal>
 

@@ -49,7 +49,7 @@ export const reformasHero = {
 export const heroCounters: HeroCounter[] = [
   { num: "14.500+", label: "Desregulaciones" },
   { num: "12", label: "Reformas estructurales" },
-  { num: "2.5", label: "Puntos PIB devueltos" },
+  { num: "2,5", label: "Puntos PIB devueltos" },
   { num: "90", label: "Paquetes reforma 2026" },
 ];
 

@@ -71,7 +71,7 @@ export const leaders: Leader[] = [
   { flag: "🇨🇱", name: "José A. Kast", role: "Presidente de Chile" },
   { flag: "🇭🇺", name: "Viktor Orbán", role: "PM de Hungría" },
   { flag: "🇬🇧", name: "Keir Starmer", role: "PM del Reino Unido" },
-  { flag: "🇺🇸", name: "Pete Hegseth", role: "Secretario de Guerra de EE.UU." },
+  { flag: "🇺🇸", name: "Pete Hegseth", role: "Secretario de Defensa de EE.UU." },
   { flag: "🇦🇪", name: "MGX / Abu Dhabi", role: "Fondo soberano — Stargate" },
   { flag: "🇯🇵", name: "Masayoshi Son", role: "CEO de SoftBank — Stargate" },
 ];
@@ -213,6 +213,16 @@ export const timeline: TimelineEvent[] = [
     desc: "En un gesto sin precedentes, el secretario Bessent activa el Exchange Stabilization Fund (ESF) por primera vez en la historia para un país latinoamericano. Swap de divisas por USD 20.000M, compra directa de bonos soberanos argentinos y crédito stand-by del Tesoro.",
   },
   {
+    date: "OCT 2025",
+    title: "Stargate Argentina — OpenAI elige Patagonia",
+    desc: "OpenAI y Sur Energy firman el acuerdo para construir Stargate Argentina: el primer proyecto de infraestructura de IA fuera de Estados Unidos. Hasta 500 MW de capacidad de cómputo alimentados con energía renovable patagónica. Inversión de hasta USD 25.000 millones bajo el régimen RIGI. Construcción comienza en 2026, primera fase operativa en 2027.",
+  },
+  {
+    date: "OCT 2025",
+    title: "Victoria legislativa histórica — 40,7 %",
+    desc: "La Libertad Avanza arrasa en las elecciones de medio término con el 40,7 % a nivel nacional — victoria en 15 de 24 provincias y en 6 de 8 distritos senatoriales. Por primera vez desde 1987, un presidente gana la provincia de Buenos Aires, bastión histórico del peronismo. LLA consolida el tercio legislativo para blindar vetos y queda a 22 votos de la mayoría simple. Los mercados responden con un rally inmediato.",
+  },
+  {
     date: "NOV 2025",
     title: "Framework Comercial con EE.UU.",
     desc: "La Casa Blanca anuncia el marco del acuerdo bilateral comercial. Comienzan las negociaciones técnicas capítulo por capítulo. El mundo toma nota: un TLC entre EE.UU. y Sudamérica deja de ser fantasía.",
@@ -243,26 +253,6 @@ export const timeline: TimelineEvent[] = [
     desc: "Lo que ningún gobierno logró en 200 años de historia. Primer tratado de libre comercio entre EE.UU. y un país sudamericano. 1.675 productos argentinos sin arancel. Cuota de 100.000 toneladas de carne bovina. Acuerdo de minerales críticos. Un antes y un después.",
   },
   {
-    date: "MAR 2026",
-    title: "Shield of the Americas — Miami",
-    desc: "Coalición de 17 naciones del hemisferio occidental, co-liderada por Argentina y EE.UU., firma en Miami el pacto de seguridad hemisférica más ambicioso en décadas. Objetivo: erradicar el narcoterrorismo y blindar la región contra la interferencia de potencias extracontinentales.",
-  },
-  {
-    date: "MAR 2026",
-    title: "Argentina Week — Nueva York",
-    desc: "Más de 300 líderes empresariales de todo el mundo convergen en Manhattan. Jamie Dimon inaugura el evento desde la flamante torre de JP Morgan en 270 Park Avenue. USD 16.150M en inversiones confirmadas. Gobernadores argentinos salen a vender sus provincias al capital global.",
-  },
-  {
-    date: "OCT 2025",
-    title: "Stargate Argentina — OpenAI elige Patagonia",
-    desc: "OpenAI y Sur Energy firman el acuerdo para construir Stargate Argentina: el primer proyecto de infraestructura de IA fuera de Estados Unidos. Hasta 500 MW de capacidad de cómputo alimentados con energía renovable patagónica. Inversión de hasta USD 25.000 millones bajo el régimen RIGI. Construcción comienza en 2026, primera fase operativa en 2027.",
-  },
-  {
-    date: "OCT 2025",
-    title: "Victoria legislativa histórica — 40,7 %",
-    desc: "La Libertad Avanza arrasa en las elecciones de medio término con el 40,7 % a nivel nacional — victoria en 15 de 24 provincias y en 6 de 8 distritos senatoriales. Por primera vez desde 1987, un presidente gana la provincia de Buenos Aires, bastión histórico del peronismo. LLA consolida el tercio legislativo para blindar vetos y queda a 22 votos de la mayoría simple. Los mercados responden con un rally inmediato.",
-  },
-  {
     date: "FEB 2026",
     title: "Firma del acuerdo comercial y de datos con EE.UU.",
     desc: "El canciller Pablo Quirno y el representante de Comercio Jamieson Greer firman en Washington el acuerdo de comercio, inversiones y datos. Argentina reconoce a EE.UU. como jurisdicción adecuada para transferencia transfronteriza de datos y se compromete a no imponer aranceles a transmisiones electrónicas. Paralelamente, el ministro de Defensa firma con Pete Hegseth la adhesión a la coalición hemisférica de seguridad.",
@@ -271,6 +261,16 @@ export const timeline: TimelineEvent[] = [
     date: "FEB 2026",
     title: "Reforma laboral — Primera en 40 años de democracia",
     desc: "El Senado aprueba la primera reforma laboral integral desde el retorno a la democracia en 1983. Reemplaza el sistema de indemnizaciones por fondos de cese, elimina la ultractividad de convenios colectivos, prioriza acuerdos empresa por empresa sobre los sectoriales, y moderniza licencias, horas extra y régimen de enfermedades inculpables. Aplica a todos los contratos — no solo a los nuevos.",
+  },
+  {
+    date: "MAR 2026",
+    title: "Shield of the Americas — Miami",
+    desc: "Coalición de 17 naciones del hemisferio occidental, co-liderada por Argentina y EE.UU., firma en Miami el pacto de seguridad hemisférica más ambicioso en décadas. Objetivo: erradicar el narcoterrorismo y blindar la región contra la interferencia de potencias extracontinentales.",
+  },
+  {
+    date: "MAR 2026",
+    title: "Argentina Week — Nueva York",
+    desc: "Más de 300 líderes empresariales de todo el mundo convergen en Manhattan. Jamie Dimon inaugura el evento desde la flamante torre de JP Morgan en 270 Park Avenue. USD 16.150M en inversiones confirmadas. Gobernadores argentinos salen a vender sus provincias al capital global.",
   },
   {
     date: "2026",

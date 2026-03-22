@@ -11,10 +11,10 @@ interface StatItem {
 }
 
 const stats: StatItem[] = [
-  { target: 57, suffix: "% → 26.9%", label: "Reduccion de pobreza" },
-  { target: 2.4, suffix: "% mensual", label: "Inflacion", decimals: 1 },
+  { target: 57, suffix: "% → 27%", label: "Reducción de pobreza" },
+  { target: 2.4, suffix: "% mensual", label: "Inflación", decimals: 1 },
   { target: 14500, suffix: "+", label: "Desregulaciones" },
-  { target: 652, suffix: " pts", label: "Riesgo pais" },
+  { target: 497, suffix: " pts", label: "Riesgo país" },
 ];
 
 function AnimatedStat({ stat, delay }: { stat: StatItem; delay: number }) {

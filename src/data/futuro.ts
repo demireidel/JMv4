@@ -130,7 +130,7 @@ export const siliconValley: SiliconValleyData = {
   stats: [
     { val: "7", label: "CEOs tech reunidos" },
     { val: "$6T+", label: "cap. bursátil combinada" },
-    { val: "4°", label: "Hub IA global" },
+    { val: "4°", label: "Hub IA proyectado" },
   ],
   photo: {
     src: "/images/banco/silicon-valley-investors.jpg",
