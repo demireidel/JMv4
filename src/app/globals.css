@@ -1,40 +1,296 @@
 /* ── Tailwind ─────────────────────────────────────────────── */
 @import "tailwindcss";
 
-/* ── Design Tokens ────────────────────────────────────────── */
-@import "../styles/tokens.css";
-
-/* ── Tailwind Theme Extensions ────────────────────────────── */
-/* Fonts loaded via next/font/local in layout.tsx — CSS vars
-   --font-fraunces, --font-oswald, --font-inter are set on <html> */
+/* ══════════════════════════════════════════════════════════════
+   Design Tokens — Single Source of Truth
+   Presidential Website — Javier Milei
+   All design decisions as Tailwind @theme tokens.
+   ══════════════════════════════════════════════════════════════ */
 @theme {
+  /* ── Font Families ─────────────────────────────────────────
+     Loaded via next/font/local in layout.tsx.
+     CSS vars --font-fraunces, --font-oswald, --font-inter
+     are set on <html> by Next.js at build time. */
   --font-display: var(--font-fraunces), Georgia, serif;
   --font-accent: var(--font-oswald), Impact, sans-serif;
   --font-body: var(--font-inter), system-ui, sans-serif;
 
+  /* ── Core Colors (oklch) ───────────────────────────────── */
   --color-gold: oklch(0.80 0.17 85);
   --color-celeste: oklch(0.72 0.11 240);
   --color-dark: oklch(0.10 0.01 270);
   --color-navy: oklch(0.16 0.04 255);
   --color-cream: #f5f0e8;
-  --color-success: #51cf66;
-  --color-danger: #ff6b6b;
+
+  /* Hex fallbacks (OG images, scrollbar, etc.) */
+  --color-gold-hex: #F6B40E;
+  --color-celeste-hex: #74ACDF;
+  --color-dark-hex: #0a0a0f;
+  --color-navy-hex: #0c1a2e;
+
+  /* ── Party Colors (La Libertad Avanza) ─────────────────── */
   --color-lla-violet: #743BBC;
   --color-lla-deep: #280071;
   --color-lla-indigo: #250E62;
 
+  /* ── Semantic Colors ───────────────────────────────────── */
+  --color-success: #51cf66;
+  --color-danger: #ff6b6b;
+
+  /* ── Surface System (glassmorphic layers) ───────────────── */
   --color-surface-1: oklch(0.20 0.02 270 / 0.4);
   --color-surface-2: oklch(0.20 0.02 270 / 0.6);
   --color-surface-3: oklch(0.20 0.02 270 / 0.8);
   --color-border: oklch(1 0 0 / 0.06);
   --color-border-hover: oklch(1 0 0 / 0.12);
 
+  /* ── Text Hierarchy ────────────────────────────────────── */
   --color-text-primary: oklch(1 0 0 / 0.92);
   --color-text-secondary: oklch(1 0 0 / 0.56);
   --color-text-tertiary: oklch(1 0 0 / 0.55);
+
+  /* ── Before / After Tints ──────────────────────────────── */
+  --color-tint-before: oklch(0.30 0.05 25 / 0.3);
+  --color-tint-after: oklch(0.30 0.05 145 / 0.3);
+  --color-border-before: oklch(0.50 0.15 25 / 0.3);
+  --color-border-after: oklch(0.50 0.15 145 / 0.3);
+
+  /* ── Hero / Nav Overlay ────────────────────────────────── */
+  --color-overlay-dark: oklch(0.10 0.01 270);
+  --color-nav-bg: oklch(0.10 0.01 270 / 0.85);
+  --color-nav-bg-mobile: oklch(0.10 0.01 270 / 0.97);
+
+  /* ── Typography Scale (fluid clamp) ────────────────────── */
+  --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+  --text-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
+  --text-base: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);
+  --text-lg: clamp(1.125rem, 1rem + 0.6vw, 1.375rem);
+  --text-xl: clamp(1.375rem, 1.1rem + 1.2vw, 2rem);
+  --text-2xl: clamp(1.75rem, 1.3rem + 2vw, 3rem);
+  --text-3xl: clamp(2.25rem, 1.5rem + 3vw, 4.5rem);
+  --text-hero: clamp(3rem, 2rem + 5vw, 7rem);
+
+  /* ── Spacing Scale (fluid clamp) ───────────────────────── */
+  --spacing-xs: clamp(0.25rem, 0.2rem + 0.25vw, 0.5rem);
+  --spacing-sm: clamp(0.5rem, 0.4rem + 0.5vw, 0.75rem);
+  --spacing-md: clamp(0.75rem, 0.6rem + 0.75vw, 1.25rem);
+  --spacing-lg: clamp(1rem, 0.8rem + 1vw, 1.5rem);
+  --spacing-xl: clamp(1.5rem, 1rem + 2vw, 3rem);
+  --spacing-2xl: clamp(2rem, 1.5rem + 3vw, 5rem);
+  --spacing-3xl: clamp(3rem, 2rem + 5vw, 8rem);
+  --spacing-section: clamp(4rem, 3rem + 5vw, 8rem);
+
+  /* ── Border Radii ──────────────────────────────────────── */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+
+  /* ── Shadows ───────────────────────────────────────────── */
+  --shadow-sm: 0 1px 3px oklch(0 0 0 / 0.3);
+  --shadow-md: 0 4px 12px oklch(0 0 0 / 0.4);
+  --shadow-lg: 0 8px 32px oklch(0 0 0 / 0.5);
+  --shadow-glow-gold: 0 0 24px oklch(0.80 0.17 85 / 0.15);
+  --shadow-glow-celeste: 0 0 24px oklch(0.72 0.11 240 / 0.15);
+
+  /* ── Motion ────────────────────────────────────────────── */
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-decelerate: cubic-bezier(0, 0, 0.2, 1);
+  --ease-accelerate: cubic-bezier(0.4, 0, 1, 1);
+
+  /* ── Layout ────────────────────────────────────────────── */
+  --width-content: 80rem;
+  --width-narrow: 52rem;
+  --height-nav: 4rem;
 }
 
-/* ── Base Styles ──────────────────────────────────────────── */
+/* ── Duration custom properties (not @theme — used in transitions) */
+:root {
+  --duration-fast: 200ms;
+  --duration-normal: 300ms;
+  --duration-slow: 600ms;
+  --duration-slower: 1200ms;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   Reusable Component Classes
+   Extracted from 364 inline style={{}} patterns.
+   ══════════════════════════════════════════════════════════════ */
+@layer components {
+  /* Badge / tag text — kicker labels, category badges (25+ uses) */
+  .badge-text {
+    font-family: var(--font-accent);
+    font-size: var(--text-xs);
+    color: var(--color-gold);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  /* Prose body paragraphs (20+ uses) */
+  .prose-body {
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+  }
+
+  /* Prose body with narrower measure */
+  .prose-body-narrow {
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+    max-width: 65ch;
+  }
+
+  /* Stat number — big gold metric (12+ uses) */
+  .stat-number {
+    font-family: var(--font-accent);
+    font-size: var(--text-2xl);
+    color: var(--color-gold);
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  /* Stat label — small text below stat number */
+  .stat-label {
+    font-family: var(--font-accent);
+    font-size: var(--text-xs);
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  /* Chapter heading numeral (25+ uses) */
+  .chapter-numeral {
+    font-family: var(--font-accent);
+    font-size: var(--text-2xl);
+    color: var(--color-gold);
+    line-height: 1;
+  }
+
+  /* Chapter heading title */
+  .chapter-title {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    color: var(--color-text-primary);
+    line-height: 1.1;
+    margin: 0;
+  }
+
+  /* Pullquote / blockquote (8+ uses) */
+  .pullquote {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: var(--text-lg);
+    color: var(--color-text-secondary);
+    border-left: 3px solid var(--color-gold);
+    padding-left: var(--spacing-lg);
+    margin: 0;
+  }
+
+  /* Surface card — glassmorphic card base (30+ uses) */
+  .surface-card {
+    background: var(--color-surface-1);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+  }
+
+  /* Surface card with gold accent border */
+  .surface-card-accent {
+    background: var(--color-surface-1);
+    border: 1px solid var(--color-border);
+    border-left: 3px solid var(--color-gold);
+    border-radius: var(--radius-xl);
+  }
+
+  /* Section divider — horizontal rule (10+ uses) */
+  .section-divider {
+    border: none;
+    border-top: 1px solid var(--color-border);
+    margin: 0 0 3rem;
+  }
+
+  /* Before panel (tinted red) */
+  .panel-before {
+    background: var(--color-tint-before);
+    border: 1px solid var(--color-border-before);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+  }
+
+  /* After panel (tinted green) */
+  .panel-after {
+    background: var(--color-tint-after);
+    border: 1px solid var(--color-border-after);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+  }
+
+  /* Page eyebrow — section label above h1 */
+  .page-eyebrow {
+    font-family: var(--font-accent);
+    font-size: var(--text-sm);
+    color: var(--color-gold);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  /* Page title — main h1 */
+  .page-title {
+    font-family: var(--font-display);
+    font-size: var(--text-3xl);
+    color: var(--color-text-primary);
+    line-height: 1.05;
+    margin: 0;
+  }
+
+  /* Page subtitle — description under h1 */
+  .page-subtitle {
+    font-size: var(--text-base);
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    max-width: 52ch;
+    margin-top: var(--spacing-md);
+  }
+
+  /* Sidebar nav container */
+  .sidebar-nav {
+    position: sticky;
+    top: calc(var(--height-nav) + 2rem);
+    align-self: flex-start;
+    min-width: 14rem;
+  }
+
+  /* Sidebar nav item (inactive) */
+  .sidebar-nav-item {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: var(--radius-md);
+    font-size: var(--text-sm);
+    color: var(--color-text-tertiary);
+    text-decoration: none;
+    transition: color var(--duration-fast) var(--ease-standard),
+                background var(--duration-fast) var(--ease-standard);
+    cursor: pointer;
+  }
+
+  .sidebar-nav-item:hover {
+    color: var(--color-text-primary);
+    background: var(--color-surface-1);
+  }
+
+  /* Sidebar nav item (active) */
+  .sidebar-nav-item-active {
+    color: var(--color-gold);
+    background: var(--color-surface-1);
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   Base Styles
+   ══════════════════════════════════════════════════════════════ */
 html {
   color-scheme: dark;
   scroll-behavior: smooth;
@@ -45,8 +301,8 @@ html {
 
 body {
   font-family: var(--font-body);
-  background: var(--dark);
-  color: var(--text-1);
+  background: var(--color-dark);
+  color: var(--color-text-primary);
   line-height: 1.6;
   min-height: 100dvh;
 }
@@ -73,7 +329,7 @@ h5, h6 {
 
 /* ── Focus Indicators (WCAG 2.2) ──────────────────────────── */
 :focus-visible {
-  outline: 2px solid var(--gold);
+  outline: 2px solid var(--color-gold);
   outline-offset: 2px;
   border-radius: var(--radius-sm);
 }
@@ -85,8 +341,8 @@ h5, h6 {
   left: 1rem;
   z-index: 9999;
   padding: 0.75rem 1.5rem;
-  background: var(--gold);
-  color: var(--dark);
+  background: var(--color-gold);
+  color: var(--color-dark);
   font-family: var(--font-accent);
   font-weight: 600;
   text-transform: uppercase;
@@ -105,7 +361,7 @@ h5, h6 {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--dark);
+  background: var(--color-dark);
 }
 
 ::-webkit-scrollbar-thumb {
@@ -120,7 +376,7 @@ h5, h6 {
 /* Firefox */
 html {
   scrollbar-width: thin;
-  scrollbar-color: oklch(1 0 0 / 0.15) var(--dark-hex, #0a0a0f);
+  scrollbar-color: oklch(1 0 0 / 0.15) var(--color-dark-hex, #0a0a0f);
 }
 
 /* ── Reduced Motion ───────────────────────────────────────── */
@@ -180,6 +436,12 @@ html {
   100% { background-position: -100% center; }
 }
 
+/* ── Scroll Dot (Hero indicator) ─────────────────────────── */
+@keyframes scroll-dot {
+  0%, 100% { opacity: 1; transform: translateY(0); }
+  50% { opacity: 0.4; transform: translateY(6px); }
+}
+
 /* ── Card Hover States ────────────────────────────────────── */
 .card-hover {
   transition: transform var(--duration-fast) var(--ease-standard),
@@ -189,18 +451,18 @@ html {
 
 .card-hover:hover {
   transform: translateY(-2px);
-  border-color: var(--border-hover);
+  border-color: var(--color-border-hover);
   box-shadow: var(--shadow-glow-gold);
 }
 
 /* ── Link Hover ───────────────────────────────────────────── */
 a:hover {
-  color: var(--gold);
+  color: var(--color-gold);
 }
 
 /* ── Prose Bold Styling ───────────────────────────────────── */
 strong {
-  color: var(--text-1);
+  color: var(--color-text-primary);
   font-weight: 600;
 }
 

@@ -1,7 +1,7 @@
-import { Hero } from "@/components/Hero";
-import { StatsStrip } from "@/components/StatsStrip";
-import { PhotoStrip } from "@/components/PhotoStrip";
-import { SectionPreviews } from "@/components/SectionPreviews";
+import { Hero } from "@/components/home/Hero";
+import { StatsStrip } from "@/components/home/StatsStrip";
+import { PhotoStrip } from "@/components/home/PhotoStrip";
+import { SectionPreviews } from "@/components/home/SectionPreviews";
 import { stripPhotos1 } from "@/data/photos";
 
 export default function Home() {

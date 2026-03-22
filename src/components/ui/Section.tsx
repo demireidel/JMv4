@@ -5,10 +5,10 @@ interface SectionProps {
   className?: string;
 }
 
-const variantStyles: Record<string, React.CSSProperties> = {
-  dark: { background: "var(--dark)", color: "var(--text-1)" },
-  navy: { background: "var(--navy)", color: "var(--text-1)" },
-  cream: { background: "var(--cream)", color: "var(--dark)" },
+const variantClasses: Record<string, string> = {
+  dark: "bg-dark text-text-primary",
+  navy: "bg-navy text-text-primary",
+  cream: "bg-cream text-dark",
 };
 
 export function Section({
@@ -20,8 +20,7 @@ export function Section({
   return (
     <section
       id={id}
-      className={className}
-      style={{ paddingBlock: "var(--section-py)", ...variantStyles[variant] }}
+      className={`py-[var(--spacing-section)] ${variantClasses[variant]} ${className}`}
     >
       {children}
     </section>

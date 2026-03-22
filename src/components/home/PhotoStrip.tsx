@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState, useCallback, useEffect } from "react";
+import Image from "next/image";
 
 interface Photo {
   src: string;
@@ -106,13 +107,10 @@ export function PhotoStrip({ photos, reverse = false }: PhotoStripProps) {
   return (
     <div
       ref={wrapperRef}
-      className="overflow-hidden select-none"
-      style={{
-        paddingBlock: "var(--space-xs)",
-        background: "var(--dark)",
-        cursor: isDragging ? "grabbing" : "grab",
-        touchAction: "pan-y",
-      }}
+      className={`select-none overflow-hidden bg-dark py-[var(--spacing-xs)] ${
+        isDragging ? "cursor-grabbing" : "cursor-grab"
+      }`}
+      style={{ touchAction: "pan-y" }}
       onPointerDown={handlePointerDown}
       onPointerMove={handlePointerMove}
       onPointerUp={handlePointerUp}
@@ -120,21 +118,18 @@ export function PhotoStrip({ photos, reverse = false }: PhotoStripProps) {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <div ref={stripRef} className="flex gap-3 w-max">
+      <div ref={stripRef} className="flex w-max gap-3">
         {doubled.map((p, i) => (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
+          <Image
             key={i}
             src={p.src}
             alt={p.alt}
-            loading="eager"
+            width={448}
+            height={280}
             draggable={false}
-            className="rounded-md object-cover"
-            style={{
-              height: "clamp(8rem, 6rem + 8vw, 14rem)",
-              width: "auto",
-              aspectRatio: "16/10",
-            }}
+            className="h-[clamp(8rem,6rem+8vw,14rem)] w-auto rounded-md object-cover"
+            style={{ aspectRatio: "16/10" }}
+            sizes="(max-width: 768px) 200px, 300px"
           />
         ))}
       </div>
