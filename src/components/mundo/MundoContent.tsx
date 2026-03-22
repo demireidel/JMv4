@@ -1,13 +1,14 @@
 "use client";
 
-import Image from "next/image";
-import type { Leader, TimelineEvent, MegaStat, TradeAgreement, ForumAppearance } from "@/data/mundo";
+import type { Leader, TimelineEvent, MegaStat, TradeAgreement } from "@/data/mundo";
 import { financialSupport, cooperationGrid, cooperacionHeader, forumAppearances, forosHeader } from "@/data/mundo";
 import { SidebarLayout } from "@/components/ui/SidebarLayout";
 import { ChapterHeader } from "@/components/ui/ChapterHeader";
 import { Card } from "@/components/ui/Card";
 import { SectionArticle } from "@/components/ui/SectionArticle";
 import { ContentGrid } from "@/components/ui/ContentGrid";
+import { ForumCard } from "@/components/mundo/ForumCard";
+import { AgreementCard } from "@/components/mundo/AgreementCard";
 
 const sections = [
   { id: "estadisticas", num: "I", title: "Estadísticas clave" },
@@ -17,74 +18,6 @@ const sections = [
   { id: "acuerdos", num: "V", title: "Acuerdos comerciales" },
   { id: "cooperacion", num: "VI", title: "Cooperación" },
 ];
-
-function factColor(color: "gold" | "blue" | "green") {
-  if (color === "gold") return "text-gold";
-  if (color === "blue") return "text-celeste";
-  return "text-success";
-}
-
-function AgreementCard({ ta }: { ta: Pick<TradeAgreement, "tag" | "title" | "description" | "keyFacts"> }) {
-  return (
-    <Card className="overflow-hidden">
-      <div className="p-6">
-        <span className="badge-text mb-2 block">{ta.tag}</span>
-        <h3 className="chapter-title m-0 mb-3">{ta.title}</h3>
-        <p className="prose-body m-0 mb-4">{ta.description}</p>
-        <div className="flex flex-wrap gap-2">
-          {ta.keyFacts.map((f, i) => (
-            <span
-              key={i}
-              className={`rounded-full border border-border bg-surface-2 px-3 py-1 text-[length:var(--text-xs)] ${factColor(f.color)}`}
-            >
-              {f.text}
-            </span>
-          ))}
-        </div>
-      </div>
-    </Card>
-  );
-}
-
-function ForumCard({ forum }: { forum: ForumAppearance }) {
-  return (
-    <Card className="overflow-hidden">
-      <div className="relative h-48 w-full">
-        <Image
-          src={forum.image}
-          alt={forum.imageAlt}
-          fill
-          className="object-cover"
-          sizes="(max-width: 640px) 100vw, 50vw"
-        />
-        {forum.highlight && (
-          <span className="absolute top-3 right-3 rounded-full bg-[color-mix(in_oklch,var(--color-gold-light),transparent_10%)] px-2.5 py-0.5 text-[length:var(--text-xs)] font-bold text-white">
-            DESTACADO
-          </span>
-        )}
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              "linear-gradient(to top, color-mix(in oklch, var(--color-overlay-dark), transparent 20%) 0%, transparent 50%)",
-          }}
-        />
-        <div className="absolute bottom-3 left-4 right-4">
-          <span className="font-accent text-[length:var(--text-xs)] uppercase tracking-[0.1em] text-[var(--color-gold-light)]">
-            {forum.date}
-          </span>
-          <span className="ml-2 text-[length:var(--text-xs)] text-white/50">
-            {forum.location}
-          </span>
-        </div>
-      </div>
-      <div className="p-5">
-        <h4 className="card-heading m-0 mb-2">{forum.title}</h4>
-        <p className="card-body m-0">{forum.desc}</p>
-      </div>
-    </Card>
-  );
-}
 
 export function MundoContent({
   leaders,
