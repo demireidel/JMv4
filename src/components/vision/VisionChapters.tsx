@@ -1,108 +1,24 @@
 "use client";
 
-import Image from "next/image";
 import { SidebarLayout } from "@/components/ui/SidebarLayout";
 import { ChapterHeader } from "@/components/ui/ChapterHeader";
 import { Pullquote } from "@/components/ui/Pullquote";
-import { Card } from "@/components/ui/Card";
 import { Prose } from "@/components/ui/Prose";
 import { SectionArticle } from "@/components/ui/SectionArticle";
 import { chapters, dataStrip, pyramid, pillars, thinkers } from "@/data/vision";
+import { ChapterPhoto } from "@/components/vision/ChapterPhoto";
+import { DataStripGrid } from "@/components/vision/DataStripGrid";
+import { PyramidList } from "@/components/vision/PyramidList";
+import { PillarGrid } from "@/components/vision/PillarGrid";
+import { ThinkerGrid } from "@/components/vision/ThinkerGrid";
 
-/* ───────── types & data ───────── */
+/* ───────── types ───────── */
 
 interface Photo {
   src: string;
   alt: string;
   caption: string;
   objectPosition?: string;
-}
-
-/* ───────── local sub-components ───────── */
-
-function ChapterPhoto({ photo }: { photo?: Photo }) {
-  if (!photo) return null;
-  return (
-    <figure className="m-0 my-8">
-      <Image
-        src={photo.src}
-        alt={photo.alt}
-        width={1200}
-        height={514}
-        className={`aspect-[21/9] w-full rounded-xl object-cover ${
-          photo.objectPosition === "top"
-            ? "object-top"
-            : photo.objectPosition === "bottom"
-              ? "object-bottom"
-              : "object-center"
-        }`}
-      />
-      <figcaption className="mt-3 font-accent text-[length:var(--text-xs)] text-text-tertiary">
-        {photo.caption}
-      </figcaption>
-    </figure>
-  );
-}
-
-function DataStripGrid() {
-  return (
-    <div className="my-8 grid grid-cols-2 gap-4 md:grid-cols-4">
-      {dataStrip.map((d) => (
-        <Card key={d.num} className="p-4 text-center">
-          <span className="stat-number">{d.num}</span>
-          <span className="stat-label mt-1 block">{d.label}</span>
-        </Card>
-      ))}
-    </div>
-  );
-}
-
-function PyramidList() {
-  return (
-    <div className="my-8 space-y-3">
-      {pyramid.map((level) => (
-        <Card key={level.title} className="flex gap-4 p-4">
-          <span className="stat-number min-w-[2rem]">{level.rank}</span>
-          <div>
-            <h4 className="chapter-title m-0 mb-1 text-[length:var(--text-base)]">
-              {level.title}
-            </h4>
-            <p className="prose-body m-0">{level.desc}</p>
-          </div>
-        </Card>
-      ))}
-    </div>
-  );
-}
-
-function PillarGrid() {
-  return (
-    <div className="my-8 grid gap-4 md:grid-cols-3">
-      {pillars.map((p) => (
-        <Card key={p.title} className="p-5 text-center">
-          <div className="mb-2 text-[2rem]">{p.icon}</div>
-          <h4 className="chapter-title m-0 mb-2 text-[length:var(--text-base)]">
-            {p.title}
-          </h4>
-          <p className="prose-body m-0">{p.desc}</p>
-        </Card>
-      ))}
-    </div>
-  );
-}
-
-function ThinkerGrid() {
-  return (
-    <div className="my-8 grid grid-cols-2 gap-4 md:grid-cols-4">
-      {thinkers.map((t) => (
-        <Card key={t.title} className="p-4">
-          <span className="card-label">{t.era}</span>
-          <h4 className="card-heading">{t.title}</h4>
-          <p className="card-body leading-snug text-text-tertiary">{t.desc}</p>
-        </Card>
-      ))}
-    </div>
-  );
 }
 
 /* ───────── main component ───────── */
@@ -120,8 +36,8 @@ export function VisionChapters({ photos }: { photos: Photo[] }) {
           <p>Mi proyecto no es administrar esa decadencia. <strong>Es dinamitarla y refundar la Argentina sobre las ideas que la hicieron grande.</strong> Cada decisión de gobierno se mide contra una sola pregunta: <strong>¿esto nos acerca a ser el país más libre del mundo?</strong></p>
         </Prose>
         <Pullquote cite="Discurso de asunción, diciembre 2023">&laquo;Hoy volvemos a abrazar las ideas de Alberdi, de nuestros padres fundadores, que hicieron que en 35 años pasáramos de ser un país de bárbaros a ser potencia.&raquo;</Pullquote>
-        <DataStripGrid />
-        <ChapterPhoto photo={photos[0]} />
+        <DataStripGrid items={dataStrip} />
+        {photos[0] && <ChapterPhoto src={photos[0].src} alt={photos[0].alt} caption={photos[0].caption} objectPosition={photos[0].objectPosition} />}
       </SectionArticle>
 
       {/* Chapter II */}
@@ -137,8 +53,8 @@ export function VisionChapters({ photos }: { photos: Photo[] }) {
           <p><strong>&laquo;Maquiavelo ha muerto.&raquo;</strong> <strong>Jesús Huerta de Soto</strong> demostró que la eficiencia dinámica surge única y exclusivamente del respeto a la propiedad privada y la función empresarial. Y como probó <strong>Friedrich Hayek</strong>, el conocimiento está disperso en la sociedad — ningún planificador central puede reemplazar al orden espontáneo del mercado libre.</p>
           <p><strong>Lo justo no puede ser ineficiente ni lo eficiente injusto.</strong> Justicia y eficiencia son dos caras de la misma moneda.</p>
         </Prose>
-        <PyramidList />
-        <ChapterPhoto photo={photos[1]} />
+        <PyramidList items={pyramid} />
+        {photos[1] && <ChapterPhoto src={photos[1].src} alt={photos[1].alt} caption={photos[1].caption} objectPosition={photos[1].objectPosition} />}
       </SectionArticle>
 
       {/* Chapter III */}
@@ -152,7 +68,7 @@ export function VisionChapters({ photos }: { photos: Photo[] }) {
           <p><strong>Las funciones del Estado deben limitarse a la defensa del derecho a la vida, a la libertad y a la propiedad.</strong> Nada más. Todo lo demás es coacción disfrazada de política pública. El gasto público no es gratuito: cada peso que gasta el Estado es un peso que se le quita a un ciudadano que lo habría gastado mejor. No es un debate de gestión — es un debate moral.</p>
         </Prose>
         <Pullquote cite="Davos, enero 2024">&laquo;El Estado no es la solución. El Estado es el problema mismo. No cedan al avance del Estado.&raquo;</Pullquote>
-        <ChapterPhoto photo={photos[4]} />
+        {photos[4] && <ChapterPhoto src={photos[4].src} alt={photos[4].alt} caption={photos[4].caption} objectPosition={photos[4].objectPosition} />}
       </SectionArticle>
 
       {/* Chapter IV */}
@@ -164,12 +80,12 @@ export function VisionChapters({ photos }: { photos: Photo[] }) {
           <p><strong>Antonio Gramsci</strong> escribió desde la cárcel en los años 30 que para implantar el socialismo era necesario primero conquistar la cultura. La izquierda lo hizo al pie de la letra durante 80 años. <strong>La batalla cultural fue ganada por la izquierda básicamente porque nosotros no dimos la batalla.</strong></p>
         </Prose>
         <Pullquote cite="CPAC Argentina, diciembre 2024">&laquo;Sin el cuidado de las ideas, no importa qué tan buenos seamos gestionando o cuán buenos seamos políticamente, no vamos a llegar a ningún lado.&raquo;</Pullquote>
-        <PillarGrid />
+        <PillarGrid items={pillars} />
         <Prose>
           <p><strong>Dar la batalla cultural desde el poder no solo es recomendable — es una obligación.</strong> Las ideas no ganan por mérito propio: deben ser promovidas activamente.</p>
           <p>Gracias a internet y la creatividad popular, las redes sociales rompieron el monopolio comunicacional de la izquierda. <strong>Una victoria política no es el fin de la lucha por las ideas, sino el comienzo.</strong></p>
         </Prose>
-        <ChapterPhoto photo={photos[2]} />
+        {photos[2] && <ChapterPhoto src={photos[2].src} alt={photos[2].alt} caption={photos[2].caption} objectPosition={photos[2].objectPosition} />}
       </SectionArticle>
 
       {/* Chapter V */}
@@ -187,8 +103,8 @@ export function VisionChapters({ photos }: { photos: Photo[] }) {
           <p>La alianza con Estados Unidos, Israel, Italia, el Reino Unido, El Salvador y Chile no es un alineamiento automático — es una coalición de naciones que eligen la libertad sobre el control. El Board of Peace de 19 países, el Shield of the Americas de 17 naciones, los tres tratados de libre comercio firmados en un año: todo apunta en la misma dirección.</p>
           <p><strong>América será el faro de luz que vuelva a encender a todo Occidente</strong>, y con ello pagará su deuda civilizatoria como muestra de gratitud hacia las raíces que la hicieron posible.</p>
         </Prose>
-        <ChapterPhoto photo={photos[3]} />
-        <ThinkerGrid />
+        {photos[3] && <ChapterPhoto src={photos[3].src} alt={photos[3].alt} caption={photos[3].caption} objectPosition={photos[3].objectPosition} />}
+        <ThinkerGrid items={thinkers} />
       </SectionArticle>
 
       {/* Closing declaration */}
