@@ -4,7 +4,6 @@ export const stripPhotos1 = [
   { src: "/images/banco/trump-casablanca-oval.jpg", alt: "Milei con Trump en el Salón Oval" },
   { src: "/images/banco/g7-italia-lideres.jpg", alt: "Milei en la Cumbre del G7, Italia" },
   { src: "/images/banco/israel-netanyahu-bilateral.jpg", alt: "Milei con Netanyahu en Jerusalén" },
-  { src: "/images/banco/meloni-casarosada-pose.jpg", alt: "Milei con Giorgia Meloni en Casa Rosada" },
   { src: "/images/banco/inauguracion-convertible-karina.jpg", alt: "Milei y Karina en la caravana inaugural — 10 de diciembre de 2023" },
   { src: "/images/banco/cpac-argentina-02.jpg", alt: "Milei en CPAC Argentina — La batalla cultural" },
   { src: "/images/banco/davos-2026-discurso.jpg", alt: "Milei en Davos 2026" },
